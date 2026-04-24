@@ -173,6 +173,11 @@
       display:none;
     }
 
+    .guide-intro.hidden,
+    .guide-grid.hidden{
+      display:none;
+    }
+
     .guide-player-top{
       display:flex;
       align-items:center;
@@ -492,7 +497,7 @@
   <main class="guide-page">
     <div class="wrap">
 
-      <section class="guide-intro">
+      <section class="guide-intro" id="guideIntro">
         <h1>Instrukcja krok po kroku</h1>
         <p>
           Wybierz moduł i przejdź przez aplikację ekran po ekranie.
@@ -500,7 +505,7 @@
         </p>
       </section>
 
-      <section class="guide-grid">
+      <section class="guide-grid" id="guideLauncher">
         <div class="guide-tile" onclick="startInstructionFlow('konfiguracja')">
           <h3>1. Konfiguracja klubu</h3>
           <p>Logo, nazwa, kolor, sezon, płatności, administrator i aktywacja.</p>
@@ -526,6 +531,7 @@
         <div class="guide-player-top">
           <div class="guide-badge" id="guideFlowBadge">Moduł</div>
           <div class="guide-badge" id="guideStepCounter">Krok 1 z 1</div>
+          <button class="btn btn-secondary" type="button" onclick="instructionCloseFlow()">Wybierz moduł</button>
         </div>
 
         <div class="guide-layout">
@@ -1887,6 +1893,14 @@ function updateGuideHash_(flowKey) {
   }
 }
 
+  function setGuideLauncherVisible_(visible) {
+  const intro = document.getElementById("guideIntro");
+  const launcher = document.getElementById("guideLauncher");
+
+  if (intro) intro.classList.toggle("hidden", !visible);
+  if (launcher) launcher.classList.toggle("hidden", !visible);
+}
+
 function startInstructionFlow(flowKey, options) {
   const resolvedFlowKey = resolveGuideFlowKey_(flowKey);
   if (!resolvedFlowKey || !INSTRUCTION_FLOWS[resolvedFlowKey]) return;
@@ -1898,6 +1912,8 @@ function startInstructionFlow(flowKey, options) {
 
   const player = document.getElementById("guidePlayer");
   if (player) player.classList.remove("hidden");
+  
+  setGuideLauncherVisible_(false);
 
   if (opts.updateHash !== false) {
     updateGuideHash_(resolvedFlowKey);
@@ -1964,13 +1980,24 @@ function instructionNextStep() {
   }
 }
 
-  function instructionCloseFlow() {
-    const player = document.getElementById("guidePlayer");
-    if (player) player.classList.add("hidden");
+function instructionCloseFlow() {
+  const player = document.getElementById("guidePlayer");
+  if (player) player.classList.add("hidden");
 
-    window.__guideFlowKey = "";
-    window.__guideStepIndex = 0;
+  setGuideLauncherVisible_(true);
+
+  window.__guideFlowKey = "";
+  window.__guideStepIndex = 0;
+
+  if (window.location.hash) {
+    history.pushState(null, "", window.location.pathname + window.location.search);
   }
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
   function initInstructionFromHash_() {
   const flowKey = resolveGuideFlowKey_(window.location.hash);
