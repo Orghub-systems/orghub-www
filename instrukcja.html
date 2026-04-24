@@ -1,212 +1,1933 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <title>Instrukcja ORG HUB — przewodnik krok po kroku</title>
 
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#151518;
+      --card2:#1b1b20;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:#34343b;
+      --accent:#9f1010;
+      --accent-border:#ff2b2b;
+      --accent-dark:#760c0c;
+      --ok:#1f7a35;
+      --max:1180px;
+    }
 
+    *{box-sizing:border-box}
 
+    html, body{
+      margin:0;
+      min-height:100%;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#0a0a0c 0%, #111116 100%);
+      color:var(--text);
+    }
 
-.guide-player{
-    margin-top:22px;
-    background:linear-gradient(180deg,#17171d,#101015);
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:22px;
+    body{
+      overflow-x:hidden;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:rgba(10,10,12,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #202028;
+    }
+
+    .topbar-inner{
+      min-height:68px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:22px;
+      letter-spacing:.8px;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:13px 18px;
+      border-radius:14px;
+      font-weight:900;
+      border:1px solid var(--line);
+      background:#17171c;
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border-color:var(--accent-border);
+    }
+
+    .btn-secondary{
+      background:#17171c;
+    }
+
+    .guide-page{
+      padding:28px 0;
+    }
+
+    .guide-intro{
+      background:linear-gradient(180deg,#17171d,#101015);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:24px;
+      margin-bottom:18px;
+    }
+
+    .guide-intro h1{
+      margin:0 0 10px;
+      font-size:34px;
+      line-height:1.1;
+    }
+
+    .guide-intro p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .guide-grid{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:14px;
+      margin-bottom:18px;
+    }
+
+    .guide-tile{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:18px;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+
+    .guide-tile:hover{
+      transform:translateY(-2px);
+      border-color:#4a4a55;
+    }
+
+    .guide-tile h3{
+      margin:0 0 8px;
+      font-size:18px;
+      line-height:1.2;
+    }
+
+    .guide-tile p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.35;
+    }
+
+    .guide-player{
+      background:linear-gradient(180deg,#17171d,#101015);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:18px;
+    }
+
+    .guide-player.hidden{
+      display:none;
+    }
+
+    .guide-player-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:16px;
+      flex-wrap:wrap;
+    }
+
+    .guide-badge{
+      display:inline-block;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #31313a;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.4px;
+      text-transform:uppercase;
+    }
+
+    .guide-layout{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) 430px;
+      gap:22px;
+      align-items:start;
+    }
+
+    .guide-copy{
+      background:#111116;
+      border:1px solid #2d2d37;
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .guide-copy h3{
+      margin:0 0 10px;
+      font-size:28px;
+      line-height:1.15;
+    }
+
+    .guide-copy p{
+      margin:0 0 16px;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .guide-note{
+      background:#17171d;
+      border:1px solid #2f2f39;
+      border-radius:14px;
+      padding:14px;
+      font-size:15px;
+      line-height:1.45;
+    }
+
+    .guide-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .phone{
+      width:100%;
+      max-width:420px;
+      margin:0 auto;
+      background:#0a0a0d;
+      border:1px solid #34343b;
+      border-radius:34px;
+      padding:14px;
+      box-shadow:0 20px 40px rgba(0,0,0,.35);
+    }
+
+    .phone-top{
+      height:18px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      margin-bottom:10px;
+    }
+
+    .phone-notch{
+      width:120px;
+      height:6px;
+      border-radius:999px;
+      background:#2c2c35;
+    }
+
+    .phone-screen{
+      height:640px;
+      background:#e9e9ea;
+      color:#111;
+      border-radius:26px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .mock-app{
+      min-height:640px;
+      padding:18px;
+      background:#ececed;
+      color:#111;
+      position:relative;
+    }
+
+    .mock-dark{
+      background:linear-gradient(180deg,#0b6f7a,#12aeb2);
+      color:#fff;
+    }
+
+    .mock-center{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      text-align:center;
+    }
+
+    .mock-card{
+      width:100%;
+      background:#111318;
+      color:#fff;
+      border:1px solid #313744;
+      border-radius:16px;
+      padding:16px;
+      margin-top:14px;
+      text-align:left;
+    }
+
+    .mock-btn{
+      width:100%;
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid #ff2b2b;
+      background:#9f1010;
+      color:#fff;
+      font-weight:900;
+      text-align:center;
+    }
+
+    .mock-btn.alt{
+      border:1px solid #34343b;
+      background:#17171c;
+      color:#fff;
+    }
+
+    .mock-field{
+      width:100%;
+      margin-top:12px;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid #34343b;
+      background:#17171c;
+      color:#fff;
+      font-weight:700;
+      text-align:left;
+    }
+
+    .mock-pill{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #34343b;
+      color:#fff;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .mock-highlight{
+      outline:3px solid #ffb020;
+      outline-offset:3px;
+      animation:mockPulse 1.1s infinite;
+    }
+
+    @keyframes mockPulse{
+      0%{ outline-color:rgba(255,176,32,1); }
+      50%{ outline-color:rgba(255,176,32,.35); }
+      100%{ outline-color:rgba(255,176,32,1); }
+    }
+
+    @media (max-width: 1000px){
+      .guide-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+      }
+
+      .guide-layout{
+        grid-template-columns:1fr;
+      }
+
+      .phone{
+        order:1;
+        max-width:390px;
+      }
+
+      .guide-copy{
+        order:2;
+      }
+    }
+
+    @media (max-width: 600px){
+      .topbar-inner{
+        min-height:58px;
+      }
+
+      .brand{
+        font-size:17px;
+      }
+
+      .brand-mark{
+        width:32px;
+        height:32px;
+        border-radius:10px;
+      }
+
+      .topbar .btn{
+        padding:10px 12px;
+        font-size:13px;
+      }
+
+      .guide-page{
+        padding:14px 0;
+      }
+
+      .guide-intro{
+        padding:16px;
+        border-radius:18px;
+      }
+
+      .guide-intro h1{
+        font-size:25px;
+      }
+
+      .guide-intro p{
+        font-size:15px;
+      }
+
+      .guide-grid{
+        grid-template-columns:1fr;
+      }
+
+      .guide-tile{
+        padding:16px;
+      }
+
+      .guide-player{
+        padding:12px;
+        border-radius:18px;
+      }
+
+      .guide-player-top{
+        margin-bottom:12px;
+      }
+
+      .guide-layout{
+        gap:12px;
+      }
+
+      .phone{
+        max-width:340px;
+        padding:10px;
+        border-radius:28px;
+      }
+
+      .phone-screen{
+        height:500px;
+        border-radius:22px;
+      }
+
+      .mock-app{
+        min-height:500px;
+        padding:14px;
+      }
+
+      .guide-copy{
+        padding:16px;
+      }
+
+      .guide-copy h3{
+        font-size:22px;
+      }
+
+      .guide-copy p{
+        font-size:15px;
+      }
+
+      .guide-actions{
+        position:sticky;
+        bottom:0;
+        z-index:20;
+        background:linear-gradient(180deg,rgba(17,17,22,.65),#111116);
+        padding-top:12px;
+        margin-top:14px;
+      }
+
+      .guide-actions .btn{
+        flex:1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark"></div>
+        <div>ORG HUB SYSTEMS</div>
+      </a>
+
+      <a class="btn btn-secondary" href="index.html#instrukcja">← Powrót</a>
+    </div>
+  </header>
+
+  <main class="guide-page">
+    <div class="wrap">
+
+      <section class="guide-intro">
+        <h1>Instrukcja krok po kroku</h1>
+        <p>
+          Wybierz moduł i przejdź przez aplikację ekran po ekranie.
+          To przewodnik pokazujący realną kolejność pracy w ORG HUB.
+        </p>
+      </section>
+
+      <section class="guide-grid">
+        <div class="guide-tile" onclick="startInstructionFlow('konfiguracja')">
+          <h3>1. Konfiguracja klubu</h3>
+          <p>Logo, nazwa, kolor, sezon, płatności, administrator i aktywacja.</p>
+        </div>
+
+        <div class="guide-tile" onclick="startInstructionFlow('po_aktywacji')">
+          <h3>2. Co zrobić po aktywacji</h3>
+          <p>Pierwsze logowanie, grupy, trener, zawodnik i pierwszy test.</p>
+        </div>
+
+        <div class="guide-tile" onclick="startInstructionFlow('admin_panel')">
+          <h3>3. Panel administratora</h3>
+          <p>Zawodnicy, trenerzy, grupy, raporty, powiadomienia i płatności.</p>
+        </div>
+
+        <div class="guide-tile" onclick="startInstructionFlow('bank_ksiegowanie')">
+          <h3>4. Bank i księgowanie wpłat</h3>
+          <p>Import pliku z banku, dopasowanie i księgowanie przelewów.</p>
+        </div>
+      </section>
+
+      <section class="guide-player hidden" id="guidePlayer">
+        <div class="guide-player-top">
+          <div class="guide-badge" id="guideFlowBadge">Moduł</div>
+          <div class="guide-badge" id="guideStepCounter">Krok 1 z 1</div>
+        </div>
+
+        <div class="guide-layout">
+          <div class="guide-copy">
+            <h3 id="guideStepTitle">Tytuł kroku</h3>
+            <p id="guideStepText">Opis kroku</p>
+
+            <div class="guide-note" id="guideStepNote">
+              Wskazówka dla użytkownika
+            </div>
+
+            <div class="guide-actions">
+              <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
+              <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
+            </div>
+          </div>
+
+          <div class="phone">
+            <div class="phone-top">
+              <div class="phone-notch"></div>
+            </div>
+
+            <div class="phone-screen" id="guideStepScreen"></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- TUTAJ WKLEJ STARY SKRYPT Z INSTRUCTION_FLOWS -->
+
+<script id="5473dw">
+  window.__guideFlowKey = "";
+  window.__guideStepIndex = 0;
+
+  const INSTRUCTION_FLOWS = {
+konfiguracja: {
+  label: "Konfiguracja klubu",
+  steps: [
+    {
+      title: "Ekran startowy aplikacji",
+      text: "Użytkownik zaczyna od ekranu powitalnego ORGHUB SYSTEMS. Na dole widzi duży przycisk „Skonfiguruj klub”.",
+      note: "To jest zawsze pierwszy krok dla nowego klubu.",
+      screen: `
+        <div class="mock-app mock-center" style="background:#ececed; color:#111; min-height:640px;">
+          <div style="font-size:20px; font-weight:900; margin-bottom:6px;">Witamy w aplikacji</div>
+          <div style="font-size:30px; font-weight:900; letter-spacing:2px; margin-bottom:18px;">ORGHUB SYSTEMS</div>
+
+          <div class="mock-card" style="background:#111; border:1px solid #333; color:#fff; text-align:left;">
+            <div style="font-size:18px; font-weight:900; margin-bottom:10px;">Zanim rozpoczniesz konfigurację</div>
+            <div style="line-height:1.45; opacity:.95;">
+              Przygotuj logo, nazwę klubu, email, daty sezonu, płatności i dane administratora.
+            </div>
+          </div>
+
+          <div class="mock-btn mock-highlight" style="margin-top:18px; max-width:280px;">Skonfiguruj klub</div>
+        </div>
+      `
+    },
+
+    {
+      title: "Pierwszy ekran konfiguracji — pusty formularz",
+      text: "Po kliknięciu użytkownik przechodzi do pierwszego etapu konfiguracji klubu. Na ekranie są: logo, nazwa, kolor i email.",
+      note: "Na tym etapie jeszcze nic nie jest uzupełnione.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn">Wgraj swoje logo</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field" style="margin-top:14px;">Podaj nazwę klubu</div>
+            <div class="mock-field">Wybierz kolor tła</div>
+            <div class="mock-field">Twój email</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Krok 1 — wgranie logo",
+      text: "Najpierw użytkownik dodaje logo klubu. Po przejściu do kolejnego kroku widać już, że logo zostało poprawnie załadowane.",
+      note: "To ma dać użytkownikowi pewność: kliknąłem dobrze, plik został dodany.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn mock-highlight">Wgraj swoje logo</div>
+
+            <div style="
+              margin:10px auto 0 auto;
+              width:120px;
+              height:120px;
+              border-radius:10px;
+              border:1px solid #444;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d0d11;
+              font-size:56px;
+              font-weight:900;
+            ">★</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field" style="margin-top:14px;">Podaj nazwę klubu</div>
+            <div class="mock-field">Wybierz kolor tła</div>
+            <div class="mock-field">Twój email</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Krok 2 — wpisanie nazwy klubu",
+      text: "Po dodaniu logo użytkownik wpisuje nazwę klubu. Na instrukcji od razu widać gotowy, poprawnie wpisany przykład.",
+      note: "Tu pokazujemy normalną nazwę widoczną dla ludzi, a nie techniczny identyfikator.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn">Wgraj swoje logo</div>
+
+            <div style="
+              margin:10px auto 0 auto;
+              width:120px;
+              height:120px;
+              border-radius:10px;
+              border:1px solid #444;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d0d11;
+              font-size:56px;
+              font-weight:900;
+            ">★</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field mock-highlight" style="margin-top:14px;">MKS Feniks Północ</div>
+            <div class="mock-field">Wybierz kolor tła</div>
+            <div class="mock-field">Twój email</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Krok 3 — wybór koloru aplikacji",
+      text: "W kolejnym kroku użytkownik wybiera kolor przewodni aplikacji. Po przejściu dalej widzi już gotowy, wybrany wariant.",
+      note: "Najlepiej dobrać kolor zgodny z barwami klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn">Wgraj swoje logo</div>
+
+            <div style="
+              margin:10px auto 0 auto;
+              width:120px;
+              height:120px;
+              border-radius:10px;
+              border:1px solid #444;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d0d11;
+              font-size:56px;
+              font-weight:900;
+            ">★</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
+            <div class="mock-field mock-highlight">Brąz</div>
+            <div class="mock-field">Twój email</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Krok 4 — wpisanie adresu e-mail",
+      text: "Na końcu pierwszego etapu użytkownik wpisuje adres e-mail. To na ten adres przychodzą później informacje związane z klubem i aktywacją.",
+      note: "Najlepiej użyć realnego adresu klubowego albo organizacyjnego.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn">Wgraj swoje logo</div>
+
+            <div style="
+              margin:10px auto 0 auto;
+              width:120px;
+              height:120px;
+              border-radius:10px;
+              border:1px solid #444;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d0d11;
+              font-size:56px;
+              font-weight:900;
+            ">★</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
+            <div class="mock-field">Brąz</div>
+            <div class="mock-field mock-highlight">kontakt@feniks-polnoc.pl</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Wysłanie pierwszego etapu konfiguracji",
+      text: "Po uzupełnieniu logo, nazwy, koloru i e-maila użytkownik klika „Wyślij” i przechodzi do drugiego etapu konfiguracji klubu.",
+      note: "To zamyka pierwszy etap i prowadzi do ustawienia sezonu, płatności i danych administratora.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
+            <div class="mock-btn">Wgraj swoje logo</div>
+
+            <div style="
+              margin:10px auto 0 auto;
+              width:120px;
+              height:120px;
+              border-radius:10px;
+              border:1px solid #444;
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              background:#0d0d11;
+              font-size:56px;
+              font-weight:900;
+            ">★</div>
+
+            <div style="margin-top:10px; font-size:12px; opacity:.75;">
+              PNG/JPG, najlepiej kwadrat, np. 512×512
+            </div>
+
+            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
+            <div class="mock-field">Brąz</div>
+            <div class="mock-field">kontakt@feniks-polnoc.pl</div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Wyślij</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Drugi etap — uzupełnij dane klubu",
+      text: "Po pierwszym etapie użytkownik trafia do drugiego ekranu konfiguracji. Tu system prowadzi go już od góry do dołu: sezon, płatności, administrator i dane do wpłat.",
+      note: "To jest dokładnie ten moment, w którym użytkownik ma już poczucie, że klub realnie się składa.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; margin-bottom:14px;">
+              <div style="font-weight:900; font-size:15px; margin-bottom:6px;">Kolejność konfiguracji</div>
+              <div style="font-size:12px; line-height:1.4; opacity:.9;">
+                Najpierw ustaw daty sezonu. Dopiero potem odblokują się kolejne przyciski.
+              </div>
+            </div>
+
+            <div class="mock-field mock-highlight">Początek sezonu</div>
+            <div class="mock-field">Koniec sezonu</div>
+            <div class="mock-btn alt" style="opacity:.7;">Płatności (ustaw daty sezonu)</div>
+            <div class="mock-btn alt" style="opacity:.7;">Dane administratora</div>
+            <div class="mock-btn alt" style="opacity:.7;">Dane klubu do odbioru wpłat</div>
+            <div class="mock-btn" style="opacity:.7;">Wyślij i aktywuj klub</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Ustawienie początku i końca sezonu",
+      text: "Użytkownik wybiera początek i koniec sezonu. Po poprawnym ustawieniu dat system odblokowuje kolejne przyciski.",
+      note: "Od tych dat zależą miesiące składek, statystyk i pracy klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; margin-bottom:14px;">
+              <div style="font-weight:900; font-size:15px; margin-bottom:6px;">Kolejność konfiguracji</div>
+              <div style="font-size:12px; line-height:1.4; opacity:.9;">
+                Daty sezonu określają, dla jakich miesięcy system przygotuje płatności i statystyki.
+              </div>
+            </div>
+
+            <div class="mock-field mock-highlight">Początek sezonu: 2026-08-01</div>
+            <div class="mock-field mock-highlight">Koniec sezonu: 2027-06-30</div>
+            <div class="mock-btn alt">Płatności</div>
+            <div class="mock-btn alt">Dane administratora</div>
+            <div class="mock-btn alt">Dane klubu do odbioru wpłat</div>
+            <div class="mock-btn" style="opacity:.7;">Wyślij i aktywuj klub</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Uzupełnienie płatności i danych administratora",
+      text: "Po ustawieniu dat sezonu użytkownik przechodzi do płatności, danych administratora i danych do odbioru wpłat. To są trzy kluczowe bloki potrzebne przed aktywacją.",
+      note: "Po ich uzupełnieniu klub jest gotowy do uruchomienia.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Początek sezonu: 2026-08-01</div>
+            <div class="mock-field">Koniec sezonu: 2027-06-30</div>
+
+            <div class="mock-btn mock-highlight">Płatności ✅</div>
+            <div class="mock-btn mock-highlight">Dane administratora ✅</div>
+            <div class="mock-btn mock-highlight">Dane klubu do odbioru wpłat ✅</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij i aktywuj klub</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Aktywacja klubu",
+      text: "Po uzupełnieniu wszystkich wymaganych danych użytkownik aktywuje klub. System tworzy pliki, konfigurację i gotowy link do klubu.",
+      note: "To kończy konfigurację. Następny moduł instrukcji powinien pokazać, co zrobić od razu po aktywacji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Początek sezonu: 2026-08-01</div>
+            <div class="mock-field">Koniec sezonu: 2027-06-30</div>
+
+            <div class="mock-btn">Płatności ✅</div>
+            <div class="mock-btn">Dane administratora ✅</div>
+            <div class="mock-btn">Dane klubu do odbioru wpłat ✅</div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Wyślij i aktywuj klub</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Sukces — klub został aktywowany",
+      text: "Na końcu użytkownik widzi ekran sukcesu z nazwą klubu i gotowym linkiem. To jest moment przejścia do kolejnej instrukcji: pierwsze logowanie administratora i przygotowanie klubu do pracy.",
+      note: "I właśnie ten następny moduł zrobimy jako kolejny — bo tu zaczyna się prawdziwe wdrożenie klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Klub został aktywowany ✅</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div style="font-size:16px; font-weight:800; margin-bottom:8px;">Konfiguracja zakończona</div>
+            <div style="line-height:1.45; opacity:.9;">
+              Twój klub jest już gotowy do działania. Link do klubu został wysłany na podany adres e-mail administratora.
+            </div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Nazwa klubu:</div>
+            <div style="font-size:18px; font-weight:900; margin-top:4px;">MKS Feniks Północ</div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Link do klubu:</div>
+            <div style="font-size:14px; font-weight:700; margin-top:4px; word-break:break-all;">
+              https://feniks-polnoc.orghub.pl
+            </div>
+          </div>
+
+          <div class="mock-btn" style="max-width:290px;">Otwórz klub</div>
+          <div class="mock-btn alt" style="max-width:290px;">Skopiuj link</div>
+        </div>
+      `
+    }
+  ]
+},
+
+po_aktywacji: {
+  label: "Co zrobić po aktywacji",
+  steps: [
+    {
+      title: "Klub został aktywowany",
+      text: "To jest moment, w którym konfiguracja techniczna klubu jest zakończona. Od tej chwili trzeba przejść do realnego wdrożenia użytkowników i pierwszego działania klubu w systemie.",
+      note: "Najczęściej właśnie tutaj użytkownik nie wie, co zrobić dalej. Dlatego następne kroki pokazujemy już bardzo praktycznie.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Klub został aktywowany ✅</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div style="font-size:16px; font-weight:800; margin-bottom:8px;">Konfiguracja zakończona</div>
+            <div style="line-height:1.45; opacity:.9;">
+              Twój klub jest już gotowy do działania. Link do klubu został wysłany na podany adres e-mail administratora.
+            </div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Nazwa klubu:</div>
+            <div style="font-size:18px; font-weight:900; margin-top:4px;">MKS Feniks Północ</div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Link do klubu:</div>
+            <div style="font-size:14px; font-weight:700; margin-top:4px; word-break:break-all;">
+              https://feniks-polnoc.orghub.pl
+            </div>
+          </div>
+
+          <div class="mock-btn mock-highlight" style="max-width:290px;">Otwórz klub</div>
+          <div class="mock-btn alt" style="max-width:290px;">Skopiuj link</div>
+        </div>
+      `
+    },
+
+    {
+      title: "Otwórz link klubu i przejdź do logowania",
+      text: "Po aktywacji administrator otwiera link swojego klubu. W tym miejscu zaczyna się zwykła praca w aplikacji: logowanie, rejestracja i dalsze wdrożenie użytkowników.",
+      note: "Ten sam link później administrator przekazuje zawodnikom i trenerom.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Numer / Inicjały</div>
+            <div class="mock-field">Hasło</div>
+
+            <div class="mock-btn">Zaloguj</div>
+            <div class="mock-btn alt">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Pierwsze logowanie administratora",
+      text: "Najpierw loguje się administrator. Używa loginu admin oraz hasła ustawionego podczas konfiguracji klubu.",
+      note: "Administrator nie rejestruje się z tego ekranu — jego konto powstało już wcześniej podczas konfiguracji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">admin</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn mock-highlight">Zaloguj</div>
+            <div class="mock-btn alt">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Panel administratora — to jest centrum sterowania klubem",
+      text: "Po zalogowaniu administrator widzi główne menu klubu. To z tego miejsca zaczyna się właściwe przygotowanie środowiska do pracy.",
+      note: "Najlepsza kolejność po wejściu tutaj to: najpierw grupy klubu, potem zawodnicy i trenerzy, a dopiero potem wydarzenia i płatności.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div class="mock-pill" style="position:absolute; top:18px; right:18px; background:#1f5f2b; border-color:#2d8a40;">Pozostało 27 dni testu</div>
+
+          <div style="font-size:22px; font-weight:900; margin:40px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn mock-highlight">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Najpierw ustaw grupy klubu",
+      text: "To jest pierwszy praktyczny krok po aktywacji. Administrator powinien określić, które grupy są aktywne i jak mają się nazywać w klubie.",
+      note: "Bez poprawnie ustawionych grup późniejsze przypisywanie zawodników i trenerów będzie chaotyczne.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Grupy klubu</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.45; margin-bottom:12px; opacity:.92;">
+              Tutaj administrator może aktywować grupy i nadać im własne nazwy.
+            </div>
+
+            <div class="mock-field mock-highlight">G1 — Nabór</div>
+            <div class="mock-field mock-highlight">G2 — Młodzicy</div>
+            <div class="mock-field mock-highlight">G3 — Juniorzy</div>
+            <div class="mock-field">G4 — nieaktywna</div>
+
+            <div class="mock-btn" style="margin-top:14px;">💾 Zapisz grupy</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Następnie udostępnij link klubu i przejdź do rejestracji",
+      text: "Po ustawieniu grup administrator może już przekazać link klubu trenerom i zawodnikom. Od tego momentu użytkownicy przechodzą przez ekran rejestracji.",
+      note: "Tu zaczyna się realne wejście trenerów i zawodników do systemu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Numer / Inicjały</div>
+            <div class="mock-field">Hasło</div>
+
+            <div class="mock-btn">Zaloguj</div>
+            <div class="mock-btn alt mock-highlight">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Wybór typu rejestracji",
+      text: "Użytkownik wybiera, czy rejestruje konto zawodnika, czy konto trenera. To rozdziela późniejsze ścieżki logowania i uprawnienia w aplikacji.",
+      note: "W praktyce najlepiej najpierw zarejestrować trenera, a potem zrobić test zawodnika.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">Zawodnik</div>
+            <div class="mock-btn mock-highlight">Trener</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+        {
+      title: "Rejestracja trenera",
+      text: "Trener przechodzi do własnego formularza rejestracji. Podaje imię i nazwisko, e-mail oraz ustawia hasło do konta.",
+      note: "Po rejestracji administrator powinien sprawdzić konto trenera i przypisać mu odpowiednie grupy.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja trenera</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Paweł Nowak</div>
+            <div class="mock-field mock-highlight">trener@feniks-polnoc.pl</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn">Zarejestruj</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+        {
+      title: "Trener loguje się do aplikacji",
+      text: "Po rejestracji trener loguje się do własnego panelu. Tam widzi zawodników, wydarzenia, powiadomienia i raport obecności.",
+      note: "To jest moment, kiedy warto wykonać pierwszy test działania panelu trenera.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Panel trenera</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn mock-highlight">🏒 Wydarzenia</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">📋 Raport obecności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Trener dodaje pierwsze wydarzenie",
+      text: "Najważniejszy test po stronie trenera to dodanie pierwszego wydarzenia. Dzięki temu sprawdzasz, czy panel działa i czy zawodnik dostanie to, co powinien zobaczyć.",
+      note: "To może być trening testowy — ważne, żeby przeszedł pełny obieg od utworzenia do potwierdzenia.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Dodaj wydarzenie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Data rozpoczęcia wydarzenia</div>
+            <div class="mock-field">Data zakończenia wydarzenia</div>
+            <div class="mock-field">Godzina rozpoczęcia</div>
+            <div class="mock-field">Godzina zakończenia</div>
+            <div class="mock-field">Rodzaj wydarzenia</div>
+            <div class="mock-field">Miejsce wydarzenia</div>
+            <div class="mock-btn alt">Grupy / Powołania</div>
+            <div class="mock-btn alt">Trenerzy</div>
+            <div class="mock-btn" style="margin-top:14px;">💾 Dodaj wydarzenie</div>
+          </div>
+        </div>
+      `
+    },
+
+        {
+      title: "Rejestracja zawodnika",
+      text: "Użytkownik rejestruje konto zawodnika, uzusyskuje dostęp do aplikacji.",
+      note: "Zawodnik wybiera numer z jakim gra w drużynie, koniecznie podaje adres email który jest niezbędny do zresetowania hasła.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">Zawodnik</div>
+            <div class="mock-btn">Trener</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+    
+        {
+      title: "Rejestracja zawodnika",
+      text: "Zawodnik wybiera numer, wpisuje imię i nazwisko, e-mail i ustawia hasło. To jest jego pierwszy realny dostęp do klubu w aplikacji.",
+      note: "Po tej rejestracji administrator lub trener w swoim panelu przypisuje zawodnika do wcześniej utworzonej grupy i nadaje mu dostęp do wydarzeń w danej grupie.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja zawodnika</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">22</div>
+            <div class="mock-field mock-highlight">Kacper Zieliński</div>
+            <div class="mock-field mock-highlight">kacper@feniks-polnoc.pl</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn">Zarejestruj</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+        {
+      title: "Zawodnik loguje się do swojego konta",
+      text: "Po pierwszym logowaniu warto od razu wejść do sekcji powiadomień. To ważny etap wdrożenia, bo bez tego klub traci szybki kontakt z użytkownikiem.",
+      note: "Najlepiej zrobić to od razu przy pierwszym uruchomieniu aplikacji na telefonie zawodnika.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="max-width:90%; margin:0 auto 20px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+    
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel zawodnika</div>
+    
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">💳 Płatności</div>
+            <div class="mock-btn">📅 Wydarzenia</div>
+            <div class="mock-btn">📊 Statystyki</div>
+            <div class="mock-btn mock-highlight">🔔 Powiadomienia</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+    
+    {
+      title: "Zawodnik włącza powiadomienia push",
+      text: "Po wejściu do ustawień powiadomień zawodnik powinien najpierw włączyć powiadomienia push. Dzięki temu będzie dostawał szybkie komunikaty o wydarzeniach i wiadomościach klubowych.",
+      note: "Na telefonie system może jeszcze poprosić o zgodę na powiadomienia — trzeba ją zaakceptować.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+    
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-size:18px; font-weight:900; margin-bottom:10px;">🔔 Powiadomienia push</div>
+    
+            <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+              Otrzymuj powiadomienia o nowych wiadomościach i wydarzeniach w aplikacji.
+            </div>
+    
+            <div class="mock-btn mock-highlight">🔔 Włącz powiadomienia</div>
+            <div class="mock-btn alt" style="opacity:.7;">Wyłącz</div>
+    
+            <div style="
+              margin-top:12px;
+              padding:12px;
+              border-radius:12px;
+              background:#5a3a00;
+              border:1px solid #b97a00;
+              color:#ffd98a;
+              line-height:1.4;
+            ">
+              Twoja subskrypcja powiadomień push wygasła, włącz ją ponownie.
+            </div>
+          </div>
+        </div>
+      `
+    },
+    
+    {
+      title: "Zawodnik włącza powiadomienia email",
+      text: "Po pushach warto od razu uruchomić również powiadomienia email. Dzięki temu klub ma drugi kanał kontaktu, jeśli użytkownik przegapi komunikat w telefonie.",
+      note: "Najbezpieczniejszy wariant to mieć aktywne jednocześnie powiadomienia push i email.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+    
+          <div class="mock-card" style="max-width:300px; margin:0 auto 14px auto; text-align:left;">
+            <div style="font-size:18px; font-weight:900; margin-bottom:10px;">🔔 Powiadomienia push</div>
+    
+            <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+              Otrzymuj powiadomienia o nowych wiadomościach i wydarzeniach w aplikacji.
+            </div>
+    
+            <div class="mock-btn">🔔 Włącz powiadomienia</div>
+          </div>
+    
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-size:18px; font-weight:900; margin-bottom:10px;">✉️ Powiadomienia email</div>
+    
+            <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+              Otrzymuj wiadomości e-mail z ważnymi informacjami z klubu.
+            </div>
+    
+            <div class="mock-btn mock-highlight">✉️ Włącz powiadomienia email</div>
+            <div class="mock-btn alt" style="opacity:.7;">Wyłącz</div>
+          </div>
+        </div>
+      `
+    },
+    
+    {
+      title: "Zawodnik zapisuje się na wydarzenie",
+      text: "Po dodaniu wydarzenia trener i administrator mogą sprawdzić drugą stronę procesu — czyli logowanie zawodnika i jego widok w aplikacji.",
+      note: "To jest bardzo ważny test końcowy wdrożenia klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="max-width:90%; margin:0 auto 20px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel zawodnika</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">💳 Płatności</div>
+            <div class="mock-btn mock-highlight">📅 Wydarzenia</div>
+            <div class="mock-btn ">📊 Statystyki</div>
+            <div class="mock-btn ">🔔 Powiadomienia</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Zawodnik widzi wydarzenie i potwierdza udział",
+      text: "To jest końcowy test całego obiegu. Trener dodał wydarzenie, zawodnik zalogował się do aplikacji i teraz potwierdza udział.",
+      note: "Jeżeli ten etap działa, to klub został poprawnie wdrożony i może rozpocząć normalną pracę w systemie.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">TWOJE WYDARZENIA</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-size:17px; font-weight:900; margin-bottom:6px;">Trening grupy Juniorzy</div>
+            <div style="opacity:.9; line-height:1.4;">
+              12.09.2026<br>
+              18:00 – 19:30<br>
+              Stadion Arena Kraków
+            </div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Potwierdź udział</div>
+            <div class="mock-btn alt">Nie mogę uczestniczyć</div>
+          </div>
+        </div>
+      `
+    }
+  ]
+},
+
+admin_panel: {
+  label: "Panel administratora",
+  steps: [
+    {
+      title: "Panel administratora — główne menu",
+      text: "To jest główny ekran pracy administratora. Z tego miejsca zarządza całym klubem: zawodnikami, trenerami, grupami, raportami, powiadomieniami i płatnościami.",
+      note: "Najlepsza kolejność pracy admina to: grupy klubu → zawodnicy → trenerzy → wydarzenia i płatności.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div class="mock-pill" style="position:absolute; top:18px; right:18px; background:#1f5f2b; border-color:#2d8a40;">Pozostało 27 dni testu</div>
+
+          <div style="font-size:24px; font-weight:900; margin:38px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Sekcja Zawodnicy",
+      text: "Administrator wchodzi najczęściej najpierw do listy zawodników. Tu sprawdza, kto jest w klubie, kto ma dostęp do aplikacji i komu trzeba poprawić dane lub grupy.",
+      note: "To jest podstawowe miejsce codziennej pracy z zawodnikami.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Lista zawodników</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">#22 — Kacper Zieliński</div>
+            <div class="mock-field">#11 — Filip Nowak</div>
+            <div class="mock-field">#8 — Igor Sowa</div>
+            <div class="mock-btn alt" style="margin-top:14px;">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Karta zawodnika",
+      text: "Po wejściu w zawodnika administrator ma szybki dostęp do najważniejszych funkcji: informacji o zawodniku, statystyk, sposobu rozliczania i zarejestrowanych wpłat.",
+      note: "To jest główna karta operacyjna pojedynczego zawodnika.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Zawodnik #22 — Kacper Zieliński</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">Informacje o zawodniku</div>
+            <div class="mock-btn">Statystyki</div>
+            <div class="mock-btn">Sposób rozliczania</div>
+            <div class="mock-btn">Zarejestrowane wpłaty</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Informacje o zawodniku",
+      text: "W tej sekcji administrator sprawdza datę dołączenia, grupy, e-mail oraz statusy powiadomień i dostęp do aplikacji.",
+      note: "To tutaj najczęściej poprawia się grupy albo włącza dostęp do aplikacji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Informacje o zawodniku</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="opacity:.75; font-size:13px;">Data dołączenia</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 12px 0;">2026-08-18</div>
+
+            <div style="opacity:.75; font-size:13px;">Grupy</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 8px 0;">G2, G3</div>
+            <div class="mock-btn mock-highlight" style="margin-top:8px;">Edytuj grupy</div>
+
+            <div style="opacity:.75; font-size:13px; margin-top:12px;">Adres email</div>
+            <div style="font-size:16px; font-weight:800; margin-top:4px;">kacper@feniks-polnoc.pl</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Sekcja Trenerzy",
+      text: "Administrator zarządza też trenerami. Tu sprawdza ich dane, grupy i dostęp do aplikacji.",
+      note: "Dobra praktyka: po rejestracji trenera od razu sprawdź jego grupy i upewnij się, że widzi tylko to, co powinien.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Lista trenerów</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Paweł Nowak</div>
+            <div class="mock-field">Tomasz Lis</div>
+            <div class="mock-btn alt" style="margin-top:14px;">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Informacje o trenerze",
+      text: "Na karcie trenera administrator sprawdza login, e-mail, grupy oraz status dostępu do aplikacji.",
+      note: "Najważniejsze są tutaj grupy — to one decydują, co trener widzi po zalogowaniu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Informacje o trenerze</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="opacity:.75; font-size:13px;">Login / inicjały</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 12px 0;">PN</div>
+
+            <div style="opacity:.75; font-size:13px;">Adres email</div>
+            <div style="font-size:16px; font-weight:800; margin:4px 0 12px 0;">trener@feniks-polnoc.pl</div>
+
+            <div style="opacity:.75; font-size:13px;">Grupy</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 8px 0;">G2, G3</div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:8px;">Edytuj grupy</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Grupy klubu",
+      text: "To miejsce odpowiada za strukturę organizacyjną klubu. Administrator może tu aktywować grupy i nadawać im własne nazwy.",
+      note: "Jeżeli grupy są źle ustawione, potem wszystko dalej robi się niewygodne: zawodnicy, trenerzy i wydarzenia.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Grupy klubu</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.45; margin-bottom:12px; opacity:.92;">
+              Tutaj administrator może aktywować grupy i nadać im własne nazwy.
+            </div>
+
+            <div class="mock-field mock-highlight">G1 — Nabór</div>
+            <div class="mock-field mock-highlight">G2 — Młodzicy</div>
+            <div class="mock-field mock-highlight">G3 — Juniorzy</div>
+            <div class="mock-field">G4 — nieaktywna</div>
+
+            <div class="mock-btn" style="margin-top:14px;">💾 Zapisz grupy</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Raporty administratora",
+      text: "Raporty pozwalają administratorowi szybko sprawdzić wydarzenia, trenerów i rezerwację obiektu.",
+      note: "To nie jest ekran startowy na co dzień, ale bardzo ważny do kontroli pracy klubu i rozliczeń.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Raporty</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">📅 Wydarzenia</div>
+            <div class="mock-btn">🏒 Trenerzy</div>
+            <div class="mock-btn mock-highlight">🏟️ Rezerwacja obiektu</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Powiadomienia administratora",
+      text: "Administrator może wysyłać powiadomienia do jednego zawodnika, do wybranych grup albo do całego klubu.",
+      note: "To jest bardzo praktyczny moduł do szybkiej komunikacji organizacyjnej.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-weight:800; margin-bottom:8px;">Wyślij do</div>
+            <div class="mock-field">Jeden zawodnik</div>
+            <div class="mock-field">Zawodnik nr: 22</div>
+            <div class="mock-field">Klub: feniks</div>
+            <div class="mock-field mock-highlight" style="min-height:86px;">Test powiadomienia organizacyjnego</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Obsługa płatności",
+      text: "Z poziomu głównego menu administrator przechodzi do obsługi płatności. Stąd ma dostęp do systemu przelewów i płatności zawodników.",
+      note: "To jest punkt wejścia do codziennego rozliczania klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Obsługa płatności</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">🏦 System przelewy</div>
+            <div class="mock-btn">📩 Płatności zawodników</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "System przelewy",
+      text: "To jest techniczny moduł importu i obsługi przelewów bankowych. Administrator wgrywa plik z banku, a system rozpoznaje i obsługuje formaty CSV, XLS oraz XLSX, po czym próbuje dopasować wpłaty do zawodników.",
+      note: "Do importu używaj plików bankowych w formacie CSV, XLS albo XLSX. PDF się do tego nie nadaje.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+    
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-btn mock-highlight">Wgraj wyciąg bankowy</div>
+    
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Obsługiwane formaty plików:
+              <br><b>CSV</b>
+              <br><b>XLS</b>
+              <br><b>XLSX</b>
+            </div>
+    
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Po imporcie system pokaże dopasowania automatyczne, kandydatów i przelewy wymagające ręcznego przypisania.
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Płatności zawodników",
+      text: "Drugi obszar pracy administratora w płatnościach to przegląd i ręczna obsługa rozliczeń konkretnych zawodników.",
+      note: "To jest dobre miejsce do kontroli należności, zapisów wpłat i ręcznego potwierdzania rozliczeń.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Płatności zawodników</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field">#22 — Kacper Zieliński</div>
+            <div class="mock-field">Składka Wrzesień 2026</div>
+            <div class="mock-field mock-highlight">Potwierdź zapłatę</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "To jest pełny zakres pracy administratora",
+      text: "Po przejściu przez te sekcje administrator rozumie już logikę całego systemu: ludzie, grupy, raporty, komunikacja i płatności.",
+      note: "Następny moduł powinien pokazać osobno i dokładnie: import pliku z banku i księgowanie wpłat krok po kroku.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel administratora opanowany ✅</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.5; opacity:.92;">
+              Administrator potrafi już:
+              <br>• zarządzać zawodnikami
+              <br>• zarządzać trenerami
+              <br>• ustawiać grupy klubu
+              <br>• sprawdzać raporty
+              <br>• wysyłać powiadomienia
+              <br>• obsługiwać płatności
+            </div>
+          </div>
+
+          <div class="mock-btn mock-highlight" style="max-width:300px;">Przejdź do modułu bank i księgowanie</div>
+        </div>
+      `
+    }
+  ]
+},
+
+    bank_ksiegowanie: {
+  label: "Bank i księgowanie wpłat",
+  steps: [
+    {
+      title: "Wejście do obsługi płatności",
+      text: "Administrator zaczyna od wejścia do modułu obsługi płatności. To jest punkt startowy do pracy z przelewami i rozliczeniami zawodników.",
+      note: "Najpierw zawsze wchodzisz do Obsługi płatności, a dopiero potem wybierasz właściwy moduł.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin:40px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn mock-highlight">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Wybór modułu: System przelewy",
+      text: "Po wejściu do obsługi płatności administrator wybiera moduł System przelewy. To właśnie tutaj importujesz plik z banku i rozliczasz wpłaty.",
+      note: "Drugi przycisk, czyli Płatności zawodników, służy bardziej do ręcznej kontroli rozliczeń i podglądu kartotek.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Obsługa płatności</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">🏦 System przelewy</div>
+            <div class="mock-btn">📩 Płatności zawodników</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przygotowanie pliku z banku",
+      text: "Przed importem administrator loguje się do bankowości internetowej klubu i pobiera wyciąg lub listę operacji. System rozpoznaje pliki CSV, XLS oraz XLSX.",
+      note: "Do importu używaj tylko plików CSV, XLS albo XLSX. PDF nie nadaje się do księgowania przelewów.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Przygotuj plik z banku</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:10px;">Obsługiwane formaty</div>
+
+            <div class="mock-field mock-highlight">CSV</div>
+            <div class="mock-field mock-highlight">XLS</div>
+            <div class="mock-field mock-highlight">XLSX</div>
+
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Plik powinien zawierać datę, kwotę, nadawcę i tytuł przelewu.
+            </div>
+
+            <div style="margin-top:12px; line-height:1.45; color:#ffb3b3; font-weight:700;">
+              PDF — nieobsługiwany
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Import wyciągu bankowego",
+      text: "Administrator klika przycisk Wgraj wyciąg bankowy i wybiera plik pobrany z banku. To uruchamia analizę i próbę dopasowania przelewów do zawodników.",
+      note: "Najwygodniej importować wyciąg regularnie, np. codziennie albo po każdej większej paczce wpłat.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-btn mock-highlight">Wgraj wyciąg bankowy</div>
+
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Po imporcie system pokaże listę przelewów, ich status oraz sugestie dopasowania.
+            </div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8; text-align:center;">
+              Obsługiwane formaty: CSV / XLS / XLSX
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "System pokazuje statusy przelewów",
+      text: "Po imporcie przelewy trafiają na listę. System pokazuje ich status, nadawcę, tytuł i sugestię księgowania.",
+      note: "To jest ekran roboczy księgowej albo administratora — tutaj od razu widać, które przelewy są gotowe do zatwierdzenia, a które wymagają decyzji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">MATCHED_AUTO — Jan Kowalski — Składka 202609</div>
+            <div class="mock-field">MATCH_CANDIDATE — Anna Lis — możliwe dopasowanie</div>
+            <div class="mock-field">UNMATCHED — brak pewnego dopasowania</div>
+            <div class="mock-field">DUPLICATE — przelew już istnieje</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przelew dopasowany automatycznie",
+      text: "Jeśli system jednoznacznie rozpozna zawodnika, typ wpłaty i okres, przelew może zostać zatwierdzony praktycznie od razu.",
+      note: "To jest najlepszy scenariusz: księgowa tylko kontroluje i zatwierdza.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:8px;">MATCHED_AUTO</div>
+            <div style="line-height:1.45; opacity:.92;">
+              Nadawca: Jan Kowalski<br>
+              Tytuł: FENIKS-22-S-202609<br>
+              Sugestia: Kacper Zieliński / Składka / 202609
+            </div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Zatwierdź automatycznie</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przelew wymaga ręcznego przypisania",
+      text: "Jeśli system nie ma pewności, administrator otwiera ręczne przypisanie przelewu. Wtedy wybiera zawodnika, typ płatności i okres rozliczeniowy.",
+      note: "To ważne: w tym miejscu pracujesz po nazwisku zawodnika, a numer pozostaje tylko techniczny w tle.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Ręczne przypisanie przelewu</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Wiersz: 14</div>
+            <div class="mock-field">Tytuł przelewu: składka wrzesień</div>
+            <div class="mock-field mock-highlight">Zawodnik: Kacper Zieliński</div>
+            <div class="mock-field mock-highlight">Typ płatności: S</div>
+            <div class="mock-field mock-highlight">Okres: 202609</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Zatwierdź ręcznie</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Po zatwierdzeniu wpłata trafia do kartoteki",
+      text: "Po potwierdzeniu przelew jest księgowany do właściwego zawodnika i odpowiedniej kolumny płatności w kartotece. Dzięki temu klub ma od razu aktualny stan rozliczeń.",
+      note: "To jest moment, w którym import bankowy naprawdę zamienia się w uporządkowaną księgowość klubową.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Płatności zawodników</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:8px;">Kacper Zieliński</div>
+            <div class="mock-field">Składka Wrzesień 2026 — opłacona ✅</div>
+            <div class="mock-field">Składka Październik 2026 — oczekuje</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Ręczna kontrola z poziomu zawodnika",
+      text: "Po imporcie administrator może wejść jeszcze w konkretnego zawodnika i sprawdzić jego zarejestrowane wpłaty lub ręcznie potwierdzić płatność z poziomu karty zawodnika.",
+      note: "To przydaje się wtedy, gdy trzeba coś szybko poprawić albo skontrolować pojedynczą osobę.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Zawodnik #22 — Kacper Zieliński</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">Informacje o zawodniku</div>
+            <div class="mock-btn">Statystyki</div>
+            <div class="mock-btn">Sposób rozliczania</div>
+            <div class="mock-btn mock-highlight">Zarejestrowane wpłaty</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Najprostsza kolejność pracy z przelewami",
+      text: "Najlepszy schemat pracy to: pobierz plik z banku, zaimportuj go do System przelewy, zatwierdź dopasowania automatyczne, przypisz ręcznie trudniejsze przypadki i na końcu skontroluj kartoteki zawodników.",
+      note: "Jeśli administrator przejdzie ten cykl kilka razy, rozliczanie klubu staje się szybkie i przewidywalne.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Schemat pracy ✅</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.55; opacity:.92;">
+              1. Pobierz plik z banku<br>
+              2. Wgraj wyciąg bankowy<br>
+              3. Sprawdź statusy przelewów<br>
+              4. Zatwierdź dopasowania automatyczne<br>
+              5. Przypisz ręcznie resztę<br>
+              6. Sprawdź kartoteki zawodników
+            </div>
+          </div>
+        </div>
+      `
+    }
+  ]
+}
+  };
+
+  function startInstructionFlow(flowKey) {
+    if (!INSTRUCTION_FLOWS[flowKey]) return;
+
+    window.__guideFlowKey = flowKey;
+    window.__guideStepIndex = 0;
+
+    const player = document.getElementById("guidePlayer");
+    if (player) player.classList.remove("hidden");
+
+    renderInstructionStep_();
+    setTimeout(() => {
+      const el = document.getElementById("guidePlayer");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 50);
   }
 
-  .guide-player.hidden{
-    display:none;
+  function renderInstructionStep_() {
+    const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
+    if (!flow) return;
+
+    const steps = flow.steps || [];
+    const idx = Math.max(0, Math.min(window.__guideStepIndex, steps.length - 1));
+    const step = steps[idx];
+    if (!step) return;
+
+    const badge = document.getElementById("guideFlowBadge");
+    const counter = document.getElementById("guideStepCounter");
+    const title = document.getElementById("guideStepTitle");
+    const text = document.getElementById("guideStepText");
+    const note = document.getElementById("guideStepNote");
+    const screen = document.getElementById("guideStepScreen");
+
+    if (badge) badge.textContent = flow.label;
+    if (counter) counter.textContent = `Krok ${idx + 1} z ${steps.length}`;
+    if (title) title.textContent = step.title || "";
+    if (text) text.textContent = step.text || "";
+    if (note) note.textContent = step.note || "";
+    if (screen) screen.innerHTML = step.screen || "";
   }
 
-  .guide-player-top{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    margin-bottom:18px;
-    flex-wrap:wrap;
+  function instructionPrevStep() {
+    const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
+    if (!flow) return;
+
+    if (window.__guideStepIndex > 0) {
+      window.__guideStepIndex--;
+      renderInstructionStep_();
+    }
+  }
+  
+function instructionNextStep() {
+  const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
+  if (!flow) return;
+
+  if (window.__guideStepIndex < flow.steps.length - 1) {
+    window.__guideStepIndex++;
+    renderInstructionStep_();
+    return;
   }
 
-  .guide-badge{
-    display:inline-block;
-    padding:7px 12px;
-    border-radius:999px;
-    background:#191920;
-    border:1px solid #31313a;
-    font-size:12px;
-    font-weight:900;
-    letter-spacing:.4px;
-    text-transform:uppercase;
+  if (window.__guideFlowKey === "konfiguracja") {
+    startInstructionFlow("po_aktywacji");
+    return;
   }
 
-  .guide-layout{
-    display:grid;
-    grid-template-columns:1fr 420px;
-    gap:22px;
-    align-items:start;
+  if (window.__guideFlowKey === "po_aktywacji") {
+    startInstructionFlow("admin_panel");
+    return;
   }
 
-  .guide-copy{
-    background:#111116;
-    border:1px solid #2d2d37;
-    border-radius:20px;
-    padding:22px;
+  if (window.__guideFlowKey === "admin_panel") {
+    startInstructionFlow("bank_ksiegowanie");
+    return;
   }
+}
 
-  .guide-copy h3{
-    margin:0 0 10px;
-    font-size:28px;
-  }
+  function instructionCloseFlow() {
+    const player = document.getElementById("guidePlayer");
+    if (player) player.classList.add("hidden");
 
-  .guide-copy p{
-    margin:0 0 16px;
-    color:var(--muted);
-    font-size:17px;
+    window.__guideFlowKey = "";
+    window.__guideStepIndex = 0;
   }
+</script>
 
-  .guide-note{
-    background:#17171d;
-    border:1px solid #2f2f39;
-    border-radius:14px;
-    padding:14px;
-    font-size:15px;
-  }
-
-  .guide-actions{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:18px;
-  }
-
-  .phone{
-    width:100%;
-    max-width:420px;
-    margin:0 auto;
-    background:#0a0a0d;
-    border:1px solid #34343b;
-    border-radius:34px;
-    padding:14px;
-    box-shadow:0 20px 40px rgba(0,0,0,.35);
-  }
-
-  .phone-top{
-    height:18px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom:10px;
-  }
-
-  .phone-notch{
-    width:120px;
-    height:6px;
-    border-radius:999px;
-    background:#2c2c35;
-  }
-
-  .phone-screen{
-    min-height:640px;
-    background:#e9e9ea;
-    color:#111;
-    border-radius:26px;
-    overflow:hidden;
-    position:relative;
-  }
-
-  .mock-app{
-    min-height:640px;
-    padding:18px;
-    background:#ececed;
-    color:#111;
-  }
-
-  .mock-dark{
-    background:linear-gradient(180deg,#0b6f7a,#12aeb2);
-    color:#fff;
-  }
-
-  .mock-center{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-  }
-
-  .mock-title{
-    font-size:20px;
-    font-weight:900;
-    margin-bottom:8px;
-  }
-
-  .mock-big{
-    font-size:34px;
-    font-weight:900;
-    margin:10px 0;
-  }
-
-  .mock-card{
-    width:100%;
-    background:#111318;
-    color:#fff;
-    border:1px solid #313744;
-    border-radius:16px;
-    padding:16px;
-    margin-top:14px;
-    text-align:left;
-  }
-
-  .mock-btn{
-    width:100%;
-    margin-top:12px;
-    padding:14px 16px;
-    border-radius:14px;
-    border:1px solid #ff2b2b;
-    background:#9f1010;
-    color:#fff;
-    font-weight:900;
-    text-align:center;
-  }
-
-  .mock-btn.alt{
-    border:1px solid #34343b;
-    background:#17171c;
-    color:#fff;
-  }
-
-  .mock-field{
-    width:100%;
-    margin-top:12px;
-    padding:14px 16px;
-    border-radius:14px;
-    border:1px solid #34343b;
-    background:#17171c;
-    color:#fff;
-    font-weight:700;
-    text-align:left;
-  }
-
-  .mock-row{
-    display:flex;
-    gap:10px;
-  }
-
-  .mock-pill{
-    display:inline-block;
-    padding:6px 10px;
-    border-radius:999px;
-    background:#191920;
-    border:1px solid #34343b;
-    color:#fff;
-    font-size:12px;
-    font-weight:800;
-  }
-
-  .mock-highlight{
-    outline:3px solid #ffb020;
-    outline-offset:3px;
-    animation:mockPulse 1.1s infinite;
-  }
-
-  @keyframes mockPulse{
-    0%{ outline-color:rgba(255,176,32,1); }
-    50%{ outline-color:rgba(255,176,32,.35); }
-    100%{ outline-color:rgba(255,176,32,1); }
-  }
+    </body>
+</html>
