@@ -1723,7 +1723,6 @@ po_aktywacji: {
     }
   ]
 }
-    
   };
 
   function startInstructionFlow(flowKey) {
@@ -1775,14 +1774,20 @@ po_aktywacji: {
       renderInstructionStep_();
     }
   }
-
+  
   function instructionNextStep() {
     const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
     if (!flow) return;
-
+  
     if (window.__guideStepIndex < flow.steps.length - 1) {
       window.__guideStepIndex++;
       renderInstructionStep_();
+      return;
+    }
+  
+    if (window.__guideFlowKey === "konfiguracja") {
+      startInstructionFlow("po_aktywacji");
+      return;
     }
   }
 
