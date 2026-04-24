@@ -1936,15 +1936,22 @@ admin_panel: {
 
     {
       title: "System przelewy",
-      text: "To jest techniczny moduł importu i obsługi przelewów bankowych. Administrator wgrywa wyciąg bankowy i system próbuje dopasować wpłaty do zawodników.",
-      note: "To jest najważniejszy ekran do późniejszej automatyzacji księgowania wpłat.",
+      text: "To jest techniczny moduł importu i obsługi przelewów bankowych. Administrator wgrywa plik z banku, a system rozpoznaje i obsługuje formaty CSV, XLS oraz XLSX, po czym próbuje dopasować wpłaty do zawodników.",
+      note: "Do importu używaj plików bankowych w formacie CSV, XLS albo XLSX. PDF się do tego nie nadaje.",
       screen: `
         <div class="mock-app mock-dark mock-center" style="min-height:640px;">
           <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
-
+    
           <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
             <div class="mock-btn mock-highlight">Wgraj wyciąg bankowy</div>
-
+    
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Obsługiwane formaty plików:
+              <br><b>CSV</b>
+              <br><b>XLS</b>
+              <br><b>XLSX</b>
+            </div>
+    
             <div style="margin-top:14px; line-height:1.45; opacity:.92;">
               Po imporcie system pokaże dopasowania automatyczne, kandydatów i przelewy wymagające ręcznego przypisania.
             </div>
