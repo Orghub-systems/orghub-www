@@ -1703,6 +1703,95 @@ po_aktywacji: {
     },
 
     {
+  title: "Zawodnik otwiera sekcję powiadomień",
+  text: "Po pierwszym logowaniu warto od razu wejść do sekcji powiadomień. To ważny etap wdrożenia, bo bez tego klub traci szybki kontakt z użytkownikiem.",
+  note: "Najlepiej zrobić to od razu przy pierwszym uruchomieniu aplikacji na telefonie zawodnika.",
+  screen: `
+    <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+      <div style="max-width:90%; margin:0 auto 20px auto; text-align:center;">
+        <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+      </div>
+
+      <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel zawodnika</div>
+
+      <div style="max-width:290px; width:100%; margin:0 auto;">
+        <div class="mock-btn">💳 Płatności</div>
+        <div class="mock-btn">📅 Wydarzenia</div>
+        <div class="mock-btn">📊 Statystyki</div>
+        <div class="mock-btn mock-highlight">🔔 Powiadomienia</div>
+        <div class="mock-btn alt">⬅ Wyloguj</div>
+      </div>
+    </div>
+  `
+},
+
+{
+  title: "Zawodnik włącza powiadomienia push",
+  text: "Po wejściu do ustawień powiadomień zawodnik powinien najpierw włączyć powiadomienia push. Dzięki temu będzie dostawał szybkie komunikaty o wydarzeniach i wiadomościach klubowych.",
+  note: "Na telefonie system może jeszcze poprosić o zgodę na powiadomienia — trzeba ją zaakceptować.",
+  screen: `
+    <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+      <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+
+      <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+        <div style="font-size:18px; font-weight:900; margin-bottom:10px;">🔔 Powiadomienia push</div>
+
+        <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+          Otrzymuj powiadomienia o nowych wiadomościach i wydarzeniach w aplikacji.
+        </div>
+
+        <div class="mock-btn mock-highlight">🔔 Włącz powiadomienia</div>
+        <div class="mock-btn alt" style="opacity:.7;">Wyłącz</div>
+
+        <div style="
+          margin-top:12px;
+          padding:12px;
+          border-radius:12px;
+          background:#5a3a00;
+          border:1px solid #b97a00;
+          color:#ffd98a;
+          line-height:1.4;
+        ">
+          Twoja subskrypcja powiadomień push wygasła, włącz ją ponownie.
+        </div>
+      </div>
+    </div>
+  `
+},
+
+{
+  title: "Zawodnik włącza powiadomienia email",
+  text: "Po pushach warto od razu uruchomić również powiadomienia email. Dzięki temu klub ma drugi kanał kontaktu, jeśli użytkownik przegapi komunikat w telefonie.",
+  note: "Najbezpieczniejszy wariant to mieć aktywne jednocześnie powiadomienia push i email.",
+  screen: `
+    <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+      <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+
+      <div class="mock-card" style="max-width:300px; margin:0 auto 14px auto; text-align:left;">
+        <div style="font-size:18px; font-weight:900; margin-bottom:10px;">🔔 Powiadomienia push</div>
+
+        <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+          Otrzymuj powiadomienia o nowych wiadomościach i wydarzeniach w aplikacji.
+        </div>
+
+        <div class="mock-btn">🔔 Włącz powiadomienia</div>
+      </div>
+
+      <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+        <div style="font-size:18px; font-weight:900; margin-bottom:10px;">✉️ Powiadomienia email</div>
+
+        <div style="opacity:.9; margin-bottom:14px; line-height:1.45;">
+          Otrzymuj wiadomości e-mail z ważnymi informacjami z klubu.
+        </div>
+
+        <div class="mock-btn mock-highlight">✉️ Włącz powiadomienia email</div>
+        <div class="mock-btn alt" style="opacity:.7;">Wyłącz</div>
+      </div>
+    </div>
+  `
+},
+
+    {
       title: "Zawodnik widzi wydarzenie i potwierdza udział",
       text: "To jest końcowy test całego obiegu. Trener dodał wydarzenie, zawodnik zalogował się do aplikacji i teraz potwierdza udział.",
       note: "Jeżeli ten etap działa, to klub został poprawnie wdrożony i może rozpocząć normalną pracę w systemie.",
