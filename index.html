@@ -926,9 +926,12 @@
             </p>
           </div>
     
-          <div class="guide-tile disabled">
+          <div class="guide-tile" onclick="startInstructionFlow('bank_ksiegowanie')">
             <h3>4. Bank i księgowanie wpłat</h3>
-            <p>W przygotowaniu — pobranie pliku z banku, import i rozliczanie przelewów.</p>
+            <p>
+              Pobranie pliku z banku, import wyciągu, dopasowanie wpłat,
+              ręczne przypisanie i księgowanie przelewów do zawodników.
+            </p>
           </div>
         </div>
     
@@ -2108,6 +2111,218 @@ admin_panel: {
       `
     }
   ]
+},
+
+    bank_ksiegowanie: {
+  label: "Bank i księgowanie wpłat",
+  steps: [
+    {
+      title: "Wejście do obsługi płatności",
+      text: "Administrator zaczyna od wejścia do modułu obsługi płatności. To jest punkt startowy do pracy z przelewami i rozliczeniami zawodników.",
+      note: "Najpierw zawsze wchodzisz do Obsługi płatności, a dopiero potem wybierasz właściwy moduł.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin:40px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn mock-highlight">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Wybór modułu: System przelewy",
+      text: "Po wejściu do obsługi płatności administrator wybiera moduł System przelewy. To właśnie tutaj importujesz plik z banku i rozliczasz wpłaty.",
+      note: "Drugi przycisk, czyli Płatności zawodników, służy bardziej do ręcznej kontroli rozliczeń i podglądu kartotek.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Obsługa płatności</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">🏦 System przelewy</div>
+            <div class="mock-btn">📩 Płatności zawodników</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przygotowanie pliku z banku",
+      text: "Przed importem administrator loguje się do bankowości internetowej klubu i pobiera wyciąg lub listę operacji. System rozpoznaje pliki CSV, XLS oraz XLSX.",
+      note: "Do importu używaj tylko plików CSV, XLS albo XLSX. PDF nie nadaje się do księgowania przelewów.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Przygotuj plik z banku</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:10px;">Obsługiwane formaty</div>
+
+            <div class="mock-field mock-highlight">CSV</div>
+            <div class="mock-field mock-highlight">XLS</div>
+            <div class="mock-field mock-highlight">XLSX</div>
+
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Plik powinien zawierać datę, kwotę, nadawcę i tytuł przelewu.
+            </div>
+
+            <div style="margin-top:12px; line-height:1.45; color:#ffb3b3; font-weight:700;">
+              PDF — nieobsługiwany
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Import wyciągu bankowego",
+      text: "Administrator klika przycisk Wgraj wyciąg bankowy i wybiera plik pobrany z banku. To uruchamia analizę i próbę dopasowania przelewów do zawodników.",
+      note: "Najwygodniej importować wyciąg regularnie, np. codziennie albo po każdej większej paczce wpłat.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-btn mock-highlight">Wgraj wyciąg bankowy</div>
+
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Po imporcie system pokaże listę przelewów, ich status oraz sugestie dopasowania.
+            </div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8; text-align:center;">
+              Obsługiwane formaty: CSV / XLS / XLSX
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "System pokazuje statusy przelewów",
+      text: "Po imporcie przelewy trafiają na listę. System pokazuje ich status, nadawcę, tytuł i sugestię księgowania.",
+      note: "To jest ekran roboczy księgowej albo administratora — tutaj od razu widać, które przelewy są gotowe do zatwierdzenia, a które wymagają decyzji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">MATCHED_AUTO — Jan Kowalski — Składka 202609</div>
+            <div class="mock-field">MATCH_CANDIDATE — Anna Lis — możliwe dopasowanie</div>
+            <div class="mock-field">UNMATCHED — brak pewnego dopasowania</div>
+            <div class="mock-field">DUPLICATE — przelew już istnieje</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przelew dopasowany automatycznie",
+      text: "Jeśli system jednoznacznie rozpozna zawodnika, typ wpłaty i okres, przelew może zostać zatwierdzony praktycznie od razu.",
+      note: "To jest najlepszy scenariusz: księgowa tylko kontroluje i zatwierdza.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:8px;">MATCHED_AUTO</div>
+            <div style="line-height:1.45; opacity:.92;">
+              Nadawca: Jan Kowalski<br>
+              Tytuł: FENIKS-22-S-202609<br>
+              Sugestia: Kacper Zieliński / Składka / 202609
+            </div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Zatwierdź automatycznie</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Przelew wymaga ręcznego przypisania",
+      text: "Jeśli system nie ma pewności, administrator otwiera ręczne przypisanie przelewu. Wtedy wybiera zawodnika, typ płatności i okres rozliczeniowy.",
+      note: "To ważne: w tym miejscu pracujesz po nazwisku zawodnika, a numer pozostaje tylko techniczny w tle.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Ręczne przypisanie przelewu</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Wiersz: 14</div>
+            <div class="mock-field">Tytuł przelewu: składka wrzesień</div>
+            <div class="mock-field mock-highlight">Zawodnik: Kacper Zieliński</div>
+            <div class="mock-field mock-highlight">Typ płatności: S</div>
+            <div class="mock-field mock-highlight">Okres: 202609</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Zatwierdź ręcznie</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Po zatwierdzeniu wpłata trafia do kartoteki",
+      text: "Po potwierdzeniu przelew jest księgowany do właściwego zawodnika i odpowiedniej kolumny płatności w kartotece. Dzięki temu klub ma od razu aktualny stan rozliczeń.",
+      note: "To jest moment, w którym import bankowy naprawdę zamienia się w uporządkowaną księgowość klubową.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Płatności zawodników</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="font-weight:900; margin-bottom:8px;">Kacper Zieliński</div>
+            <div class="mock-field">Składka Wrzesień 2026 — opłacona ✅</div>
+            <div class="mock-field">Składka Październik 2026 — oczekuje</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Ręczna kontrola z poziomu zawodnika",
+      text: "Po imporcie administrator może wejść jeszcze w konkretnego zawodnika i sprawdzić jego zarejestrowane wpłaty lub ręcznie potwierdzić płatność z poziomu karty zawodnika.",
+      note: "To przydaje się wtedy, gdy trzeba coś szybko poprawić albo skontrolować pojedynczą osobę.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Zawodnik #22 — Kacper Zieliński</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">Informacje o zawodniku</div>
+            <div class="mock-btn">Statystyki</div>
+            <div class="mock-btn">Sposób rozliczania</div>
+            <div class="mock-btn mock-highlight">Zarejestrowane wpłaty</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Najprostsza kolejność pracy z przelewami",
+      text: "Najlepszy schemat pracy to: pobierz plik z banku, zaimportuj go do System przelewy, zatwierdź dopasowania automatyczne, przypisz ręcznie trudniejsze przypadki i na końcu skontroluj kartoteki zawodników.",
+      note: "Jeśli administrator przejdzie ten cykl kilka razy, rozliczanie klubu staje się szybkie i przewidywalne.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Schemat pracy ✅</div>
+
+          <div class="mock-card" style="max-width:310px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.55; opacity:.92;">
+              1. Pobierz plik z banku<br>
+              2. Wgraj wyciąg bankowy<br>
+              3. Sprawdź statusy przelewów<br>
+              4. Zatwierdź dopasowania automatyczne<br>
+              5. Przypisz ręcznie resztę<br>
+              6. Sprawdź kartoteki zawodników
+            </div>
+          </div>
+        </div>
+      `
+    }
+  ]
 }
   };
 
@@ -2161,26 +2376,31 @@ admin_panel: {
     }
   }
   
-    function instructionNextStep() {
-      const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
-      if (!flow) return;
-    
-      if (window.__guideStepIndex < flow.steps.length - 1) {
-        window.__guideStepIndex++;
-        renderInstructionStep_();
-        return;
-      }
-    
-      if (window.__guideFlowKey === "konfiguracja") {
-        startInstructionFlow("po_aktywacji");
-        return;
-      }
-    
-      if (window.__guideFlowKey === "po_aktywacji") {
-        startInstructionFlow("admin_panel");
-        return;
-      }
-    }
+function instructionNextStep() {
+  const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
+  if (!flow) return;
+
+  if (window.__guideStepIndex < flow.steps.length - 1) {
+    window.__guideStepIndex++;
+    renderInstructionStep_();
+    return;
+  }
+
+  if (window.__guideFlowKey === "konfiguracja") {
+    startInstructionFlow("po_aktywacji");
+    return;
+  }
+
+  if (window.__guideFlowKey === "po_aktywacji") {
+    startInstructionFlow("admin_panel");
+    return;
+  }
+
+  if (window.__guideFlowKey === "admin_panel") {
+    startInstructionFlow("bank_ksiegowanie");
+    return;
+  }
+}
 
   function instructionCloseFlow() {
     const player = document.getElementById("guidePlayer");
