@@ -918,9 +918,12 @@
             </p>
           </div>
     
-          <div class="guide-tile disabled">
+          <div class="guide-tile" onclick="startInstructionFlow('admin_panel')">
             <h3>3. Panel administratora</h3>
-            <p>W przygotowaniu — zawodnicy, trenerzy, grupy, raporty, powiadomienia i płatności.</p>
+            <p>
+              Przegląd najważniejszych sekcji administratora: zawodnicy, trenerzy,
+              grupy klubu, raporty, powiadomienia i obsługa płatności.
+            </p>
           </div>
     
           <div class="guide-tile disabled">
@@ -1722,6 +1725,276 @@ po_aktywacji: {
       `
     }
   ]
+},
+
+admin_panel: {
+  label: "Panel administratora",
+  steps: [
+    {
+      title: "Panel administratora — główne menu",
+      text: "To jest główny ekran pracy administratora. Z tego miejsca zarządza całym klubem: zawodnikami, trenerami, grupami, raportami, powiadomieniami i płatnościami.",
+      note: "Najlepsza kolejność pracy admina to: grupy klubu → zawodnicy → trenerzy → wydarzenia i płatności.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div class="mock-pill" style="position:absolute; top:18px; right:18px; background:#1f5f2b; border-color:#2d8a40;">Pozostało 27 dni testu</div>
+
+          <div style="font-size:24px; font-weight:900; margin:38px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Sekcja Zawodnicy",
+      text: "Administrator wchodzi najczęściej najpierw do listy zawodników. Tu sprawdza, kto jest w klubie, kto ma dostęp do aplikacji i komu trzeba poprawić dane lub grupy.",
+      note: "To jest podstawowe miejsce codziennej pracy z zawodnikami.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Lista zawodników</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">#22 — Kacper Zieliński</div>
+            <div class="mock-field">#11 — Filip Nowak</div>
+            <div class="mock-field">#8 — Igor Sowa</div>
+            <div class="mock-btn alt" style="margin-top:14px;">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Karta zawodnika",
+      text: "Po wejściu w zawodnika administrator ma szybki dostęp do najważniejszych funkcji: informacji o zawodniku, statystyk, sposobu rozliczania i zarejestrowanych wpłat.",
+      note: "To jest główna karta operacyjna pojedynczego zawodnika.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Zawodnik #22 — Kacper Zieliński</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">Informacje o zawodniku</div>
+            <div class="mock-btn">Statystyki</div>
+            <div class="mock-btn">Sposób rozliczania</div>
+            <div class="mock-btn">Zarejestrowane wpłaty</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Informacje o zawodniku",
+      text: "W tej sekcji administrator sprawdza datę dołączenia, grupy, e-mail oraz statusy powiadomień i dostęp do aplikacji.",
+      note: "To tutaj najczęściej poprawia się grupy albo włącza dostęp do aplikacji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Informacje o zawodniku</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="opacity:.75; font-size:13px;">Data dołączenia</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 12px 0;">2026-08-18</div>
+
+            <div style="opacity:.75; font-size:13px;">Grupy</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 8px 0;">G2, G3</div>
+            <div class="mock-btn mock-highlight" style="margin-top:8px;">Edytuj grupy</div>
+
+            <div style="opacity:.75; font-size:13px; margin-top:12px;">Adres email</div>
+            <div style="font-size:16px; font-weight:800; margin-top:4px;">kacper@feniks-polnoc.pl</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Sekcja Trenerzy",
+      text: "Administrator zarządza też trenerami. Tu sprawdza ich dane, grupy i dostęp do aplikacji.",
+      note: "Dobra praktyka: po rejestracji trenera od razu sprawdź jego grupy i upewnij się, że widzi tylko to, co powinien.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Lista trenerów</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Paweł Nowak</div>
+            <div class="mock-field">Tomasz Lis</div>
+            <div class="mock-btn alt" style="margin-top:14px;">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Informacje o trenerze",
+      text: "Na karcie trenera administrator sprawdza login, e-mail, grupy oraz status dostępu do aplikacji.",
+      note: "Najważniejsze są tutaj grupy — to one decydują, co trener widzi po zalogowaniu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:18px;">Informacje o trenerze</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="opacity:.75; font-size:13px;">Login / inicjały</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 12px 0;">PN</div>
+
+            <div style="opacity:.75; font-size:13px;">Adres email</div>
+            <div style="font-size:16px; font-weight:800; margin:4px 0 12px 0;">trener@feniks-polnoc.pl</div>
+
+            <div style="opacity:.75; font-size:13px;">Grupy</div>
+            <div style="font-size:18px; font-weight:800; margin:4px 0 8px 0;">G2, G3</div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:8px;">Edytuj grupy</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Grupy klubu",
+      text: "To miejsce odpowiada za strukturę organizacyjną klubu. Administrator może tu aktywować grupy i nadawać im własne nazwy.",
+      note: "Jeżeli grupy są źle ustawione, potem wszystko dalej robi się niewygodne: zawodnicy, trenerzy i wydarzenia.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Grupy klubu</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.45; margin-bottom:12px; opacity:.92;">
+              Tutaj administrator może aktywować grupy i nadać im własne nazwy.
+            </div>
+
+            <div class="mock-field mock-highlight">G1 — Nabór</div>
+            <div class="mock-field mock-highlight">G2 — Młodzicy</div>
+            <div class="mock-field mock-highlight">G3 — Juniorzy</div>
+            <div class="mock-field">G4 — nieaktywna</div>
+
+            <div class="mock-btn" style="margin-top:14px;">💾 Zapisz grupy</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Raporty administratora",
+      text: "Raporty pozwalają administratorowi szybko sprawdzić wydarzenia, trenerów i rezerwację obiektu.",
+      note: "To nie jest ekran startowy na co dzień, ale bardzo ważny do kontroli pracy klubu i rozliczeń.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Raporty</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">📅 Wydarzenia</div>
+            <div class="mock-btn">🏒 Trenerzy</div>
+            <div class="mock-btn mock-highlight">🏟️ Rezerwacja obiektu</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Powiadomienia administratora",
+      text: "Administrator może wysyłać powiadomienia do jednego zawodnika, do wybranych grup albo do całego klubu.",
+      note: "To jest bardzo praktyczny moduł do szybkiej komunikacji organizacyjnej.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Powiadomienia</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-weight:800; margin-bottom:8px;">Wyślij do</div>
+            <div class="mock-field">Jeden zawodnik</div>
+            <div class="mock-field">Zawodnik nr: 22</div>
+            <div class="mock-field">Klub: feniks</div>
+            <div class="mock-field mock-highlight" style="min-height:86px;">Test powiadomienia organizacyjnego</div>
+
+            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Obsługa płatności",
+      text: "Z poziomu głównego menu administrator przechodzi do obsługi płatności. Stąd ma dostęp do systemu przelewów i płatności zawodników.",
+      note: "To jest punkt wejścia do codziennego rozliczania klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Obsługa płatności</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">🏦 System przelewy</div>
+            <div class="mock-btn">📩 Płatności zawodników</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "System przelewy",
+      text: "To jest techniczny moduł importu i obsługi przelewów bankowych. Administrator wgrywa wyciąg bankowy i system próbuje dopasować wpłaty do zawodników.",
+      note: "To jest najważniejszy ekran do późniejszej automatyzacji księgowania wpłat.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">System przelewy</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-btn mock-highlight">Wgraj wyciąg bankowy</div>
+
+            <div style="margin-top:14px; line-height:1.45; opacity:.92;">
+              Po imporcie system pokaże dopasowania automatyczne, kandydatów i przelewy wymagające ręcznego przypisania.
+            </div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Płatności zawodników",
+      text: "Drugi obszar pracy administratora w płatnościach to przegląd i ręczna obsługa rozliczeń konkretnych zawodników.",
+      note: "To jest dobre miejsce do kontroli należności, zapisów wpłat i ręcznego potwierdzania rozliczeń.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Płatności zawodników</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div class="mock-field">#22 — Kacper Zieliński</div>
+            <div class="mock-field">Składka Wrzesień 2026</div>
+            <div class="mock-field mock-highlight">Potwierdź zapłatę</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "To jest pełny zakres pracy administratora",
+      text: "Po przejściu przez te sekcje administrator rozumie już logikę całego systemu: ludzie, grupy, raporty, komunikacja i płatności.",
+      note: "Następny moduł powinien pokazać osobno i dokładnie: import pliku z banku i księgowanie wpłat krok po kroku.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel administratora opanowany ✅</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.5; opacity:.92;">
+              Administrator potrafi już:
+              <br>• zarządzać zawodnikami
+              <br>• zarządzać trenerami
+              <br>• ustawiać grupy klubu
+              <br>• sprawdzać raporty
+              <br>• wysyłać powiadomienia
+              <br>• obsługiwać płatności
+            </div>
+          </div>
+
+          <div class="mock-btn mock-highlight" style="max-width:300px;">Przejdź do modułu bank i księgowanie</div>
+        </div>
+      `
+    }
+  ]
 }
   };
 
@@ -1775,21 +2048,26 @@ po_aktywacji: {
     }
   }
   
-  function instructionNextStep() {
-    const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
-    if (!flow) return;
-  
-    if (window.__guideStepIndex < flow.steps.length - 1) {
-      window.__guideStepIndex++;
-      renderInstructionStep_();
-      return;
+    function instructionNextStep() {
+      const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
+      if (!flow) return;
+    
+      if (window.__guideStepIndex < flow.steps.length - 1) {
+        window.__guideStepIndex++;
+        renderInstructionStep_();
+        return;
+      }
+    
+      if (window.__guideFlowKey === "konfiguracja") {
+        startInstructionFlow("po_aktywacji");
+        return;
+      }
+    
+      if (window.__guideFlowKey === "po_aktywacji") {
+        startInstructionFlow("admin_panel");
+        return;
+      }
     }
-  
-    if (window.__guideFlowKey === "konfiguracja") {
-      startInstructionFlow("po_aktywacji");
-      return;
-    }
-  }
 
   function instructionCloseFlow() {
     const player = document.getElementById("guidePlayer");
