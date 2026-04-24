@@ -974,93 +974,51 @@
       </div>
     </section>
 
-        <section class="section" id="instrukcja">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Instrukcja krok po kroku</h2>
-          <p>
-            Nie zostawiamy użytkownika z samym opisem. Tutaj przechodzisz przez konfigurację
-            dokładnie tak, jak wygląda ona w aplikacji.
-          </p>
-        </div>
-    
-        <div class="guide-grid">
-          <div class="guide-tile" onclick="window.location.href='instrukcja.html'">
-            <h3>Instrukcja krok po kroku</h3>
-            <p>
-              Otwórz osobny przewodnik, który prowadzi przez konfigurację klubu,
-              aktywację, logowanie administratora, pracę trenera, zawodnika i obsługę płatności.
-            </p>
-          </div>
-    
-          <div class="guide-tile" onclick="startInstructionFlow('po_aktywacji')">
-            <h3>2. Co zrobić po aktywacji</h3>
-            <p>
-              Logowanie administratora, grupy klubu, rejestracja zawodnika i trenera,
-              pierwsze wydarzenie oraz pierwsze potwierdzenie udziału przez zawodnika.
-            </p>
-          </div>
-    
-          <div class="guide-tile" onclick="startInstructionFlow('admin_panel')">
-            <h3>3. Panel administratora</h3>
-            <p>
-              Przegląd najważniejszych sekcji administratora: zawodnicy, trenerzy,
-              grupy klubu, raporty, powiadomienia i obsługa płatności.
-            </p>
-          </div>
-    
-          <div class="guide-tile" onclick="startInstructionFlow('bank_ksiegowanie')">
-            <h3>4. Bank i księgowanie wpłat</h3>
-            <p>
-              Pobranie pliku z banku, import wyciągu, dopasowanie wpłat,
-              ręczne przypisanie i księgowanie przelewów do zawodników.
-            </p>
-          </div>
-        </div>
-    
-        <div id="guidePlayer" class="guide-player hidden">
-          <div class="guide-player-top">
-            <div>
-              <div class="guide-badge" id="guideFlowBadge">Instrukcja</div>
-            </div>
-            <div class="guide-badge" id="guideStepCounter">Krok 1 z 1</div>
-          </div>
-    
-          <div class="guide-layout">
-            <div class="guide-copy">
-              <h3 id="guideStepTitle">Tytuł kroku</h3>
-              <p id="guideStepText">Opis kroku</p>
-    
-              <div class="guide-note" id="guideStepNote">
-                Wskazówka dla użytkownika
-              </div>
+<section class="section" id="instrukcja">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Przewodniki krok po kroku</h2>
+      <p>
+        Wybierz obszar, który chcesz przejść. Każdy przewodnik prowadzi użytkownika
+        ekran po ekranie dokładnie tak, jak wygląda to w aplikacji.
+      </p>
+    </div>
 
-              <div class="guide-actions">
-                <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
-                <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
-                <button class="btn btn-secondary" type="button" onclick="instructionCloseFlow()">Zamknij instrukcję</button>
-              </div>
-            </div>
-    
-            <div class="phone">
-              <div class="phone-top">
-                <div class="phone-notch"></div>
-              </div>
-              <div class="phone-screen">
-                <div id="guideStepScreen"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="guide-actions-mobile">
-            <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
-            <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
-            <button class="btn btn-secondary" type="button" onclick="instructionCloseFlow()">Zamknij instrukcję</button>
-          </div>
-
-        </div>
+    <div class="guide-grid">
+      <div class="guide-tile" onclick="window.location.href='instrukcja.html#konfiguracja'">
+        <h3>1. Konfiguracja klubu</h3>
+        <p>
+          Logo, nazwa klubu, kolor aplikacji, email, sezon, płatności,
+          dane administratora i aktywacja klubu.
+        </p>
       </div>
-    </section>
+
+      <div class="guide-tile" onclick="window.location.href='instrukcja.html#po-aktywacji'">
+        <h3>2. Co zrobić po aktywacji</h3>
+        <p>
+          Pierwsze logowanie administratora, grupy klubu, rejestracja zawodnika
+          i trenera, pierwsze wydarzenie oraz pierwsze potwierdzenie udziału.
+        </p>
+      </div>
+
+      <div class="guide-tile" onclick="window.location.href='instrukcja.html#admin-panel'">
+        <h3>3. Panel administratora</h3>
+        <p>
+          Zawodnicy, trenerzy, grupy klubu, raporty, powiadomienia,
+          obsługa płatności i system przelewów.
+        </p>
+      </div>
+
+      <div class="guide-tile" onclick="window.location.href='instrukcja.html#bank'">
+        <h3>4. Bank i księgowanie wpłat</h3>
+        <p>
+          Pobranie pliku z banku, import wyciągu, dopasowanie wpłat,
+          ręczne przypisanie i księgowanie przelewów do zawodników.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
     
     <section class="section" id="faq">
       <div class="wrap">
