@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regulamin — ORG HUB</title>
+  <meta name="description" content="Regulamin serwisu i aplikacji ORG HUB." />
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#151518;
+      --card2:#1b1b20;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:#34343b;
+      --accent:#9f1010;
+      --accent-border:#ff2b2b;
+      --accent-dark:#760c0c;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#0a0a0c 0%, #111116 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(10,10,12,.9);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #202028;
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:72px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:26px;
+      letter-spacing:1px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:900;
+      font-size:22px;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.2s ease;
+      background:#17171c;
+      color:#fff;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:44px 0 20px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:900;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #31313a;
+      color:#fff;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:42px;
+      line-height:1.08;
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+      max-width:820px;
+    }
+
+    .doc{
+      padding:18px 0 44px;
+    }
+
+    .doc-card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .doc-card h2{
+      margin:30px 0 12px;
+      font-size:28px;
+    }
+
+    .doc-card h2:first-child{
+      margin-top:0;
+    }
+
+    .doc-card p{
+      margin:0 0 12px;
+      color:#fff;
+    }
+
+    .doc-card ol,
+    .doc-card ul{
+      margin:0 0 14px 0;
+      padding-left:22px;
+    }
+
+    .doc-card li{
+      margin-bottom:8px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .notice{
+      background:#111116;
+      border:1px solid #2d2d37;
+      border-radius:16px;
+      padding:16px;
+      margin-bottom:20px;
+    }
+
+    footer{
+      margin-top:10px;
+      border-top:1px solid #22222b;
+      padding:26px 0 40px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:20px;
+    }
+
+    .footer-title{
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .small{
+      font-size:14px;
+    }
+
+    @media (max-width: 900px){
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      .doc-card{
+        padding:20px;
+      }
+
+      .doc-card h2{
+        font-size:24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">OH</div>
+        <div>ORG HUB</div>
+      </a>
+
+      <nav class="nav">
+        <a class="btn" href="index.html">← Powrót na stronę główną</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Dokumenty</div>
+        <h1>Regulamin serwisu i aplikacji ORG HUB</h1>
+        <p class="lead">
+          Poniżej znajdują się zasady korzystania z serwisu internetowego ORG HUB,
+          konfiguratora oraz aplikacji dla klubów sportowych.
+        </p>
+      </div>
+    </section>
+
+    <section class="doc">
+      <div class="wrap">
+        <div class="doc-card">
+
+          <div class="notice">
+            <strong>Uzupełnij przed publikacją:</strong>
+            <div class="muted" style="margin-top:8px;">
+              [adres spółki], [KRS], [NIP], [REGON], [adres reklamacyjny], [data wejścia w życie].
+            </div>
+          </div>
+
+          <h2>§1. Postanowienia ogólne</h2>
+          <p>1. Regulamin określa zasady korzystania z serwisu internetowego ORG HUB dostępnego pod adresem <strong>orghub.pl</strong>, aplikacji ORG HUB dostępnej pod adresem <strong>app.orghub.pl</strong> oraz subdomen klubowych w domenie <strong>orghub.pl</strong>.</p>
+          <p>2. Właścicielem platformy ORG HUB i usługodawcą jest <strong>Intevero Sp. z o.o.</strong> z siedzibą w [adres], wpisana do rejestru przedsiębiorców KRS pod numerem [KRS], NIP [NIP], REGON [REGON], adres e-mail: <strong>kontakt@orghub.pl</strong>.</p>
+          <p>3. Regulamin stanowi regulamin świadczenia usług drogą elektroniczną.</p>
+          <p>4. Korzystanie z serwisu i aplikacji oznacza akceptację niniejszego Regulaminu.</p>
+
+          <h2>§2. Definicje</h2>
+          <p>Na potrzeby Regulaminu poniższe pojęcia oznaczają:</p>
+          <ol>
+            <li><strong>Usługodawca</strong> – Intevero Sp. z o.o.</li>
+            <li><strong>Platforma / ORG HUB</strong> – system informatyczny służący do organizacji pracy klubu sportowego, obejmujący stronę internetową, konfigurator klubu oraz aplikację dla administratorów, trenerów i zawodników.</li>
+            <li><strong>Klub</strong> – organizacja sportowa korzystająca z Platformy.</li>
+            <li><strong>Administrator Klubu</strong> – osoba uprawniona przez Klub do zarządzania danymi, użytkownikami i konfiguracją Klubu w Platformie.</li>
+            <li><strong>Użytkownik</strong> – osoba korzystająca z Platformy, w szczególności Administrator Klubu, trener, zawodnik lub osoba odwiedzająca stronę internetową.</li>
+            <li><strong>Okres testowy</strong> – okres 30 dni od aktywacji Klubu w Platformie.</li>
+            <li><strong>Usługi elektroniczne</strong> – usługi świadczone przez Usługodawcę drogą elektroniczną, w tym udostępnianie strony internetowej, formularzy kontaktowych, konfiguratora Klubu, kont użytkowników i funkcji aplikacji.</li>
+          </ol>
+
+          <h2>§3. Zakres usług</h2>
+          <ol>
+            <li>Usługodawca świadczy drogą elektroniczną w szczególności następujące usługi:
+              <ol>
+                <li>udostępnianie strony internetowej ORG HUB,</li>
+                <li>udostępnianie formularza kontaktowego lub kanału kontaktu e-mail,</li>
+                <li>umożliwienie uruchomienia testowej konfiguracji Klubu,</li>
+                <li>udostępnianie aplikacji dla Administratora Klubu, trenerów i zawodników,</li>
+                <li>obsługę modułów organizacyjnych, raportowych, komunikacyjnych i płatniczych w zakresie aktualnie dostępnych funkcji Platformy.</li>
+              </ol>
+            </li>
+            <li>Szczegółowy zakres funkcjonalny Platformy może być rozwijany, zmieniany i aktualizowany.</li>
+            <li>Usługodawca może publikować na stronie internetowej materiały informacyjne, instrukcje i opisy funkcji.</li>
+          </ol>
+
+          <h2>§4. Wymagania techniczne</h2>
+          <ol>
+            <li>Do korzystania z serwisu lub aplikacji wymagane są:
+              <ol>
+                <li>urządzenie z dostępem do Internetu,</li>
+                <li>aktualna przeglądarka internetowa,</li>
+                <li>aktywny adres e-mail, jeśli dana funkcja tego wymaga.</li>
+              </ol>
+            </li>
+            <li>Dla niektórych funkcji mobilnych, w szczególności powiadomień push, konieczne może być udzielenie dodatkowych zgód systemowych na urządzeniu użytkownika.</li>
+            <li>Usługodawca nie gwarantuje prawidłowego działania Platformy w przypadku korzystania z nieaktualnych urządzeń, systemów lub przeglądarek.</li>
+          </ol>
+
+          <h2>§5. Zasady korzystania z Platformy</h2>
+          <ol>
+            <li>Użytkownik jest zobowiązany do korzystania z Platformy zgodnie z prawem, Regulaminem i dobrymi obyczajami.</li>
+            <li>Zabronione jest:
+              <ol>
+                <li>dostarczanie treści bezprawnych,</li>
+                <li>podejmowanie działań mogących zakłócić działanie Platformy,</li>
+                <li>podejmowanie prób nieuprawnionego dostępu do danych innych użytkowników,</li>
+                <li>wykorzystywanie Platformy w sposób sprzeczny z jej przeznaczeniem.</li>
+              </ol>
+            </li>
+            <li>Administrator Klubu odpowiada za prawidłowe zarządzanie kontami i uprawnieniami w ramach swojego Klubu.</li>
+            <li>Klub i Administrator Klubu są zobowiązani do przekazywania w Platformie danych zgodnych ze stanem faktycznym.</li>
+          </ol>
+
+          <h2>§6. Rejestracja i aktywacja Klubu</h2>
+          <ol>
+            <li>Uruchomienie Klubu następuje poprzez przejście procesu konfiguracji udostępnionego przez Usługodawcę.</li>
+            <li>W procesie konfiguracji Administrator Klubu podaje dane niezbędne do utworzenia Klubu, w szczególności:
+              <ol>
+                <li>nazwę Klubu,</li>
+                <li>adres e-mail,</li>
+                <li>daty sezonu,</li>
+                <li>dane administratora,</li>
+                <li>dane do odbioru wpłat.</li>
+              </ol>
+            </li>
+            <li>Po zakończeniu konfiguracji Klub może zostać aktywowany i otrzymuje dostęp do okresu testowego.</li>
+            <li>Po aktywacji Klubu Administrator Klubu może tworzyć i zarządzać kontami użytkowników w zakresie funkcji dostępnych w Platformie.</li>
+          </ol>
+
+          <h2>§7. Okres testowy i blokada dostępu</h2>
+          <ol>
+            <li>Każdy nowo aktywowany Klub może korzystać z Platformy w ramach okresu testowego przez 30 dni od dnia aktywacji.</li>
+            <li>Po zakończeniu okresu testowego dostęp do Klubu może zostać ograniczony lub zablokowany do czasu aktywacji odpłatnego dostępu.</li>
+            <li>Usługodawca może także zablokować dostęp do Klubu w przypadku:
+              <ol>
+                <li>naruszenia Regulaminu,</li>
+                <li>korzystania z Platformy w sposób sprzeczny z prawem,</li>
+                <li>braku uregulowania należności,</li>
+                <li>konieczności wykonania działań technicznych lub bezpieczeństwa.</li>
+              </ol>
+            </li>
+            <li>Blokada może obejmować całość lub część funkcji Platformy.</li>
+          </ol>
+
+          <h2>§8. Zasady odpłatności</h2>
+          <ol>
+            <li>Korzystanie z Platformy po zakończeniu okresu testowego jest odpłatne, zgodnie z aktualnym cennikiem Usługodawcy.</li>
+            <li>Na dzień publikacji Regulaminu obowiązuje model rozliczenia:
+              <ol>
+                <li><strong>2 zł miesięcznie za każdego zarejestrowanego zawodnika</strong>,</li>
+                <li><strong>minimalna opłata miesięczna za Klub wynosi 20 zł</strong>.</li>
+              </ol>
+            </li>
+            <li>O ile nie wskazano inaczej, ceny są kwotami netto i mogą zostać powiększone o należny podatek VAT, jeżeli ma zastosowanie.</li>
+            <li>Szczegółowe zasady rozliczeń, terminy płatności i sposób fakturowania mogą być określone dodatkowo w indywidualnej ofercie, zamówieniu, formularzu uruchomienia lub umowie.</li>
+            <li>Brak zapłaty może skutkować zawieszeniem albo blokadą dostępu do Platformy.</li>
+          </ol>
+
+          <h2>§9. Konta użytkowników</h2>
+          <ol>
+            <li>W ramach Klubu mogą być tworzone konta użytkowników, w szczególności dla:
+              <ol>
+                <li>administratorów,</li>
+                <li>trenerów,</li>
+                <li>zawodników.</li>
+              </ol>
+            </li>
+            <li>Użytkownik jest zobowiązany do zachowania poufności danych logowania.</li>
+            <li>Użytkownik ponosi odpowiedzialność za działania podejmowane przy użyciu jego konta, chyba że wykaże, że dane logowania zostały użyte bez jego winy.</li>
+            <li>Usługodawca może zablokować konto użytkownika w przypadku uzasadnionego podejrzenia naruszenia bezpieczeństwa lub Regulaminu.</li>
+          </ol>
+
+          <h2>§10. Reklamacje</h2>
+          <ol>
+            <li>Reklamacje dotyczące działania Platformy można składać na adres e-mail: <strong>[adres reklamacyjny]</strong> lub listownie na adres siedziby Usługodawcy.</li>
+            <li>Reklamacja powinna zawierać co najmniej:
+              <ol>
+                <li>dane zgłaszającego,</li>
+                <li>opis problemu,</li>
+                <li>datę wystąpienia problemu,</li>
+                <li>dane Klubu lub użytkownika, jeśli dotyczy.</li>
+              </ol>
+            </li>
+            <li>Usługodawca rozpatruje reklamację w terminie 14 dni od jej otrzymania, chyba że charakter sprawy wymaga dłuższego terminu; w takim przypadku poinformuje o przyczynie opóźnienia i przewidywanym terminie odpowiedzi.</li>
+          </ol>
+
+          <h2>§11. Odpowiedzialność</h2>
+          <ol>
+            <li>Usługodawca dokłada należytej staranności, aby Platforma działała prawidłowo, bezpiecznie i stabilnie.</li>
+            <li>Usługodawca nie odpowiada za:
+              <ol>
+                <li>nieprawidłowe dane wprowadzone przez Klub lub użytkowników,</li>
+                <li>skutki udostępnienia danych logowania osobom nieuprawnionym,</li>
+                <li>przerwy w działaniu wynikające z działania siły wyższej, awarii zewnętrznych operatorów lub planowanych prac technicznych.</li>
+              </ol>
+            </li>
+            <li>W relacjach z przedsiębiorcami odpowiedzialność Usługodawcy za utracone korzyści jest wyłączona w najszerszym dopuszczalnym przez prawo zakresie.</li>
+            <li>Postanowienia niniejszego paragrafu nie wyłączają praw konsumentów ani przedsiębiorców korzystających z ochrony jak konsumenci, jeżeli takie prawa przysługują im na podstawie bezwzględnie obowiązujących przepisów.</li>
+          </ol>
+
+          <h2>§12. Dane osobowe</h2>
+          <ol>
+            <li>Zasady przetwarzania danych osobowych określa Polityka prywatności dostępna na stronie internetowej ORG HUB.</li>
+            <li>W zakresie, w jakim Klub samodzielnie decyduje o danych swoich zawodników, trenerów i innych osób, może działać jako odrębny administrator danych albo podmiot korzystający z usługi Usługodawcy — zależnie od przyjętego modelu współpracy i zakresu umowy.</li>
+          </ol>
+
+          <h2>§13. Zmiana Regulaminu</h2>
+          <ol>
+            <li>Usługodawca może zmienić Regulamin w przypadku:
+              <ol>
+                <li>zmiany przepisów prawa,</li>
+                <li>rozwoju funkcjonalności Platformy,</li>
+                <li>zmian organizacyjnych lub technicznych,</li>
+                <li>potrzeby doprecyzowania postanowień Regulaminu.</li>
+              </ol>
+            </li>
+            <li>Zmiany Regulaminu nie naruszają praw nabytych przed ich wejściem w życie.</li>
+            <li>Aktualna wersja Regulaminu jest publikowana na stronie internetowej ORG HUB.</li>
+          </ol>
+
+          <h2>§14. Postanowienia końcowe</h2>
+          <ol>
+            <li>Do Regulaminu stosuje się prawo polskie.</li>
+            <li>W sprawach nieuregulowanych Regulaminem zastosowanie mają odpowiednie przepisy prawa powszechnie obowiązującego.</li>
+            <li>Regulamin wchodzi w życie z dniem <strong>[data]</strong>.</li>
+          </ol>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-title">ORG HUB</div>
+        <div class="muted small">
+          Platforma do zarządzania klubem sportowym.<br>
+          Właściciel platformy: Intevero Sp. z o.o.
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Kontakt</div>
+        <div class="small"><a href="mailto:kontakt@orghub.pl">kontakt@orghub.pl</a></div>
+      </div>
+
+      <div>
+        <div class="footer-title">Dokumenty</div>
+        <div class="small"><a href="regulamin.html">Regulamin</a></div>
+        <div class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
