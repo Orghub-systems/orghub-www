@@ -1844,21 +1844,74 @@ admin_panel: {
 }
   };
 
-  function startInstructionFlow(flowKey) {
-    if (!INSTRUCTION_FLOWS[flowKey]) return;
+const GUIDE_HASH_TO_FLOW = {
+  "konfiguracja": "konfiguracja",
+  "po-aktywacji": "po_aktywacji",
+  "admin-panel": "admin_panel",
+  "bank": "bank_ksiegowanie"
+};
 
-    window.__guideFlowKey = flowKey;
-    window.__guideStepIndex = 0;
+const GUIDE_FLOW_TO_HASH = {
+  "konfiguracja": "konfiguracja",
+  "po_aktywacji": "po-aktywacji",
+  "admin_panel": "admin-panel",
+  "bank_ksiegowanie": "bank"
+};
 
-    const player = document.getElementById("guidePlayer");
-    if (player) player.classList.remove("hidden");
+const GUIDE_NEXT_FLOW = {
+  "konfiguracja": "po_aktywacji",
+  "po_aktywacji": "admin_panel",
+  "admin_panel": "bank_ksiegowanie"
+};
 
-    renderInstructionStep_();
+function resolveGuideFlowKey_(value) {
+  const raw = String(value || "").replace(/^#/, "").trim();
+
+  if (INSTRUCTION_FLOWS[raw]) return raw;
+  if (GUIDE_HASH_TO_FLOW[raw]) return GUIDE_HASH_TO_FLOW[raw];
+
+  return "";
+}
+
+function getGuideHashForFlow_(flowKey) {
+  return GUIDE_FLOW_TO_HASH[flowKey] || flowKey;
+}
+
+function updateGuideHash_(flowKey) {
+  const hash = getGuideHashForFlow_(flowKey);
+  if (!hash) return;
+
+  const nextUrl = "#" + hash;
+  if (window.location.hash !== nextUrl) {
+    history.pushState(null, "", nextUrl);
+  }
+}
+
+function startInstructionFlow(flowKey, options) {
+  const resolvedFlowKey = resolveGuideFlowKey_(flowKey);
+  if (!resolvedFlowKey || !INSTRUCTION_FLOWS[resolvedFlowKey]) return;
+
+  const opts = options || {};
+
+  window.__guideFlowKey = resolvedFlowKey;
+  window.__guideStepIndex = 0;
+
+  const player = document.getElementById("guidePlayer");
+  if (player) player.classList.remove("hidden");
+
+  if (opts.updateHash !== false) {
+    updateGuideHash_(resolvedFlowKey);
+  }
+
+  renderInstructionStep_();
+
+  if (opts.scroll !== false) {
     setTimeout(() => {
       const el = document.getElementById("guidePlayer");
       if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 50);
   }
+}
 
   function renderInstructionStep_() {
     const flow = INSTRUCTION_FLOWS[window.__guideFlowKey];
@@ -1904,19 +1957,10 @@ function instructionNextStep() {
     return;
   }
 
-  if (window.__guideFlowKey === "konfiguracja") {
-    startInstructionFlow("po_aktywacji");
-    return;
-  }
+  const nextFlowKey = GUIDE_NEXT_FLOW[window.__guideFlowKey];
 
-  if (window.__guideFlowKey === "po_aktywacji") {
-    startInstructionFlow("admin_panel");
-    return;
-  }
-
-  if (window.__guideFlowKey === "admin_panel") {
-    startInstructionFlow("bank_ksiegowanie");
-    return;
+  if (nextFlowKey) {
+    startInstructionFlow(nextFlowKey);
   }
 }
 
@@ -1927,6 +1971,21 @@ function instructionNextStep() {
     window.__guideFlowKey = "";
     window.__guideStepIndex = 0;
   }
+
+  function initInstructionFromHash_() {
+  const flowKey = resolveGuideFlowKey_(window.location.hash);
+  if (!flowKey) return;
+
+  startInstructionFlow(flowKey, {
+    updateHash: false,
+    scroll: false
+  });
+}
+
+window.addEventListener("hashchange", initInstructionFromHash_);
+
+initInstructionFromHash_();
+  
 </script>
 
     </body>
