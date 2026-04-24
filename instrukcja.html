@@ -241,6 +241,10 @@
       margin-top:18px;
     }
 
+      .guide-mobile-actions{
+      display:none;
+    }
+
     .phone{
       width:100%;
       max-width:420px;
@@ -466,16 +470,33 @@
       }
 
       .guide-actions{
-        position:sticky;
-        bottom:0;
-        z-index:20;
-        background:linear-gradient(180deg,rgba(17,17,22,.65),#111116);
-        padding-top:12px;
-        margin-top:14px;
+        display:none;
       }
 
-      .guide-actions .btn{
-        flex:1;
+      .guide-player{
+        padding-bottom:88px;
+      }
+
+      .guide-mobile-actions{
+        position:fixed;
+        left:12px;
+        right:12px;
+        bottom:10px;
+        z-index:80;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        padding:10px;
+        border-radius:18px;
+        border:1px solid #34343b;
+        background:rgba(10,10,12,.92);
+        backdrop-filter:blur(10px);
+        box-shadow:0 10px 30px rgba(0,0,0,.45);
+      }
+
+      .guide-mobile-actions .btn{
+        width:100%;
+        padding:14px 12px;
       }
     }
   </style>
@@ -556,6 +577,11 @@
 
             <div class="phone-screen" id="guideStepScreen"></div>
           </div>
+        </div>
+
+        <div class="guide-mobile-actions">
+          <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
+          <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
         </div>
       </section>
 
