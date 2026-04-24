@@ -910,9 +910,12 @@
             </p>
           </div>
     
-          <div class="guide-tile disabled">
+          <div class="guide-tile" onclick="startInstructionFlow('po_aktywacji')">
             <h3>2. Co zrobić po aktywacji</h3>
-            <p>W przygotowaniu — logowanie admina, grupy, trener, zawodnik i pierwsze wydarzenie.</p>
+            <p>
+              Logowanie administratora, grupy klubu, rejestracja zawodnika i trenera,
+              pierwsze wydarzenie oraz pierwsze potwierdzenie udziału przez zawodnika.
+            </p>
           </div>
     
           <div class="guide-tile disabled">
@@ -1413,7 +1416,314 @@ konfiguracja: {
       `
     }
   ]
+},
+
+po_aktywacji: {
+  label: "Co zrobić po aktywacji",
+  steps: [
+    {
+      title: "Klub został aktywowany",
+      text: "To jest moment, w którym konfiguracja techniczna klubu jest zakończona. Od tej chwili trzeba przejść do realnego wdrożenia użytkowników i pierwszego działania klubu w systemie.",
+      note: "Najczęściej właśnie tutaj użytkownik nie wie, co zrobić dalej. Dlatego następne kroki pokazujemy już bardzo praktycznie.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Klub został aktywowany ✅</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div style="font-size:16px; font-weight:800; margin-bottom:8px;">Konfiguracja zakończona</div>
+            <div style="line-height:1.45; opacity:.9;">
+              Twój klub jest już gotowy do działania. Link do klubu został wysłany na podany adres e-mail administratora.
+            </div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Nazwa klubu:</div>
+            <div style="font-size:18px; font-weight:900; margin-top:4px;">MKS Feniks Północ</div>
+
+            <div style="margin-top:14px; font-size:13px; opacity:.8;">Link do klubu:</div>
+            <div style="font-size:14px; font-weight:700; margin-top:4px; word-break:break-all;">
+              https://feniks-polnoc.orghub.pl
+            </div>
+          </div>
+
+          <div class="mock-btn mock-highlight" style="max-width:290px;">Otwórz klub</div>
+          <div class="mock-btn alt" style="max-width:290px;">Skopiuj link</div>
+        </div>
+      `
+    },
+
+    {
+      title: "Otwórz link klubu i przejdź do logowania",
+      text: "Po aktywacji administrator otwiera link swojego klubu. W tym miejscu zaczyna się zwykła praca w aplikacji: logowanie, rejestracja i dalsze wdrożenie użytkowników.",
+      note: "Ten sam link później administrator przekazuje zawodnikom i trenerom.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Numer / Inicjały</div>
+            <div class="mock-field">Hasło</div>
+
+            <div class="mock-btn">Zaloguj</div>
+            <div class="mock-btn alt">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Pierwsze logowanie administratora",
+      text: "Najpierw loguje się administrator. Używa loginu admin oraz hasła ustawionego podczas konfiguracji klubu.",
+      note: "Administrator nie rejestruje się z tego ekranu — jego konto powstało już wcześniej podczas konfiguracji.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">admin</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn mock-highlight">Zaloguj</div>
+            <div class="mock-btn alt">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Panel administratora — to jest centrum sterowania klubem",
+      text: "Po zalogowaniu administrator widzi główne menu klubu. To z tego miejsca zaczyna się właściwe przygotowanie środowiska do pracy.",
+      note: "Najlepsza kolejność po wejściu tutaj to: najpierw grupy klubu, potem zawodnicy i trenerzy, a dopiero potem wydarzenia i płatności.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div class="mock-pill" style="position:absolute; top:18px; right:18px; background:#1f5f2b; border-color:#2d8a40;">Pozostało 27 dni testu</div>
+
+          <div style="font-size:22px; font-weight:900; margin:40px 0 18px 0;">Panel administratora</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn">👨‍🏫 Trenerzy</div>
+            <div class="mock-btn mock-highlight">🧩 Grupy klubu</div>
+            <div class="mock-btn">📊 Raporty</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">💳 Obsługa płatności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Najpierw ustaw grupy klubu",
+      text: "To jest pierwszy praktyczny krok po aktywacji. Administrator powinien określić, które grupy są aktywne i jak mają się nazywać w klubie.",
+      note: "Bez poprawnie ustawionych grup późniejsze przypisywanie zawodników i trenerów będzie chaotyczne.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Grupy klubu</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="line-height:1.45; margin-bottom:12px; opacity:.92;">
+              Tutaj administrator może aktywować grupy i nadać im własne nazwy.
+            </div>
+
+            <div class="mock-field mock-highlight">G1 — Nabór</div>
+            <div class="mock-field mock-highlight">G2 — Młodzicy</div>
+            <div class="mock-field mock-highlight">G3 — Juniorzy</div>
+            <div class="mock-field">G4 — nieaktywna</div>
+
+            <div class="mock-btn" style="margin-top:14px;">💾 Zapisz grupy</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Następnie udostępnij link klubu i przejdź do rejestracji",
+      text: "Po ustawieniu grup administrator może już przekazać link klubu trenerom i zawodnikom. Od tego momentu użytkownicy przechodzą przez ekran rejestracji.",
+      note: "Tu zaczyna się realne wejście trenerów i zawodników do systemu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:72px; line-height:1; margin-bottom:10px;">★</div>
+
+          <div style="max-width:90%; margin:0 auto 24px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:22px; font-weight:900; margin-bottom:24px;">Logowanie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field">Numer / Inicjały</div>
+            <div class="mock-field">Hasło</div>
+
+            <div class="mock-btn">Zaloguj</div>
+            <div class="mock-btn alt mock-highlight">Rejestracja</div>
+            <div class="mock-btn alt">Nie pamiętam hasła</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Wybór typu rejestracji",
+      text: "Użytkownik wybiera, czy rejestruje konto zawodnika, czy konto trenera. To rozdziela późniejsze ścieżki logowania i uprawnienia w aplikacji.",
+      note: "W praktyce najlepiej najpierw zarejestrować trenera, a potem zrobić test zawodnika.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn mock-highlight">Zawodnik</div>
+            <div class="mock-btn mock-highlight">Trener</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Rejestracja trenera",
+      text: "Trener przechodzi do własnego formularza rejestracji. Podaje imię i nazwisko, e-mail oraz ustawia hasło do konta.",
+      note: "Po rejestracji administrator powinien sprawdzić konto trenera i przypisać mu odpowiednie grupy.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja trenera</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Paweł Nowak</div>
+            <div class="mock-field mock-highlight">trener@feniks-polnoc.pl</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn">Zarejestruj</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Rejestracja zawodnika",
+      text: "Zawodnik wybiera numer, wpisuje imię i nazwisko, e-mail i ustawia hasło. To jest jego pierwszy realny dostęp do klubu w aplikacji.",
+      note: "Po tej rejestracji administrator może jeszcze sprawdzić dane, grupy i dostęp zawodnika w panelu administratora.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Rejestracja zawodnika</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">22</div>
+            <div class="mock-field mock-highlight">Kacper Zieliński</div>
+            <div class="mock-field mock-highlight">kacper@feniks-polnoc.pl</div>
+            <div class="mock-field mock-highlight">••••••••</div>
+
+            <div class="mock-btn">Zarejestruj</div>
+            <div class="mock-btn alt">⬅ Powrót</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Trener loguje się do aplikacji",
+      text: "Po rejestracji trener loguje się do własnego panelu. Tam widzi zawodników, wydarzenia, powiadomienia i raport obecności.",
+      note: "To jest moment, kiedy warto wykonać pierwszy test działania panelu trenera.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:24px; font-weight:900; margin-bottom:20px;">Panel trenera</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">👥 Zawodnicy</div>
+            <div class="mock-btn mock-highlight">🏒 Wydarzenia</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn">📋 Raport obecności</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Trener dodaje pierwsze wydarzenie",
+      text: "Najważniejszy test po stronie trenera to dodanie pierwszego wydarzenia. Dzięki temu sprawdzasz, czy panel działa i czy zawodnik dostanie to, co powinien zobaczyć.",
+      note: "To może być trening testowy — ważne, żeby przeszedł pełny obieg od utworzenia do potwierdzenia.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Dodaj wydarzenie</div>
+
+          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
+            <div class="mock-field mock-highlight">Data rozpoczęcia wydarzenia</div>
+            <div class="mock-field">Data zakończenia wydarzenia</div>
+            <div class="mock-field">Godzina rozpoczęcia</div>
+            <div class="mock-field">Godzina zakończenia</div>
+            <div class="mock-field">Rodzaj wydarzenia</div>
+            <div class="mock-field">Miejsce wydarzenia</div>
+            <div class="mock-btn alt">Grupy / Powołania</div>
+            <div class="mock-btn alt">Trenerzy</div>
+            <div class="mock-btn" style="margin-top:14px;">💾 Dodaj wydarzenie</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Zawodnik loguje się do swojego panelu",
+      text: "Po dodaniu wydarzenia trener i administrator mogą sprawdzić drugą stronę procesu — czyli logowanie zawodnika i jego widok w aplikacji.",
+      note: "To jest bardzo ważny test końcowy wdrożenia klubu.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="max-width:90%; margin:0 auto 20px auto; text-align:center;">
+            <div style="font-size:30px; font-weight:900; letter-spacing:3px; line-height:1.1;">FENIKS</div>
+          </div>
+
+          <div style="font-size:24px; font-weight:900; margin-bottom:18px;">Panel zawodnika</div>
+
+          <div style="max-width:290px; width:100%; margin:0 auto;">
+            <div class="mock-btn">💳 Płatności</div>
+            <div class="mock-btn mock-highlight">📅 Wydarzenia</div>
+            <div class="mock-btn">📊 Statystyki</div>
+            <div class="mock-btn">🔔 Powiadomienia</div>
+            <div class="mock-btn alt">⬅ Wyloguj</div>
+          </div>
+        </div>
+      `
+    },
+
+    {
+      title: "Zawodnik widzi wydarzenie i potwierdza udział",
+      text: "To jest końcowy test całego obiegu. Trener dodał wydarzenie, zawodnik zalogował się do aplikacji i teraz potwierdza udział.",
+      note: "Jeżeli ten etap działa, to klub został poprawnie wdrożony i może rozpocząć normalną pracę w systemie.",
+      screen: `
+        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
+          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">TWOJE WYDARZENIA</div>
+
+          <div class="mock-card" style="max-width:300px; margin:0 auto; text-align:left;">
+            <div style="font-size:17px; font-weight:900; margin-bottom:6px;">Trening grupy Juniorzy</div>
+            <div style="opacity:.9; line-height:1.4;">
+              12.09.2026<br>
+              18:00 – 19:30<br>
+              Lodowisko Północ
+            </div>
+
+            <div class="mock-btn mock-highlight" style="margin-top:14px;">Potwierdź udział</div>
+            <div class="mock-btn alt">Nie mogę uczestniczyć</div>
+          </div>
+        </div>
+      `
+    }
+  ]
 }
+    
   };
 
   function startInstructionFlow(flowKey) {
