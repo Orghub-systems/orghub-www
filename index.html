@@ -1,1 +1,701 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ORG HUB — aplikacja do zarządzania klubem sportowym</title>
+  <meta name="description" content="ORG HUB to aplikacja do zarządzania klubem sportowym: zawodnicy, trenerzy, płatności, wydarzenia, powołania, raporty i powiadomienia w jednym miejscu." />
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#151518;
+      --card2:#1b1b20;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:#34343b;
+      --accent:#9f1010;
+      --accent-border:#ff2b2b;
+      --accent-dark:#760c0c;
+      --ok:#1f7a35;
+      --max:1100px;
+    }
 
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#0a0a0c 0%, #111116 100%);
+      color:var(--text);
+      line-height:1.5;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(10,10,12,.9);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #202028;
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:72px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:26px;
+      letter-spacing:1px;
+    }
+
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:12px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .nav a{
+      opacity:.9;
+      font-size:14px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.2s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border-color:var(--accent-border);
+      color:#fff;
+    }
+
+    .btn-secondary{
+      background:#17171c;
+      color:#fff;
+    }
+
+    .hero{
+      padding:80px 0 50px;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:26px;
+      align-items:stretch;
+    }
+
+    .hero-copy{
+      background:linear-gradient(180deg,#17171d,#111116);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:34px;
+      box-shadow:0 14px 40px rgba(0,0,0,.24);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:900;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #31313a;
+      color:#fff;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0 0 16px;
+      font-size:48px;
+      line-height:1.05;
+    }
+
+    .hero p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:24px;
+    }
+
+    .hero-points{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+    }
+
+    .hero-point{
+      background:#101015;
+      border:1px solid #292933;
+      border-radius:14px;
+      padding:12px 14px;
+      font-weight:700;
+    }
+
+    .hero-card{
+      background:linear-gradient(180deg,#17171d,#101015);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:22px;
+      box-shadow:0 14px 40px rgba(0,0,0,.24);
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .screen{
+      border:1px solid #30303b;
+      border-radius:18px;
+      background:#0d0d11;
+      padding:16px;
+    }
+
+    .screen-title{
+      font-size:13px;
+      color:#c8c8c8;
+      margin-bottom:10px;
+      letter-spacing:.3px;
+      text-transform:uppercase;
+    }
+
+    .screen-box{
+      background:#15151b;
+      border:1px solid #2f2f39;
+      border-radius:14px;
+      padding:14px;
+      margin-bottom:10px;
+    }
+
+    .screen-box strong{
+      display:block;
+      font-size:18px;
+      margin-bottom:8px;
+    }
+
+    .section{
+      padding:26px 0;
+    }
+
+    .section-head{
+      margin-bottom:18px;
+    }
+
+    .section-head h2{
+      margin:0 0 8px;
+      font-size:34px;
+    }
+
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+    }
+
+    .card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:22px;
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size:23px;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+    }
+
+    .list{
+      margin:0;
+      padding-left:20px;
+      color:#fff;
+    }
+
+    .list li{
+      margin-bottom:8px;
+    }
+
+    .steps{
+      counter-reset:step;
+      display:grid;
+      gap:14px;
+    }
+
+    .step{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      position:relative;
+      padding-left:62px;
+    }
+
+    .step::before{
+      counter-increment:step;
+      content:counter(step);
+      position:absolute;
+      left:18px;
+      top:18px;
+      width:30px;
+      height:30px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:900;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
+    }
+
+    .price{
+      text-align:center;
+      padding:26px;
+    }
+
+    .price .big{
+      font-size:44px;
+      font-weight:900;
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .price .sub{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .faq{
+      display:grid;
+      gap:12px;
+    }
+
+    details{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px 18px;
+    }
+
+    summary{
+      cursor:pointer;
+      font-weight:800;
+    }
+
+    details p{
+      margin:12px 0 0;
+      color:var(--muted);
+    }
+
+    .cta{
+      padding:34px;
+      text-align:center;
+      background:linear-gradient(180deg,#17171d,#101015);
+      border:1px solid var(--line);
+      border-radius:24px;
+    }
+
+    .cta h2{
+      margin:0 0 10px;
+      font-size:36px;
+    }
+
+    .cta p{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    footer{
+      margin-top:30px;
+      border-top:1px solid #22222b;
+      padding:26px 0 40px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:20px;
+    }
+
+    .footer-title{
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .small{
+      font-size:14px;
+    }
+
+    @media (max-width: 900px){
+      .hero-grid,
+      .grid-3,
+      .grid-2,
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:38px;
+      }
+
+      .section-head h2,
+      .cta h2{
+        font-size:28px;
+      }
+
+      .hero-points{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 600px){
+      .topbar-inner{
+        align-items:flex-start;
+        padding:12px 0;
+      }
+
+      .nav{
+        gap:10px;
+      }
+
+      .hero{
+        padding-top:34px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .card,
+      .cta{
+        padding:18px;
+      }
+
+      h1{
+        font-size:32px;
+      }
+
+      .btn{
+        width:100%;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <div class="brand">
+        <div class="brand-mark">O</div>
+        <div>ORG HUB</div>
+      </div>
+
+      <nav class="nav">
+        <a href="#funkcje">Funkcje</a>
+        <a href="#jak-dziala">Jak to działa</a>
+        <a href="#cennik">Cennik</a>
+        <a href="#faq">FAQ</a>
+        <a href="#kontakt" class="btn btn-secondary">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Aplikacja dla klubów sportowych</div>
+          <h1>Uporządkuj klub w jednym systemie</h1>
+          <p>
+            Zawodnicy, trenerzy, wydarzenia, powołania, płatności, raporty i powiadomienia.
+            ORG HUB porządkuje codzienną pracę klubu bez chaosu w wiadomościach, telefonach i arkuszach.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://app.orghub.pl">Uruchom test 30 dni</a>
+            <a class="btn btn-secondary" href="#jak-dziala">Zobacz jak to działa</a>
+          </div>
+
+          <div class="hero-points">
+            <div class="hero-point">👥 Zawodnicy i trenerzy</div>
+            <div class="hero-point">📅 Wydarzenia i powołania</div>
+            <div class="hero-point">💳 Płatności i rozliczenia</div>
+            <div class="hero-point">📊 Raporty i statystyki</div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="screen">
+            <div class="screen-title">Przykładowe moduły</div>
+
+            <div class="screen-box">
+              <strong>Panel administratora</strong>
+              Zawodnicy, trenerzy, grupy, płatności, raporty i konfiguracja klubu.
+            </div>
+
+            <div class="screen-box">
+              <strong>Panel trenera</strong>
+              Wydarzenia, powołania, lista zawodników i szybka komunikacja.
+            </div>
+
+            <div class="screen-box">
+              <strong>Panel zawodnika</strong>
+              Płatności, wydarzenia, powiadomienia, statystyki i dostęp z telefonu.
+            </div>
+          </div>
+
+          <div class="card" style="padding:16px;">
+            <h3 style="margin-bottom:8px;">30 dni testu</h3>
+            <p>Uruchom klub testowy i sprawdź system w realnym użyciu przed decyzją.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funkcje">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Co robi ORG HUB</h2>
+          <p>Jedna platforma do codziennej organizacji pracy klubu sportowego.</p>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Zawodnicy</h3>
+            <p>Zawodnik widzi wydarzenia, płatności, statystyki i powiadomienia na swoim telefonie.</p>
+          </div>
+
+          <div class="card">
+            <h3>Trenerzy</h3>
+            <p>Trener ma dostęp do grup, wydarzeń, list zawodników i powołań.</p>
+          </div>
+
+          <div class="card">
+            <h3>Administrator</h3>
+            <p>Administrator zarządza klubem, konfiguracją, płatnościami, raportami i danymi.</p>
+          </div>
+
+          <div class="card">
+            <h3>Powołania</h3>
+            <p>Tworzenie powołań, akceptacja i rezygnacja zawodnika oraz podgląd dla trenera.</p>
+          </div>
+
+          <div class="card">
+            <h3>Płatności</h3>
+            <p>Składki, zajęcia dodatkowe, import przelewów i porządek w rozliczeniach.</p>
+          </div>
+
+          <div class="card">
+            <h3>Raporty</h3>
+            <p>Raporty wydarzeń, obecności trenerów, rezerwacji i statystyk klubowych.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="dla-kogo">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Dla kogo jest ORG HUB</h2>
+          <p>System sprawdzi się wszędzie tam, gdzie klub pracuje na grupach, wydarzeniach i cyklicznych płatnościach.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>Idealny dla</h3>
+            <ul class="list">
+              <li>klubów sportowych,</li>
+              <li>akademii i szkółek,</li>
+              <li>sekcji młodzieżowych,</li>
+              <li>organizacji pracujących na grupach treningowych.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Pomaga tam, gdzie dziś są problemy</h3>
+            <ul class="list">
+              <li>rozproszone informacje,</li>
+              <li>chaos w zapisach i wydarzeniach,</li>
+              <li>trudne rozliczenia składek,</li>
+              <li>brak szybkiej komunikacji z grupą.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="jak-dziala">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Jak wygląda uruchomienie klubu</h2>
+          <p>Proces można przejść samodzielnie i od razu uruchomić testową wersję systemu.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">Wgrywasz logo klubu i wpisujesz nazwę.</div>
+          <div class="step">Ustawiasz kolor aplikacji i podstawowe dane.</div>
+          <div class="step">Uzupełniasz sezon, płatności, dane administratora i dane do wpłat.</div>
+          <div class="step">Aktywujesz klub i otrzymujesz gotowy link do działania.</div>
+          <div class="step">Dodajesz grupy, trenerów, zawodników i pierwsze wydarzenia.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cennik">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Cennik</h2>
+          <p>Bez pakietów, bez kombinowania, bez dziwnych dopłat.</p>
+        </div>
+
+        <div class="card price">
+          <div class="big">2 zł</div>
+          <div class="sub">miesięcznie za zarejestrowanego zawodnika</div>
+          <p style="margin:0 0 8px;">Minimalna opłata: <strong>20 zł miesięcznie za klub</strong></p>
+          <p class="muted" style="margin:0;">Na start: <strong>30 dni testu za darmo</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Najczęstsze pytania przed uruchomieniem klubu.</p>
+        </div>
+
+        <div class="faq">
+          <details>
+            <summary>Czy muszę instalować aplikację ze sklepu?</summary>
+            <p>Nie. ORG HUB działa jako aplikacja webowa i może być uruchamiany bezpośrednio z telefonu lub komputera.</p>
+          </details>
+
+          <details>
+            <summary>Czy klub może sam uruchomić test?</summary>
+            <p>Tak. Klub może samodzielnie przejść konfigurację i uruchomić testową wersję systemu na 30 dni.</p>
+          </details>
+
+          <details>
+            <summary>Czy zawodnicy i trenerzy mają osobne dostępy?</summary>
+            <p>Tak. Każda rola widzi tylko te funkcje i dane, których potrzebuje.</p>
+          </details>
+
+          <details>
+            <summary>Czy system obsługuje płatności i rozliczenia?</summary>
+            <p>Tak. ORG HUB wspiera składki, zajęcia dodatkowe oraz import i księgowanie przelewów.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="cta">
+          <h2>Uruchom klub testowy na 30 dni</h2>
+          <p>Sprawdź ORG HUB w realnym użyciu i zobacz, jak działa w codziennej pracy klubu.</p>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-primary" href="https://app.orghub.pl">Przejdź do konfiguratora</a>
+            <a class="btn btn-secondary" href="#kontakt">Napisz do nas</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="kontakt">
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-title">ORG HUB</div>
+        <div class="muted small">
+          Platforma do zarządzania klubem sportowym.<br>
+          Właściciel platformy: Intevero Sp. z o.o.
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Kontakt</div>
+        <div class="small"><a href="mailto:kontakt@orghub.pl">kontakt@orghub.pl</a></div>
+      </div>
+
+      <div>
+        <div class="footer-title">Linki</div>
+        <div class="small"><a href="#">Regulamin</a></div>
+        <div class="small"><a href="#">Polityka prywatności</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
