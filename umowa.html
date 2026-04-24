@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projekt umowy — ORG HUB</title>
+  <meta name="description" content="Projekt umowy na korzystanie z platformy ORG HUB." />
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#151518;
+      --card2:#1b1b20;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --line:#34343b;
+      --accent:#9f1010;
+      --accent-border:#ff2b2b;
+      --accent-dark:#760c0c;
+      --max:1100px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(180deg,#0a0a0c 0%, #111116 100%);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max);
+      margin:0 auto;
+      padding:0 18px;
+    }
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(10,10,12,.9);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid #202028;
+    }
+
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      min-height:72px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:900;
+      font-size:26px;
+      letter-spacing:1px;
+    }
+
+    .brand-mark{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:900;
+      font-size:22px;
+      box-shadow:0 6px 18px rgba(0,0,0,.25);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 20px;
+      border-radius:14px;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.2s ease;
+      background:#17171c;
+      color:#fff;
+    }
+
+    .btn:hover{
+      transform:translateY(-1px);
+    }
+
+    .hero{
+      padding:44px 0 20px;
+    }
+
+    .eyebrow{
+      display:inline-block;
+      margin-bottom:14px;
+      padding:7px 12px;
+      font-size:12px;
+      font-weight:900;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #31313a;
+      color:#fff;
+      letter-spacing:.5px;
+      text-transform:uppercase;
+    }
+
+    h1{
+      margin:0 0 12px;
+      font-size:42px;
+      line-height:1.08;
+    }
+
+    .lead{
+      color:var(--muted);
+      font-size:18px;
+      margin:0;
+      max-width:820px;
+    }
+
+    .doc{
+      padding:18px 0 44px;
+    }
+
+    .doc-card{
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+    }
+
+    .doc-card h2{
+      margin:30px 0 12px;
+      font-size:28px;
+    }
+
+    .doc-card h2:first-child{
+      margin-top:0;
+    }
+
+    .doc-card h3{
+      margin:24px 0 10px;
+      font-size:20px;
+    }
+
+    .doc-card p{
+      margin:0 0 12px;
+      color:#fff;
+    }
+
+    .doc-card ol,
+    .doc-card ul{
+      margin:0 0 14px 0;
+      padding-left:22px;
+    }
+
+    .doc-card li{
+      margin-bottom:8px;
+    }
+
+    .muted{
+      color:var(--muted);
+    }
+
+    .notice{
+      background:#111116;
+      border:1px solid #2d2d37;
+      border-radius:16px;
+      padding:16px;
+      margin-bottom:20px;
+    }
+
+    .box{
+      background:#111116;
+      border:1px solid #2d2d37;
+      border-radius:16px;
+      padding:16px;
+      margin:14px 0;
+    }
+
+    footer{
+      margin-top:10px;
+      border-top:1px solid #22222b;
+      padding:26px 0 40px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      gap:20px;
+    }
+
+    .footer-title{
+      font-weight:900;
+      margin-bottom:8px;
+    }
+
+    .small{
+      font-size:14px;
+    }
+
+    @media (max-width: 900px){
+      .footer-grid{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:34px;
+      }
+
+      .doc-card{
+        padding:20px;
+      }
+
+      .doc-card h2{
+        font-size:24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a href="index.html" class="brand">
+        <div class="brand-mark">OH</div>
+        <div>ORG HUB</div>
+      </a>
+
+      <nav class="nav">
+        <a class="btn" href="index.html">← Powrót na stronę główną</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Dokumenty</div>
+        <h1>Projekt umowy na korzystanie z platformy ORG HUB</h1>
+        <p class="lead">
+          Poniżej znajduje się roboczy projekt umowy dla klubu sportowego korzystającego z platformy ORG HUB.
+        </p>
+      </div>
+    </section>
+
+    <section class="doc">
+      <div class="wrap">
+        <div class="doc-card">
+
+          <div class="notice">
+            <strong>Uzupełnij przed publikacją / wysyłką:</strong>
+            <div class="muted" style="margin-top:8px;">
+              41-300 Dąbrowa Górnicza I KRS 0001229354 I NIP 6292521630 I REGON 544274934 I [reprezentacja], [data], [okres rozliczeniowy], [termin płatności], [adres e-mail do zgłoszeń], [miejsce zawarcia umowy].
+            </div>
+          </div>
+
+          <h2>UMOWA NA KORZYSTANIE Z PLATFORMY ORG HUB</h2>
+
+          <p>
+            zawarta w dniu <strong>[data]</strong> w <strong>[miejsce]</strong>, pomiędzy:
+          </p>
+
+          <div class="box">
+            <p>
+              <strong>Intevero Sp. z o.o.</strong> z siedzibą w <strong>[adres]</strong>, wpisaną do rejestru przedsiębiorców KRS pod numerem <strong>[KRS]</strong>, NIP <strong>[NIP]</strong>, REGON <strong>[REGON]</strong>, reprezentowaną przez <strong>[imię, nazwisko, funkcja]</strong>,
+              zwaną dalej <strong>„Usługodawcą”</strong>,
+            </p>
+            <p style="margin:0;">
+              a
+            </p>
+            <p style="margin:12px 0 0 0;">
+              <strong>[pełna nazwa klubu / firmy]</strong> z siedzibą w <strong>[adres]</strong>, NIP <strong>[NIP Klubu]</strong>, REGON <strong>[REGON Klubu]</strong>, reprezentowanym przez <strong>[imię, nazwisko, funkcja]</strong>,
+              zwanym dalej <strong>„Klubem”</strong>,
+            </p>
+            <p style="margin:12px 0 0 0;">
+              dalej łącznie zwanymi <strong>„Stronami”</strong>.
+            </p>
+          </div>
+
+          <h2>§1. Przedmiot umowy</h2>
+          <ol>
+            <li>Przedmiotem umowy jest udostępnienie Klubowi przez Usługodawcę platformy ORG HUB jako usługi elektronicznej wspierającej zarządzanie klubem sportowym.</li>
+            <li>W ramach usługi Klub uzyskuje dostęp do funkcji dostępnych w aktualnej wersji platformy, w szczególności do:
+              <ol>
+                <li>konfiguracji klubu,</li>
+                <li>panelu administratora,</li>
+                <li>paneli użytkowników, w tym trenera i zawodnika,</li>
+                <li>modułów wydarzeń, raportów, płatności i powiadomień,</li>
+                <li>innych funkcji rozwijanych w ramach platformy.</li>
+              </ol>
+            </li>
+            <li>Usługa świadczona jest drogą elektroniczną za pośrednictwem sieci Internet.</li>
+          </ol>
+
+          <h2>§2. Charakter usługi</h2>
+          <ol>
+            <li>Usługa ma charakter abonamentowy i jest świadczona przez czas trwania umowy.</li>
+            <li>Usługodawca może rozwijać, aktualizować i modyfikować funkcje platformy, pod warunkiem że nie prowadzi to do pozbawienia Klubu istotnych funkcji bez uzasadnionej przyczyny.</li>
+            <li>Klub przyjmuje do wiadomości, że platforma jest usługą informatyczną rozwijaną i utrzymywaną w modelu SaaS.</li>
+          </ol>
+
+          <h2>§3. Okres testowy</h2>
+          <ol>
+            <li>Klub może rozpocząć korzystanie z platformy od okresu testowego trwającego 30 dni od dnia aktywacji klubu w systemie.</li>
+            <li>Po zakończeniu okresu testowego dalsze korzystanie z platformy wymaga aktywacji dostępu odpłatnego, chyba że Strony postanowią inaczej.</li>
+            <li>Po zakończeniu okresu testowego Usługodawca może ograniczyć albo zablokować dostęp do platformy do czasu aktywacji płatnego dostępu.</li>
+          </ol>
+
+          <h2>§4. Wynagrodzenie</h2>
+          <ol>
+            <li>Za korzystanie z platformy Klub płaci Usługodawcy wynagrodzenie abonamentowe.</li>
+            <li>Na dzień zawarcia umowy wynagrodzenie wynosi:
+              <ol>
+                <li><strong>2,00 zł netto miesięcznie za każdego zarejestrowanego zawodnika</strong>,</li>
+                <li>przy czym <strong>minimalna opłata miesięczna za Klub wynosi 20,00 zł netto</strong>.</li>
+              </ol>
+            </li>
+            <li>Do wynagrodzenia zostanie doliczony podatek VAT według stawki obowiązującej w dniu wystawienia faktury, jeśli ma zastosowanie.</li>
+            <li>Rozliczenie odbywa się w okresach <strong>[miesięcznych / kwartalnych]</strong>.</li>
+            <li>Podstawą rozliczenia jest liczba zarejestrowanych zawodników w danym okresie rozliczeniowym, zgodnie z danymi systemowymi platformy.</li>
+            <li>Termin płatności faktury wynosi <strong>[np. 7 dni]</strong> od dnia jej wystawienia, chyba że Strony postanowią inaczej.</li>
+          </ol>
+
+          <h2>§5. Obowiązki Usługodawcy</h2>
+          <ol>
+            <li>Usługodawca zobowiązuje się do:
+              <ol>
+                <li>udostępnienia platformy Klubowi,</li>
+                <li>utrzymywania działania platformy z zachowaniem należytej staranności,</li>
+                <li>usuwania awarii i błędów w rozsądnym czasie technicznie uzasadnionym,</li>
+                <li>zapewnienia Klubowi możliwości kontaktu w sprawach technicznych i organizacyjnych na adres: <strong>[adres e-mail do zgłoszeń]</strong>.</li>
+              </ol>
+            </li>
+            <li>Usługodawca może prowadzić planowane prace techniczne, aktualizacje i działania serwisowe.</li>
+          </ol>
+
+          <h2>§6. Obowiązki Klubu</h2>
+          <ol>
+            <li>Klub zobowiązuje się do:
+              <ol>
+                <li>korzystania z platformy zgodnie z jej przeznaczeniem, Regulaminem i przepisami prawa,</li>
+                <li>podawania prawdziwych i aktualnych danych,</li>
+                <li>zapewnienia, że osoby działające po stronie Klubu mają odpowiednie uprawnienia do korzystania z platformy,</li>
+                <li>zabezpieczenia danych logowania przed dostępem osób nieuprawnionych,</li>
+                <li>terminowego regulowania należności.</li>
+              </ol>
+            </li>
+            <li>Klub odpowiada za sposób zarządzania kontami użytkowników w ramach swojego środowiska.</li>
+          </ol>
+
+          <h2>§7. Konta użytkowników</h2>
+          <ol>
+            <li>W ramach platformy Klub może korzystać z kont administratorów, trenerów, zawodników i innych użytkowników, o ile dana funkcja jest dostępna.</li>
+            <li>Klub ponosi odpowiedzialność za prawidłowe nadawanie uprawnień użytkownikom po swojej stronie.</li>
+            <li>Usługodawca może czasowo zablokować konto użytkownika lub dostęp do całości albo części usługi w przypadku naruszenia bezpieczeństwa, Regulaminu lub przepisów prawa.</li>
+          </ol>
+
+          <h2>§8. Wsparcie i zgłoszenia</h2>
+          <ol>
+            <li>Zgłoszenia dotyczące działania platformy mogą być kierowane na adres: <strong>[adres e-mail do zgłoszeń]</strong>.</li>
+            <li>Zgłoszenie powinno zawierać możliwie dokładny opis problemu, dane Klubu oraz dane osoby zgłaszającej.</li>
+            <li>Usługodawca rozpatruje zgłoszenia i reklamacje w rozsądnym terminie, zależnym od charakteru sprawy.</li>
+          </ol>
+
+          <h2>§9. Odpowiedzialność</h2>
+          <ol>
+            <li>Usługodawca ponosi odpowiedzialność za niewykonanie lub nienależyte wykonanie umowy na zasadach ogólnych, z zastrzeżeniem postanowień niniejszego paragrafu.</li>
+            <li>Usługodawca nie odpowiada za:
+              <ol>
+                <li>skutki podania nieprawidłowych danych przez Klub lub użytkowników Klubu,</li>
+                <li>skutki udostępnienia danych logowania osobom nieuprawnionym po stronie Klubu,</li>
+                <li>przerwy wynikające z siły wyższej, awarii dostawców zewnętrznych lub planowanych prac technicznych.</li>
+              </ol>
+            </li>
+            <li>W relacjach B2B odpowiedzialność Usługodawcy za utracone korzyści Klubu jest wyłączona w najszerszym dopuszczalnym przez prawo zakresie.</li>
+          </ol>
+
+          <h2>§10. Czas trwania umowy i rozwiązanie</h2>
+          <ol>
+            <li>Umowa zostaje zawarta na czas <strong>[nieokreślony / określony do dnia …]</strong>.</li>
+            <li>Każda ze Stron może wypowiedzieć umowę z zachowaniem <strong>[np. 1-miesięcznego]</strong> okresu wypowiedzenia ze skutkiem na koniec okresu rozliczeniowego.</li>
+            <li>Usługodawca może rozwiązać umowę ze skutkiem natychmiastowym w przypadku:
+              <ol>
+                <li>rażącego naruszenia umowy lub Regulaminu przez Klub,</li>
+                <li>wykorzystywania platformy w sposób sprzeczny z prawem,</li>
+                <li>braku zapłaty mimo uprzedniego wezwania.</li>
+              </ol>
+            </li>
+          </ol>
+
+          <h2>§11. Dane osobowe</h2>
+          <ol>
+            <li>W zakresie, w jakim Usługodawca przetwarza dane osobowe w imieniu Klubu, zastosowanie ma Załącznik nr 1 do niniejszej umowy — Umowa powierzenia przetwarzania danych osobowych.</li>
+            <li>Strony zobowiązują się współpracować w zakresie realizacji obowiązków wynikających z przepisów o ochronie danych osobowych.</li>
+          </ol>
+
+          <h2>§12. Postanowienia końcowe</h2>
+          <ol>
+            <li>W sprawach nieuregulowanych niniejszą umową zastosowanie mają przepisy prawa polskiego, w szczególności Kodeksu cywilnego, ustawy o świadczeniu usług drogą elektroniczną oraz RODO.</li>
+            <li>Wszelkie zmiany umowy wymagają formy dokumentowej lub pisemnej, chyba że Strony postanowią inaczej.</li>
+            <li>Załączniki stanowią integralną część umowy.</li>
+            <li>Umowę sporządzono w <strong>[dwóch]</strong> jednobrzmiących egzemplarzach / zawarto w formie dokumentowej.</li>
+          </ol>
+
+          <div class="box">
+            <p><strong>Usługodawca:</strong> __________________________</p>
+            <p style="margin:0;"><strong>Klub:</strong> __________________________</p>
+          </div>
+
+          <h2>ZAŁĄCZNIK NR 1 — UMOWA POWIERZENIA PRZETWARZANIA DANYCH OSOBOWYCH</h2>
+
+          <h3>§1. Przedmiot powierzenia</h3>
+          <ol>
+            <li>Klub powierza Usługodawcy przetwarzanie danych osobowych w zakresie niezbędnym do świadczenia usług objętych umową główną.</li>
+            <li>Usługodawca zobowiązuje się przetwarzać dane wyłącznie na udokumentowane polecenie Klubu, chyba że obowiązek przetwarzania wynika z przepisów prawa.</li>
+          </ol>
+
+          <h3>§2. Charakter i cel przetwarzania</h3>
+          <ol>
+            <li>Powierzenie obejmuje dane przetwarzane w związku z korzystaniem przez Klub z platformy ORG HUB.</li>
+            <li>Celem przetwarzania jest umożliwienie świadczenia usług objętych umową główną, w szczególności prowadzenie kont użytkowników, organizacji wydarzeń, raportowania, komunikacji i obsługi płatności.</li>
+          </ol>
+
+          <h3>§3. Kategorie danych i osób</h3>
+          <ol>
+            <li>Powierzenie może obejmować dane:
+              <ol>
+                <li>administratorów Klubu,</li>
+                <li>trenerów,</li>
+                <li>zawodników,</li>
+                <li>innych użytkowników wprowadzonych przez Klub.</li>
+              </ol>
+            </li>
+            <li>Zakres danych może obejmować w szczególności: imię, nazwisko, adres e-mail, numer użytkownika, przypisanie do grup, informacje organizacyjne i inne dane wprowadzone przez Klub do systemu.</li>
+          </ol>
+
+          <h3>§4. Obowiązki Usługodawcy jako procesora</h3>
+          <ol>
+            <li>Usługodawca:
+              <ol>
+                <li>stosuje odpowiednie środki techniczne i organizacyjne chroniące dane,</li>
+                <li>zapewnia, aby osoby upoważnione do przetwarzania danych zobowiązały się do zachowania poufności,</li>
+                <li>w miarę możliwości wspiera Klub w realizacji obowiązków wobec osób, których dane dotyczą,</li>
+                <li>po zakończeniu świadczenia usług usuwa lub zwraca dane, zgodnie z decyzją Klubu, chyba że obowiązek dalszego przechowywania wynika z prawa,</li>
+                <li>udostępnia Klubowi informacje niezbędne do wykazania spełnienia obowiązków wynikających z przepisów prawa.</li>
+              </ol>
+            </li>
+          </ol>
+
+          <h3>§5. Dalsze powierzenie</h3>
+          <ol>
+            <li>Klub wyraża zgodę na korzystanie przez Usługodawcę z podwykonawców wspierających świadczenie usług, w szczególności dostawców hostingu, infrastruktury, poczty, chmury i utrzymania systemów IT.</li>
+            <li>Usługodawca zobowiązuje się nakładać na dalszych podmiotów przetwarzających obowiązki odpowiadające obowiązkom wynikającym z niniejszego załącznika.</li>
+          </ol>
+
+          <h3>§6. Audyt i informacje</h3>
+          <ol>
+            <li>Klub ma prawo uzyskać od Usługodawcy informacje niezbędne do oceny sposobu przetwarzania danych powierzonych.</li>
+            <li>Klub może, po uprzednim uzgodnieniu terminu i zakresu, przeprowadzić audyt lub żądać materiałów potwierdzających spełnianie wymogów bezpieczeństwa, z poszanowaniem tajemnicy przedsiębiorstwa Usługodawcy i bezpieczeństwa innych klientów.</li>
+          </ol>
+
+          <h3>§7. Czas trwania powierzenia</h3>
+          <ol>
+            <li>Powierzenie obowiązuje przez czas trwania umowy głównej oraz przez okres niezbędny do wykonania czynności końcowych związanych z zakończeniem współpracy.</li>
+          </ol>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="footer-title">ORG HUB</div>
+        <div class="muted small">
+          Platforma do zarządzania klubem sportowym.<br>
+          Właściciel platformy: Intevero Sp. z o.o.
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-title">Kontakt</div>
+        <div class="small"><a href="mailto:kontakt@orghub.pl">kontakt@orghub.pl</a></div>
+      </div>
+
+      <div>
+        <div class="footer-title">Dokumenty</div>
+        <div class="small"><a href="regulamin.html">Regulamin</a></div>
+        <div class="small"><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
+        <div class="small"><a href="umowa.html">Projekt umowy</a></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
