@@ -682,36 +682,77 @@
       }
     }
 
-    @media (max-width: 600px){
-      .topbar-inner{
-        align-items:flex-start;
-        padding:12px 0;
-      }
+@media (max-width: 600px){
+  .topbar-inner{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+    padding:12px 0;
+  }
 
-      .nav{
-        gap:10px;
-      }
+  .brand{
+    font-size:24px;
+    line-height:1.05;
+    gap:10px;
+  }
 
-      .hero{
-        padding-top:34px;
-      }
+  .brand-mark{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    flex:0 0 34px;
+  }
 
-      .hero-copy,
-      .hero-card,
-      .card,
-      .cta{
-        padding:18px;
-      }
+  .nav{
+    width:100%;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:flex-start;
+    gap:10px 14px;
+  }
 
-      h1{
-        font-size:32px;
-      }
+  .nav a{
+    font-size:14px;
+    line-height:1.2;
+  }
 
-      .btn{
-        width:100%;
-        text-align:center;
-      }
-    }
+  .nav .btn{
+    width:auto;
+    min-width:0;
+    padding:12px 18px;
+    text-align:center;
+  }
+
+  .hero{
+    padding-top:28px;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .card,
+  .cta{
+    padding:18px;
+  }
+
+  h1{
+    font-size:32px;
+  }
+
+  .hero h1{
+    font-size:28px;
+    line-height:1.08;
+  }
+
+  .hero p{
+    font-size:16px;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    text-align:center;
+  }
+}
   </style>
 </head>
 <body>
