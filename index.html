@@ -1036,384 +1036,183 @@
   window.__guideStepIndex = 0;
 
   const INSTRUCTION_FLOWS = {
-konfiguracja: {
-  label: "Konfiguracja klubu",
-  steps: [
-    {
-      title: "Ekran startowy aplikacji",
-      text: "Użytkownik zaczyna od ekranu powitalnego ORGHUB SYSTEMS. Na dole widzi duży przycisk „Skonfiguruj klub”.",
-      note: "To jest zawsze pierwszy krok dla nowego klubu.",
-      screen: `
-        <div class="mock-app mock-center" style="background:#ececed; color:#111; min-height:640px;">
-          <div style="font-size:20px; font-weight:900; margin-bottom:6px;">Witamy w aplikacji</div>
-          <div style="font-size:30px; font-weight:900; letter-spacing:2px; margin-bottom:18px;">ORGHUB SYSTEMS</div>
+    konfiguracja: {
+      label: "Konfiguracja klubu",
+      steps: [
+        {
+          title: "Start — wejście do konfiguracji",
+          text: "Na stronie głównej użytkownik klika duży przycisk „Skonfiguruj klub”. To jest pierwszy krok uruchomienia nowego klubu.",
+          note: "Jeśli jesteś nowym klubem, zaczynasz zawsze od tego miejsca.",
+          screen: `
+            <div class="mock-app mock-center">
+              <div class="mock-title">Witamy w aplikacji</div>
+              <div class="mock-big">ORGHUB SYSTEMS</div>
 
-          <div class="mock-card" style="background:#111; border:1px solid #333; color:#fff; text-align:left;">
-            <div style="font-size:18px; font-weight:900; margin-bottom:10px;">Zanim rozpoczniesz konfigurację</div>
-            <div style="line-height:1.45; opacity:.95;">
-              Przygotuj logo, nazwę klubu, email, daty sezonu, płatności i dane administratora.
+              <div class="mock-card">
+                <strong>Zanim rozpoczniesz konfigurację</strong>
+                <div style="margin-top:8px; line-height:1.45;">
+                  Przygotuj logo, nazwę klubu, e-mail, daty sezonu, płatności i dane administratora.
+                </div>
+              </div>
+
+              <div class="mock-btn mock-highlight">Skonfiguruj klub</div>
             </div>
-          </div>
+          `
+        },
+        {
+          title: "Wgranie logo klubu",
+          text: "W pierwszym ekranie konfiguracji użytkownik zaczyna od wgrania logo. Najlepiej przygotować plik PNG lub JPG w proporcji zbliżonej do kwadratu.",
+          note: "Najbezpieczniejszy wariant to logo w formacie PNG lub JPG, najlepiej kwadratowe.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:26px;">Konfiguracja klubu</div>
 
-          <div class="mock-btn mock-highlight" style="margin-top:18px; max-width:280px;">Skonfiguruj klub</div>
-        </div>
-      `
-    },
-
-    {
-      title: "Pierwszy ekran konfiguracji — pusty formularz",
-      text: "Po kliknięciu użytkownik przechodzi do pierwszego etapu konfiguracji klubu. Na ekranie są: logo, nazwa, kolor i email.",
-      note: "Na tym etapie jeszcze nic nie jest uzupełnione.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn">Wgraj swoje logo</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field" style="margin-top:14px;">Podaj nazwę klubu</div>
-            <div class="mock-field">Wybierz kolor tła</div>
-            <div class="mock-field">Twój email</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Krok 1 — wgranie logo",
-      text: "Najpierw użytkownik dodaje logo klubu. Po przejściu do kolejnego kroku widać już, że logo zostało poprawnie załadowane.",
-      note: "To ma dać użytkownikowi pewność: kliknąłem dobrze, plik został dodany.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn mock-highlight">Wgraj swoje logo</div>
-
-            <div style="
-              margin:10px auto 0 auto;
-              width:120px;
-              height:120px;
-              border-radius:10px;
-              border:1px solid #444;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d0d11;
-              font-size:56px;
-              font-weight:900;
-            ">★</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field" style="margin-top:14px;">Podaj nazwę klubu</div>
-            <div class="mock-field">Wybierz kolor tła</div>
-            <div class="mock-field">Twój email</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Krok 2 — wpisanie nazwy klubu",
-      text: "Po dodaniu logo użytkownik wpisuje nazwę klubu. Na instrukcji od razu widać gotowy, poprawnie wpisany przykład.",
-      note: "Tu pokazujemy normalną nazwę widoczną dla ludzi, a nie techniczny identyfikator.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn">Wgraj swoje logo</div>
-
-            <div style="
-              margin:10px auto 0 auto;
-              width:120px;
-              height:120px;
-              border-radius:10px;
-              border:1px solid #444;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d0d11;
-              font-size:56px;
-              font-weight:900;
-            ">★</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field mock-highlight" style="margin-top:14px;">MKS Feniks Północ</div>
-            <div class="mock-field">Wybierz kolor tła</div>
-            <div class="mock-field">Twój email</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Krok 3 — wybór koloru aplikacji",
-      text: "W kolejnym kroku użytkownik wybiera kolor przewodni aplikacji. Po przejściu dalej widzi już gotowy, wybrany wariant.",
-      note: "Najlepiej dobrać kolor zgodny z barwami klubu.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn">Wgraj swoje logo</div>
-
-            <div style="
-              margin:10px auto 0 auto;
-              width:120px;
-              height:120px;
-              border-radius:10px;
-              border:1px solid #444;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d0d11;
-              font-size:56px;
-              font-weight:900;
-            ">★</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
-            <div class="mock-field mock-highlight">Brąz</div>
-            <div class="mock-field">Twój email</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Krok 4 — wpisanie adresu e-mail",
-      text: "Na końcu pierwszego etapu użytkownik wpisuje adres e-mail. To na ten adres przychodzą później informacje związane z klubem i aktywacją.",
-      note: "Najlepiej użyć realnego adresu klubowego albo organizacyjnego.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn">Wgraj swoje logo</div>
-
-            <div style="
-              margin:10px auto 0 auto;
-              width:120px;
-              height:120px;
-              border-radius:10px;
-              border:1px solid #444;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d0d11;
-              font-size:56px;
-              font-weight:900;
-            ">★</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
-            <div class="mock-field">Brąz</div>
-            <div class="mock-field mock-highlight">kontakt@feniks-polnoc.pl</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Wysłanie pierwszego etapu konfiguracji",
-      text: "Po uzupełnieniu logo, nazwy, koloru i e-maila użytkownik klika „Wyślij” i przechodzi do drugiego etapu konfiguracji klubu.",
-      note: "To zamyka pierwszy etap i prowadzi do ustawienia sezonu, płatności i danych administratora.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Konfiguracja klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:center;">
-            <div class="mock-btn">Wgraj swoje logo</div>
-
-            <div style="
-              margin:10px auto 0 auto;
-              width:120px;
-              height:120px;
-              border-radius:10px;
-              border:1px solid #444;
-              display:flex;
-              align-items:center;
-              justify-content:center;
-              background:#0d0d11;
-              font-size:56px;
-              font-weight:900;
-            ">★</div>
-
-            <div style="margin-top:10px; font-size:12px; opacity:.75;">
-              PNG/JPG, najlepiej kwadrat, np. 512×512
-            </div>
-
-            <div class="mock-field" style="margin-top:14px;">MKS Feniks Północ</div>
-            <div class="mock-field">Brąz</div>
-            <div class="mock-field">kontakt@feniks-polnoc.pl</div>
-
-            <div class="mock-btn mock-highlight" style="margin-top:14px;">Wyślij</div>
-            <div class="mock-btn alt">⬅ Powrót</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Drugi etap — uzupełnij dane klubu",
-      text: "Po pierwszym etapie użytkownik trafia do drugiego ekranu konfiguracji. Tu system prowadzi go już od góry do dołu: sezon, płatności, administrator i dane do wpłat.",
-      note: "To jest dokładnie ten moment, w którym użytkownik ma już poczucie, że klub realnie się składa.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
-            <div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; margin-bottom:14px;">
-              <div style="font-weight:900; font-size:15px; margin-bottom:6px;">Kolejność konfiguracji</div>
-              <div style="font-size:12px; line-height:1.4; opacity:.9;">
-                Najpierw ustaw daty sezonu. Dopiero potem odblokują się kolejne przyciski.
+              <div class="mock-card" style="text-align:center;">
+                <div class="mock-btn mock-highlight">Wgraj swoje logo</div>
+                <div style="margin-top:16px; border:1px solid #303744; border-radius:14px; padding:18px;">
+                  <div style="font-size:56px;">★</div>
+                </div>
+                <div style="margin-top:10px; font-size:13px; opacity:.8;">
+                  PNG/JPG, najlepiej kwadrat, np. 512×512
+                </div>
               </div>
             </div>
+          `
+        },
+        {
+          title: "Nazwa klubu",
+          text: "Po wgraniu logo wpisujesz pełną nazwę klubu. Nazwa jest widoczna w aplikacji dla użytkowników, więc wpisz ją dokładnie tak, jak ma wyglądać oficjalnie.",
+          note: "Możesz używać polskich znaków, spacji i normalnej nazwy klubu.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:26px;">Konfiguracja klubu</div>
 
-            <div class="mock-field mock-highlight">Początek sezonu</div>
-            <div class="mock-field">Koniec sezonu</div>
-            <div class="mock-btn alt" style="opacity:.7;">Płatności (ustaw daty sezonu)</div>
-            <div class="mock-btn alt" style="opacity:.7;">Dane administratora</div>
-            <div class="mock-btn alt" style="opacity:.7;">Dane klubu do odbioru wpłat</div>
-            <div class="mock-btn" style="opacity:.7;">Wyślij i aktywuj klub</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Ustawienie początku i końca sezonu",
-      text: "Użytkownik wybiera początek i koniec sezonu. Po poprawnym ustawieniu dat system odblokowuje kolejne przyciski.",
-      note: "Od tych dat zależą miesiące składek, statystyk i pracy klubu.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
-            <div style="background:#111; border:1px solid #333; border-radius:12px; padding:12px; margin-bottom:14px;">
-              <div style="font-weight:900; font-size:15px; margin-bottom:6px;">Kolejność konfiguracji</div>
-              <div style="font-size:12px; line-height:1.4; opacity:.9;">
-                Daty sezonu określają, dla jakich miesięcy system przygotuje płatności i statystyki.
+              <div class="mock-card">
+                <div class="mock-btn">Wgraj swoje logo</div>
+                <div class="mock-field mock-highlight">Warriors Sosnowiec</div>
+                <div class="mock-field">Wybierz kolor tła</div>
+                <div class="mock-field">Twój email</div>
               </div>
             </div>
+          `
+        },
+        {
+          title: "Kolor aplikacji",
+          text: "Następnie wybierasz kolor przewodni aplikacji. To na jego podstawie budowany jest wygląd klubu w systemie.",
+          note: "Kolor możesz dobrać pod barwy klubu, żeby aplikacja była spójna z identyfikacją wizualną.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:26px;">Konfiguracja klubu</div>
 
-            <div class="mock-field mock-highlight">Początek sezonu: 2026-08-01</div>
-            <div class="mock-field mock-highlight">Koniec sezonu: 2027-06-30</div>
-            <div class="mock-btn alt">Płatności</div>
-            <div class="mock-btn alt">Dane administratora</div>
-            <div class="mock-btn alt">Dane klubu do odbioru wpłat</div>
-            <div class="mock-btn" style="opacity:.7;">Wyślij i aktywuj klub</div>
-          </div>
-        </div>
-      `
-    },
+              <div class="mock-card">
+                <div class="mock-btn">Wgraj swoje logo</div>
+                <div class="mock-field">Warriors Sosnowiec</div>
+                <div class="mock-field mock-highlight">Brąz / kolor aplikacji</div>
 
-    {
-      title: "Uzupełnienie płatności i danych administratora",
-      text: "Po ustawieniu dat sezonu użytkownik przechodzi do płatności, danych administratora i danych do odbioru wpłat. To są trzy kluczowe bloki potrzebne przed aktywacją.",
-      note: "Po ich uzupełnieniu klub jest gotowy do uruchomienia.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
+                <div class="mock-row" style="margin-top:14px;">
+                  <div style="flex:1;height:42px;border-radius:12px;background:#3c2614;border:2px solid #ffb020;"></div>
+                  <div style="flex:1;height:42px;border-radius:12px;background:#101010;border:1px solid #444;"></div>
+                  <div style="flex:1;height:42px;border-radius:12px;background:#0d3c59;border:1px solid #444;"></div>
+                  <div style="flex:1;height:42px;border-radius:12px;background:#20592f;border:1px solid #444;"></div>
+                </div>
 
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
-            <div class="mock-field">Początek sezonu: 2026-08-01</div>
-            <div class="mock-field">Koniec sezonu: 2027-06-30</div>
-
-            <div class="mock-btn mock-highlight">Płatności ✅</div>
-            <div class="mock-btn mock-highlight">Dane administratora ✅</div>
-            <div class="mock-btn mock-highlight">Dane klubu do odbioru wpłat ✅</div>
-
-            <div class="mock-btn" style="margin-top:14px;">Wyślij i aktywuj klub</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Aktywacja klubu",
-      text: "Po uzupełnieniu wszystkich wymaganych danych użytkownik aktywuje klub. System tworzy pliki, konfigurację i gotowy link do klubu.",
-      note: "To kończy konfigurację. Następny moduł instrukcji powinien pokazać, co zrobić od razu po aktywacji.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:18px; font-weight:900; margin-bottom:16px;">Uzupełnij dane klubu</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
-            <div class="mock-field">Początek sezonu: 2026-08-01</div>
-            <div class="mock-field">Koniec sezonu: 2027-06-30</div>
-
-            <div class="mock-btn">Płatności ✅</div>
-            <div class="mock-btn">Dane administratora ✅</div>
-            <div class="mock-btn">Dane klubu do odbioru wpłat ✅</div>
-
-            <div class="mock-btn mock-highlight" style="margin-top:14px;">Wyślij i aktywuj klub</div>
-          </div>
-        </div>
-      `
-    },
-
-    {
-      title: "Sukces — klub został aktywowany",
-      text: "Na końcu użytkownik widzi ekran sukcesu z nazwą klubu i gotowym linkiem. To jest moment przejścia do kolejnej instrukcji: pierwsze logowanie administratora i przygotowanie klubu do pracy.",
-      note: "I właśnie ten następny moduł zrobimy jako kolejny — bo tu zaczyna się prawdziwe wdrożenie klubu.",
-      screen: `
-        <div class="mock-app mock-dark mock-center" style="min-height:640px;">
-          <div style="font-size:22px; font-weight:900; margin-bottom:16px;">Klub został aktywowany ✅</div>
-
-          <div class="mock-card" style="max-width:290px; margin:0 auto; text-align:left;">
-            <div style="font-size:16px; font-weight:800; margin-bottom:8px;">Konfiguracja zakończona</div>
-            <div style="line-height:1.45; opacity:.9;">
-              Twój klub jest już gotowy do działania. Link do klubu został wysłany na podany adres e-mail administratora.
+                <div class="mock-field" style="margin-top:14px;">Twój email</div>
+              </div>
             </div>
+          `
+        },
+        {
+          title: "Adres e-mail klubu",
+          text: "Na końcu pierwszego etapu wpisujesz e-mail kontaktowy. To ważny adres organizacyjny, bo będzie używany do kontaktu i dalszych etapów aktywacji.",
+          note: "Najlepiej użyć adresu, do którego klub ma realny dostęp i który będzie obsługiwany na co dzień.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:26px;">Konfiguracja klubu</div>
 
-            <div style="margin-top:14px; font-size:13px; opacity:.8;">Nazwa klubu:</div>
-            <div style="font-size:18px; font-weight:900; margin-top:4px;">MKS Feniks Północ</div>
-
-            <div style="margin-top:14px; font-size:13px; opacity:.8;">Link do klubu:</div>
-            <div style="font-size:14px; font-weight:700; margin-top:4px; word-break:break-all;">
-              https://feniks-polnoc.orghub.pl
+              <div class="mock-card">
+                <div class="mock-btn">Wgraj swoje logo</div>
+                <div class="mock-field">Warriors Sosnowiec</div>
+                <div class="mock-field">Brąz</div>
+                <div class="mock-field mock-highlight">kontakt@warriors.pl</div>
+                <div class="mock-btn" style="margin-top:14px;">Wyślij</div>
+              </div>
             </div>
-          </div>
+          `
+        },
+        {
+          title: "Drugi etap — dane klubu",
+          text: "Po zapisaniu pierwszego etapu użytkownik przechodzi do uzupełnienia danych sezonu i ustawień organizacyjnych klubu.",
+          note: "Na tym ekranie trzeba uzupełnić sezon, płatności, dane administratora i dane do wpłat.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:24px;">Uzupełnij dane klubu</div>
 
-          <div class="mock-btn" style="max-width:290px;">Otwórz klub</div>
-          <div class="mock-btn alt" style="max-width:290px;">Skopiuj link</div>
-        </div>
-      `
+              <div class="mock-card">
+                <div class="mock-field mock-highlight">Początek sezonu</div>
+                <div class="mock-field">Koniec sezonu</div>
+                <div class="mock-btn alt">Płatności</div>
+                <div class="mock-btn alt">Dane administratora</div>
+                <div class="mock-btn alt">Dane klubu do odbioru wpłat</div>
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Ustawienie początku i końca sezonu",
+          text: "Najpierw trzeba wskazać zakres sezonu. Od tych dat system wylicza miesiące, płatności i kolejne ustawienia.",
+          note: "Dopiero po ustawieniu poprawnych dat odblokowują się kolejne przyciski konfiguracji.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:24px;">Uzupełnij dane klubu</div>
+
+              <div class="mock-card">
+                <div class="mock-field mock-highlight">Początek sezonu: 2026-08-01</div>
+                <div class="mock-field mock-highlight">Koniec sezonu: 2027-06-30</div>
+                <div class="mock-btn alt">Płatności</div>
+                <div class="mock-btn alt">Dane administratora</div>
+                <div class="mock-btn alt">Dane klubu do odbioru wpłat</div>
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Płatności, administrator i dane do wpłat",
+          text: "Po ustawieniu sezonu użytkownik uzupełnia trzy kluczowe bloki: płatności, dane administratora i dane do przelewów.",
+          note: "To jest ostatni ważny etap przed aktywacją klubu.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:24px;">Uzupełnij dane klubu</div>
+
+              <div class="mock-card">
+                <div class="mock-field">Początek sezonu: 2026-08-01</div>
+                <div class="mock-field">Koniec sezonu: 2027-06-30</div>
+                <div class="mock-btn mock-highlight">Płatności ✅</div>
+                <div class="mock-btn mock-highlight">Dane administratora ✅</div>
+                <div class="mock-btn mock-highlight">Dane klubu do odbioru wpłat ✅</div>
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Aktywacja klubu",
+          text: "Gdy wszystkie wymagane dane są już gotowe, użytkownik aktywuje klub i otrzymuje gotowy link do swojej aplikacji.",
+          note: "To kończy etap konfiguracji. Następny ważny scenariusz to pierwsze logowanie administratora i przygotowanie grup, zawodników oraz trenerów.",
+          screen: `
+            <div class="mock-app mock-dark mock-center">
+              <div class="mock-title" style="font-size:24px;">Uzupełnij dane klubu</div>
+
+              <div class="mock-card">
+                <div class="mock-btn mock-highlight">Wyślij i aktywuj klub</div>
+                <div style="margin-top:16px; line-height:1.45; opacity:.9;">
+                  Po aktywacji klub otrzymuje własny link i jest gotowy do pierwszego logowania.
+                </div>
+              </div>
+            </div>
+          `
+        }
+      ]
     }
-  ]
-}
+  };
 
   function startInstructionFlow(flowKey) {
     if (!INSTRUCTION_FLOWS[flowKey]) return;
