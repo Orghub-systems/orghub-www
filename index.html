@@ -752,7 +752,49 @@
     width:100%;
     text-align:center;
   }
+
+  .guide-actions-mobile{
+  display:none;
 }
+
+@media (max-width: 600px){
+  .guide-layout{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .guide-copy{
+    order:2;
+    padding:16px;
+  }
+
+  .phone{
+    order:1;
+    max-width:360px;
+  }
+
+  .phone-screen,
+  .mock-app{
+    min-height:500px;
+  }
+
+  .guide-actions{
+    display:none;
+  }
+
+  .guide-actions-mobile{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+
+  .guide-actions-mobile .btn{
+    width:100%;
+    text-align:center;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -992,7 +1034,7 @@
               <div class="guide-note" id="guideStepNote">
                 Wskazówka dla użytkownika
               </div>
-    
+
               <div class="guide-actions">
                 <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
                 <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
@@ -1009,6 +1051,13 @@
               </div>
             </div>
           </div>
+
+          <div class="guide-actions-mobile">
+            <button class="btn btn-secondary" type="button" onclick="instructionPrevStep()">Wstecz</button>
+            <button class="btn btn-primary" type="button" onclick="instructionNextStep()">Dalej</button>
+            <button class="btn btn-secondary" type="button" onclick="instructionCloseFlow()">Zamknij instrukcję</button>
+          </div>
+
         </div>
       </div>
     </section>
