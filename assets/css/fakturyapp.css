@@ -205,80 +205,9 @@ h1{
   font-size:17px;
 }
 
-footer{
-  margin-top:34px;
-  border-top:1px solid #22222b;
-  padding:28px 0 42px;
-}
+/* Lokalne menu produktu */
 
-.footer-grid{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  gap:20px;
-}
-
-.footer-title{
-  font-weight:900;
-  margin-bottom:8px;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-.small{
-  font-size:14px;
-}
-
-@media (max-width:900px){
-  .hero-grid,
-  .grid-3,
-  .grid-2,
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  h1{
-    font-size:38px;
-  }
-
-  .section-head h2,
-  .cta h2{
-    font-size:28px;
-  }
-
-  .hero-points{
-    grid-template-columns:1fr;
-  }
-}
-
-@media (max-width:600px){
-  .hero{
-    padding:38px 0 26px;
-  }
-
-  .hero-copy,
-  .hero-panel,
-  .card,
-  .cta{
-    padding:20px;
-  }
-
-  h1{
-    font-size:31px;
-  }
-
-  .lead{
-    font-size:16px;
-  }
-
-  .hero-actions .btn,
-  .cta .btn{
-    width:100%;
-    text-align:center;
-  }
-
-  .product-nav{
+.product-nav{
   padding:22px 0 0;
 }
 
@@ -308,7 +237,9 @@ footer{
   border-color:var(--accent-border);
 }
 
-  .pricing-grid{
+/* Cennik */
+
+.pricing-grid{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:18px;
@@ -374,7 +305,56 @@ footer{
   color:var(--muted);
 }
 
+/* Stopka */
+
+footer{
+  margin-top:34px;
+  border-top:1px solid #22222b;
+  padding:28px 0 42px;
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:20px;
+}
+
+.footer-title{
+  font-weight:900;
+  margin-bottom:8px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+.small{
+  font-size:14px;
+}
+
+/* Responsywność */
+
 @media (max-width:900px){
+  .hero-grid,
+  .grid-3,
+  .grid-2,
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+
+  h1{
+    font-size:38px;
+  }
+
+  .section-head h2,
+  .cta h2{
+    font-size:28px;
+  }
+
+  .hero-points{
+    grid-template-columns:1fr;
+  }
+
   .pricing-grid{
     grid-template-columns:1fr;
   }
@@ -382,5 +362,40 @@ footer{
   .price-main{
     font-size:34px;
   }
+}
 
+@media (max-width:600px){
+  .hero{
+    padding:38px 0 26px;
+  }
+
+  .hero-copy,
+  .hero-panel,
+  .card,
+  .cta{
+    padding:20px;
+  }
+
+  h1{
+    font-size:31px;
+  }
+
+  .lead{
+    font-size:16px;
+  }
+
+  .hero-actions .btn,
+  .cta .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  .product-nav-box{
+    flex-direction:column;
+  }
+
+  .product-nav-box a{
+    width:100%;
+    text-align:center;
+  }
 }
