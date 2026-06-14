@@ -178,20 +178,6 @@
       box-shadow:0 16px 44px rgba(0,0,0,.28);
     }
 
-    .product-kicker{
-      display:inline-block;
-      margin-bottom:16px;
-      padding:7px 12px;
-      border-radius:999px;
-      background:#191920;
-      border:1px solid #31313a;
-      color:#fff;
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-    }
-
     .product-card h3{
       margin:0 0 16px;
       font-size:42px;
@@ -237,12 +223,6 @@
       background:linear-gradient(180deg,var(--accent),var(--accent-dark));
       border:1px solid var(--accent-border);
       color:#fff;
-    }
-
-    .counter{
-      color:var(--muted);
-      font-size:14px;
-      font-weight:800;
     }
 
     .arrow{
@@ -411,7 +391,7 @@
         <div class="slider">
           <article class="product-card" id="productCard">
             <div>
-              <span class="product-kicker" id="productKicker">MultiClub</span>
+            
               <h3 id="productTitle">Aplikacja do zarządzania klubem sportowym</h3>
 
               <p id="productDescription">
@@ -431,7 +411,7 @@
                 Zobacz aplikację klubową
               </a>
 
-              <div class="counter" id="productCounter"></div>
+          
             </div>
           </article>
 
@@ -453,7 +433,7 @@
   <script>
     const products = [
       {
-        kicker: "MultiClub",
+        
         title: "Aplikacja do zarządzania klubem sportowym",
         description: "System dla klubów sportowych: wydarzenia, obecności, płatności, powołania, panel zawodnika, trenera i administratora.",
         features: [
@@ -465,7 +445,7 @@
         button: "Zobacz aplikację klubową"
       },
       {
-        kicker: "Faktury App",
+        
         title: "Program do kontroli faktur i płatności dla mikroprzedsiębiorców",
         description: "Lokalny program na Windows do kontroli faktur, terminów płatności, rat, rozliczeń i plików KSeF.",
         features: [
@@ -480,23 +460,23 @@
 
     let currentProduct = 0;
 
-    const productKicker = document.getElementById("productKicker");
+    
     const productTitle = document.getElementById("productTitle");
     const productDescription = document.getElementById("productDescription");
     const productFeatures = document.getElementById("productFeatures");
     const productLink = document.getElementById("productLink");
-    const productCounter = document.getElementById("productCounter");
+    
     const nextProduct = document.getElementById("nextProduct");
 
     function renderProduct(){
       const product = products[currentProduct];
 
-      productKicker.textContent = product.kicker;
+      
       productTitle.textContent = product.title;
       productDescription.textContent = product.description;
       productLink.href = product.link;
       productLink.textContent = product.button;
-      productCounter.textContent = (currentProduct + 1) + " / " + products.length;
+      
 
       productFeatures.innerHTML = "";
 
