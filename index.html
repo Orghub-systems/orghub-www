@@ -21,7 +21,9 @@
       --max:1120px;
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box;
+    }
 
     html{
       scroll-behavior:smooth;
@@ -163,6 +165,7 @@
       grid-template-columns:1fr auto;
       align-items:center;
       gap:18px;
+      perspective:1200px;
     }
 
     .product-card{
@@ -176,6 +179,38 @@
       background:linear-gradient(180deg,var(--card),var(--card2));
       border:1px solid var(--line);
       box-shadow:0 16px 44px rgba(0,0,0,.28);
+      will-change:transform, opacity, filter;
+      transform-style:preserve-3d;
+      transition:
+        transform .38s ease,
+        opacity .38s ease,
+        filter .38s ease,
+        border-color .2s ease;
+    }
+
+    .product-card:hover{
+      transform:translateZ(0) scale(1.01);
+      border-color:#4b4b55;
+    }
+
+    .product-card.is-leaving{
+      opacity:0;
+      transform:translateZ(-260px) scale(.82);
+      filter:blur(7px);
+      pointer-events:none;
+    }
+
+    .product-card.is-entering{
+      opacity:0;
+      transform:translateZ(-260px) scale(.82);
+      filter:blur(7px);
+      pointer-events:none;
+    }
+
+    .product-card.is-visible{
+      opacity:1;
+      transform:translateZ(0) scale(1);
+      filter:none;
     }
 
     .product-card h3{
@@ -210,7 +245,7 @@
     .card-bottom{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap:18px;
       flex-wrap:wrap;
     }
@@ -223,6 +258,11 @@
       background:linear-gradient(180deg,var(--accent),var(--accent-dark));
       border:1px solid var(--accent-border);
       color:#fff;
+      transition:.2s ease;
+    }
+
+    .product-link:hover{
+      transform:translateY(-1px);
     }
 
     .arrow{
@@ -246,6 +286,12 @@
       transform:translateX(3px);
       border-color:#4b4b55;
       background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+    }
+
+    .arrow:disabled{
+      opacity:.55;
+      cursor:default;
+      transform:none;
     }
 
     footer{
@@ -389,9 +435,8 @@
         </div>
 
         <div class="slider">
-          <article class="product-card" id="productCard">
+          <article class="product-card is-visible" id="productCard">
             <div>
-            
               <h3 id="productTitle">Aplikacja do zarządzania klubem sportowym</h3>
 
               <p id="productDescription">
@@ -410,8 +455,6 @@
               <a class="product-link" id="productLink" href="multiclub/">
                 Zobacz aplikację klubową
               </a>
-
-          
             </div>
           </article>
 
@@ -433,7 +476,6 @@
   <script>
     const products = [
       {
-        
         title: "Aplikacja do zarządzania klubem sportowym",
         description: "System dla klubów sportowych: wydarzenia, obecności, płatności, powołania, panel zawodnika, trenera i administratora.",
         features: [
@@ -445,7 +487,6 @@
         button: "Zobacz aplikację klubową"
       },
       {
-        
         title: "Program do kontroli faktur i płatności dla mikroprzedsiębiorców",
         description: "Lokalny program na Windows do kontroli faktur, terminów płatności, rat, rozliczeń i plików KSeF.",
         features: [
@@ -459,24 +500,22 @@
     ];
 
     let currentProduct = 0;
+    let isAnimating = false;
 
-    
+    const productCard = document.getElementById("productCard");
     const productTitle = document.getElementById("productTitle");
     const productDescription = document.getElementById("productDescription");
     const productFeatures = document.getElementById("productFeatures");
     const productLink = document.getElementById("productLink");
-    
     const nextProduct = document.getElementById("nextProduct");
 
     function renderProduct(){
       const product = products[currentProduct];
 
-      
       productTitle.textContent = product.title;
       productDescription.textContent = product.description;
       productLink.href = product.link;
       productLink.textContent = product.button;
-      
 
       productFeatures.innerHTML = "";
 
@@ -489,13 +528,39 @@
     }
 
     nextProduct.addEventListener("click", function(){
-      currentProduct = currentProduct + 1;
-
-      if(currentProduct >= products.length){
-        currentProduct = 0;
+      if(isAnimating){
+        return;
       }
 
-      renderProduct();
+      isAnimating = true;
+      nextProduct.disabled = true;
+
+      productCard.classList.remove("is-visible");
+      productCard.classList.add("is-leaving");
+
+      setTimeout(function(){
+        currentProduct = currentProduct + 1;
+
+        if(currentProduct >= products.length){
+          currentProduct = 0;
+        }
+
+        renderProduct();
+
+        productCard.classList.remove("is-leaving");
+        productCard.classList.add("is-entering");
+
+        requestAnimationFrame(function(){
+          productCard.classList.remove("is-entering");
+          productCard.classList.add("is-visible");
+        });
+
+        setTimeout(function(){
+          nextProduct.disabled = false;
+          isAnimating = false;
+        }, 420);
+
+      }, 380);
     });
   </script>
 </body>
