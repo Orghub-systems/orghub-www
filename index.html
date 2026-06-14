@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>ORG HUB — systemy dla klubów i mikroprzedsiębiorców</title>
-  <meta name="description" content="ORG HUB tworzy praktyczne systemy dla klubów sportowych, małych firm i mikroprzedsiębiorców. Wybierz aplikację klubową MultiClub albo program Faktury App." />
+  <title>ORG HUB — systemy do organizacji pracy, płatności i komunikacji</title>
+  <meta name="description" content="ORG HUB tworzy proste narzędzia dla klubów sportowych, małych firm i mikroprzedsiębiorców." />
 
   <style>
     :root{
@@ -22,6 +22,10 @@
     }
 
     *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -84,113 +88,39 @@
     }
 
     .hero{
-      padding:72px 0 36px;
+      min-height:calc(100vh - 76px);
+      display:flex;
+      align-items:center;
       text-align:center;
+      padding:60px 0;
     }
 
-    .eyebrow{
-      display:inline-block;
-      margin-bottom:16px;
-      padding:7px 12px;
-      font-size:12px;
-      font-weight:900;
-      border-radius:999px;
-      background:#191920;
-      border:1px solid #31313a;
-      color:#fff;
-      letter-spacing:.5px;
-      text-transform:uppercase;
+    .hero-inner{
+      width:100%;
     }
 
     h1{
-      margin:0 auto 18px;
-      max-width:880px;
-      font-size:48px;
+      margin:0 auto 22px;
+      max-width:940px;
+      font-size:54px;
       line-height:1.06;
     }
 
     .lead{
-      margin:0 auto;
+      margin:0 auto 30px;
       max-width:820px;
       color:var(--muted);
-      font-size:19px;
-    }
-
-    .products{
-      padding:28px 0 64px;
-    }
-
-    .products-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:22px;
-    }
-
-    .product-card{
-      min-height:360px;
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      gap:22px;
-      padding:30px;
-      border-radius:26px;
-      background:linear-gradient(180deg,var(--card),var(--card2));
-      border:1px solid var(--line);
-      box-shadow:0 16px 44px rgba(0,0,0,.24);
-      transition:.2s ease;
-    }
-
-    .product-card:hover{
-      transform:translateY(-3px);
-      border-color:#4b4b55;
-    }
-
-    .product-kicker{
-      display:inline-block;
-      margin-bottom:14px;
-      color:#fff;
-      font-weight:900;
-      font-size:12px;
-      letter-spacing:.6px;
-      text-transform:uppercase;
-      opacity:.9;
-    }
-
-    .product-card h2{
-      margin:0 0 14px;
-      font-size:31px;
-      line-height:1.12;
-    }
-
-    .product-card p{
-      margin:0;
-      color:var(--muted);
-      font-size:17px;
-    }
-
-    .features{
-      margin-top:22px;
-      display:grid;
-      gap:10px;
-    }
-
-    .feature{
-      padding:11px 13px;
-      border-radius:14px;
-      background:#101015;
-      border:1px solid #292933;
-      font-weight:700;
-      font-size:15px;
+      font-size:20px;
     }
 
     .btn{
       display:inline-block;
-      width:max-content;
-      padding:14px 20px;
+      padding:15px 22px;
       border-radius:14px;
       font-weight:900;
       border:1px solid var(--line);
       transition:.2s ease;
+      cursor:pointer;
     }
 
     .btn:hover{
@@ -203,24 +133,139 @@
       color:#fff;
     }
 
-    .btn-secondary{
-      background:#17171c;
+    .products{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      padding:76px 0;
+    }
+
+    .products-head{
+      text-align:center;
+      margin-bottom:28px;
+    }
+
+    .products-head h2{
+      margin:0 0 10px;
+      font-size:38px;
+      line-height:1.1;
+    }
+
+    .products-head p{
+      margin:0;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    .slider{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      gap:18px;
+    }
+
+    .product-card{
+      min-height:430px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:28px;
+      padding:38px;
+      border-radius:30px;
+      background:linear-gradient(180deg,var(--card),var(--card2));
+      border:1px solid var(--line);
+      box-shadow:0 16px 44px rgba(0,0,0,.28);
+    }
+
+    .product-kicker{
+      display:inline-block;
+      margin-bottom:16px;
+      padding:7px 12px;
+      border-radius:999px;
+      background:#191920;
+      border:1px solid #31313a;
+      color:#fff;
+      font-weight:900;
+      font-size:12px;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+    }
+
+    .product-card h3{
+      margin:0 0 16px;
+      font-size:42px;
+      line-height:1.08;
+    }
+
+    .product-card p{
+      margin:0;
+      max-width:760px;
+      color:var(--muted);
+      font-size:19px;
+    }
+
+    .features{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+
+    .feature{
+      padding:14px 15px;
+      border-radius:15px;
+      background:#101015;
+      border:1px solid #292933;
+      font-weight:800;
+      font-size:15px;
+    }
+
+    .card-bottom{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .product-link{
+      display:inline-block;
+      padding:15px 22px;
+      border-radius:14px;
+      font-weight:900;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
+      border:1px solid var(--accent-border);
       color:#fff;
     }
 
-    .note{
-      padding:0 0 52px;
-      text-align:center;
+    .counter{
+      color:var(--muted);
+      font-size:14px;
+      font-weight:800;
     }
 
-    .note-box{
-      max-width:860px;
-      margin:0 auto;
-      padding:20px 24px;
-      border-radius:20px;
-      background:#111116;
-      border:1px solid #292933;
-      color:var(--muted);
+    .arrow{
+      width:66px;
+      height:110px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#17171c,#101015);
+      color:#fff;
+      font-size:48px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.2s ease;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      line-height:1;
+    }
+
+    .arrow:hover{
+      transform:translateX(3px);
+      border-color:#4b4b55;
+      background:linear-gradient(180deg,var(--accent),var(--accent-dark));
     }
 
     footer{
@@ -238,23 +283,35 @@
       font-size:14px;
     }
 
-    .footer-links{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
     @media (max-width:900px){
       h1{
+        font-size:40px;
+      }
+
+      .products-head h2{
+        font-size:31px;
+      }
+
+      .slider{
+        grid-template-columns:1fr;
+      }
+
+      .arrow{
+        width:100%;
+        height:64px;
         font-size:38px;
       }
 
-      .products-grid{
+      .features{
         grid-template-columns:1fr;
       }
 
       .product-card{
         min-height:auto;
+      }
+
+      .product-card h3{
+        font-size:32px;
       }
     }
 
@@ -276,28 +333,40 @@
       }
 
       .hero{
-        padding:44px 0 26px;
+        min-height:auto;
+        padding:70px 0;
       }
 
       h1{
-        font-size:31px;
+        font-size:32px;
       }
 
       .lead{
-        font-size:16px;
+        font-size:17px;
+      }
+
+      .btn,
+      .product-link{
+        width:100%;
+        text-align:center;
       }
 
       .product-card{
-        padding:22px;
+        padding:24px;
+        border-radius:24px;
       }
 
-      .product-card h2{
-        font-size:26px;
+      .product-card h3{
+        font-size:28px;
       }
 
-      .btn{
-        width:100%;
-        text-align:center;
+      .product-card p{
+        font-size:16px;
+      }
+
+      .card-bottom{
+        align-items:stretch;
+        flex-direction:column;
       }
     }
   </style>
@@ -319,67 +388,56 @@
 
   <main>
     <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Wybierz produkt</div>
+      <div class="wrap hero-inner">
         <h1>Praktyczne systemy do organizacji pracy, płatności i komunikacji</h1>
+
         <p class="lead">
           ORG HUB tworzy proste narzędzia dla klubów sportowych, małych firm i mikroprzedsiębiorców.
-          Wybierz rozwiązanie, którego potrzebujesz.
         </p>
+
+        <a class="btn btn-primary" href="#produkty">
+          Wybierz rozwiązanie, którego potrzebujesz.
+        </a>
       </div>
     </section>
 
-    <section class="products">
+    <section class="products" id="produkty">
       <div class="wrap">
-        <div class="products-grid">
+        <div class="products-head">
+          <h2>Wybierz produkt ORG HUB</h2>
+          <p>Przewiń kafel strzałką i przejdź do strony wybranego rozwiązania.</p>
+        </div>
 
-          <a class="product-card" href="multiclub/">
+        <div class="slider">
+          <article class="product-card" id="productCard">
             <div>
-              <span class="product-kicker">MultiClub</span>
-              <h2>Aplikacja do zarządzania klubem sportowym</h2>
-              <p>
+              <span class="product-kicker" id="productKicker">MultiClub</span>
+              <h3 id="productTitle">Aplikacja do zarządzania klubem sportowym</h3>
+
+              <p id="productDescription">
                 System dla klubów sportowych: wydarzenia, obecności, płatności,
                 powołania, panel zawodnika, trenera i administratora.
               </p>
 
-              <div class="features">
+              <div class="features" id="productFeatures">
                 <div class="feature">👥 Zawodnicy, trenerzy i grupy</div>
                 <div class="feature">📅 Wydarzenia, powołania i obecności</div>
                 <div class="feature">💳 Płatności, raporty i statystyki</div>
               </div>
             </div>
 
-            <span class="btn btn-primary">Zobacz aplikację klubową</span>
-          </a>
+            <div class="card-bottom">
+              <a class="product-link" id="productLink" href="multiclub/">
+                Zobacz aplikację klubową
+              </a>
 
-          <a class="product-card" href="fakturyapp/">
-            <div>
-              <span class="product-kicker">Faktury App</span>
-              <h2>Program zarządzania płatnościami dla mikroprzedsiębiorców</h2>
-              <p>
-                Lokalny program na Windows do kontroli faktur, terminów płatności,
-                rat, rozliczeń i plików KSeF.
-              </p>
-
-              <div class="features">
-                <div class="feature">📄 Faktury i dokumenty do obsługi</div>
-                <div class="feature">⏱️ Terminy płatności i zaległości</div>
-                <div class="feature">📦 Import plików KSeF XML/ZIP</div>
-              </div>
+              <div class="counter" id="productCounter">1 / 2</div>
             </div>
+          </article>
 
-            <span class="btn btn-secondary">Zobacz program dla firm</span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="note">
-      <div class="wrap">
-        <div class="note-box">
-          Każdy produkt ORG HUB ma własną stronę, cennik, dokumenty i ścieżkę sprzedaży.
-          Dzięki temu aplikacja klubowa i program dla mikroprzedsiębiorców mogą rozwijać się niezależnie.
+          <button class="arrow" type="button" id="nextProduct" aria-label="Następny produkt">
+            &gt;
+          </button>
         </div>
       </div>
     </section>
@@ -388,10 +446,77 @@
   <footer>
     <div class="wrap footer-inner">
       <div>© ORG HUB SYSTEMS / Intevero Sp. z o.o.</div>
-      <div class="footer-links">
-        <a href="mailto:kontakt@orghub.pl">Kontakt</a>
-      </div>
+      <div><a href="mailto:kontakt@orghub.pl">Kontakt</a></div>
     </div>
   </footer>
+
+  <script>
+    const products = [
+      {
+        kicker: "MultiClub",
+        title: "Aplikacja do zarządzania klubem sportowym",
+        description: "System dla klubów sportowych: wydarzenia, obecności, płatności, powołania, panel zawodnika, trenera i administratora.",
+        features: [
+          "👥 Zawodnicy, trenerzy i grupy",
+          "📅 Wydarzenia, powołania i obecności",
+          "💳 Płatności, raporty i statystyki"
+        ],
+        link: "multiclub/",
+        button: "Zobacz aplikację klubową"
+      },
+      {
+        kicker: "Faktury App",
+        title: "Program do kontroli faktur i płatności dla mikroprzedsiębiorców",
+        description: "Lokalny program na Windows do kontroli faktur, terminów płatności, rat, rozliczeń i plików KSeF.",
+        features: [
+          "📄 Faktury i dokumenty do obsługi",
+          "⏱️ Terminy płatności i zaległości",
+          "📦 Import plików KSeF XML/ZIP"
+        ],
+        link: "fakturyapp/",
+        button: "Zobacz program dla firm"
+      }
+    ];
+
+    let currentProduct = 0;
+
+    const productKicker = document.getElementById("productKicker");
+    const productTitle = document.getElementById("productTitle");
+    const productDescription = document.getElementById("productDescription");
+    const productFeatures = document.getElementById("productFeatures");
+    const productLink = document.getElementById("productLink");
+    const productCounter = document.getElementById("productCounter");
+    const nextProduct = document.getElementById("nextProduct");
+
+    function renderProduct(){
+      const product = products[currentProduct];
+
+      productKicker.textContent = product.kicker;
+      productTitle.textContent = product.title;
+      productDescription.textContent = product.description;
+      productLink.href = product.link;
+      productLink.textContent = product.button;
+      productCounter.textContent = (currentProduct + 1) + " / " + products.length;
+
+      productFeatures.innerHTML = "";
+
+      product.features.forEach(function(featureText){
+        const item = document.createElement("div");
+        item.className = "feature";
+        item.textContent = featureText;
+        productFeatures.appendChild(item);
+      });
+    }
+
+    nextProduct.addEventListener("click", function(){
+      currentProduct = currentProduct + 1;
+
+      if(currentProduct >= products.length){
+        currentProduct = 0;
+      }
+
+      renderProduct();
+    });
+  </script>
 </body>
 </html>
