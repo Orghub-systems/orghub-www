@@ -606,6 +606,19 @@ footer{
   .doc-card h2{
     font-size:24px;
   }
+
+  .doc-card h3{
+  margin:24px 0 10px;
+  font-size:20px;
+}
+
+.box{
+  background:#111116;
+  border:1px solid #2d2d37;
+  border-radius:16px;
+  padding:16px;
+  margin:14px 0;
+}
 }
   
 
