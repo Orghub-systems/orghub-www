@@ -552,5 +552,60 @@ footer{
   .legal-document h2{
     font-size:22px;
   }
-  
+
+  /* Dokumenty prawne */
+
+.doc{
+  padding:18px 0 44px;
 }
+
+.doc-card{
+  background:linear-gradient(180deg,var(--card),var(--card2));
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:28px;
+}
+
+.doc-card h2{
+  margin:30px 0 12px;
+  font-size:28px;
+}
+
+.doc-card h2:first-child{
+  margin-top:0;
+}
+
+.doc-card p{
+  margin:0 0 12px;
+  color:#fff;
+}
+
+.doc-card ol,
+.doc-card ul{
+  margin:0 0 14px 0;
+  padding-left:22px;
+}
+
+.doc-card li{
+  margin-bottom:8px;
+}
+
+.notice{
+  background:#111116;
+  border:1px solid #2d2d37;
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:20px;
+}
+
+@media (max-width:900px){
+  .doc-card{
+    padding:20px;
+  }
+
+  .doc-card h2{
+    font-size:24px;
+  }
+}
+  
+
