@@ -1,0 +1,10 @@
+{
+  "latest_version": "1.0.3",
+  "min_supported_version": "1.0.3",
+  "download_url": "https://orghub.pl/fakturyapp/FakturyAppSetup.exe",
+  "release_notes": [
+    "Aktualna wersja produkcyjna Faktury App.",
+    "Dodano obsługę informacji o dostępnych aktualizacjach."
+  ],
+  "force_update": false
+}
