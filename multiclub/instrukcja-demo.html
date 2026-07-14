@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Instrukcja MultiClub — przewodnik krok po kroku</title>
+  <meta name="description" content="Instrukcja MultiClub krok po kroku: konfiguracja klubu, aktywacja, panel administratora, rejestracja trenerów i zawodników oraz księgowanie wpłat." />
+
+  <link rel="stylesheet" href="../assets/css/multiclub.css" />
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .instruction-frame {
+      display: block;
+      width: 100%;
+      min-height: 480px;
+      border: 0;
+      background: #0b0b0d;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="brand-mark"></div>
+        <div>ORG HUB MULTICLUB</div>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html">Start</a>
+        <a href="funkcje.html">Funkcje</a>
+        <a href="cennik.html">Cennik</a>
+        <a href="instrukcja-demo.html" aria-current="page">Instrukcja</a>
+        <a href="faq.html">FAQ</a>
+        <a href="demo.html" class="btn btn-primary">DEMO</a>
+        <a href="/kontakt.html" class="btn btn-secondary">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <iframe
+    id="instructionFrame"
+    class="instruction-frame"
+    src="instrukcja.html"
+    title="Instrukcja MultiClub krok po kroku"
+  ></iframe>
+
+  <script>
+    (function () {
+      const frame = document.getElementById('instructionFrame');
+      const topbar = document.querySelector('.topbar');
+
+      function resizeFrame() {
+        const topbarHeight = topbar
+          ? topbar.getBoundingClientRect().height
+          : 0;
+
+        frame.style.height = Math.max(
+          480,
+          window.innerHeight - topbarHeight
+        ) + 'px';
+      }
+
+      frame.addEventListener('load', function () {
+        try {
+          const innerDocument = frame.contentDocument;
+          const innerTopbar = innerDocument.querySelector('.topbar');
+
+          if (innerTopbar) {
+            innerTopbar.style.display = 'none';
+          }
+        } catch (error) {
+          console.warn('Nie udało się ukryć wewnętrznego paska instrukcji.', error);
+        }
+
+        resizeFrame();
+      });
+
+      window.addEventListener('resize', resizeFrame);
+      resizeFrame();
+    })();
+  </script>
+</body>
+</html>
