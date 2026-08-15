@@ -23,7 +23,7 @@
       <div class="wrap">
         <div class="eyebrow">Dokumenty RODO</div>
         <h1>Lista podprocesorów ORG HUB</h1>
-        <p class="lead">Poniżej znajduje się informacja o głównych kategoriach dostawców technicznych, którzy mogą wspierać działanie ORG HUB i przetwarzać dane w zakresie niezbędnym do świadczenia usługi.</p>
+        <p class="lead">Poniżej znajduje się informacja o głównych dostawcach technicznych, którzy mogą wspierać działanie ORG HUB i przetwarzać dane w zakresie niezbędnym do świadczenia usługi.</p>
       </div>
     </section>
 
@@ -32,11 +32,11 @@
         <div class="doc-card">
           <div class="notice">
             <strong>INTEVERO Sp. z o.o.</strong>
-            <div class="muted" style="margin-top:8px;">41-300 Dąbrowa Górnicza, ul. Konopnickiej 60F I KRS 0001229354 I NIP 6292521630 I REGON 544274934 I kontakt@orghub.pl I 18.07.2026 r.</div>
+            <div class="muted" style="margin-top:8px;">41-300 Dąbrowa Górnicza, ul. Konopnickiej 60F I KRS 0001229354 I NIP 6292521630 I REGON 544274934 I kontakt@orghub.pl I 15.08.2026 r.</div>
           </div>
 
           <div class="box">
-            <p><strong>Cel listy:</strong> ORG HUB działa w modelu SaaS. Do świadczenia usługi potrzebni są dostawcy infrastruktury, automatyzacji, bezpieczeństwa, poczty i utrzymania systemu. Lista pomaga Klubom ocenić, jakie kategorie podmiotów wspierają przetwarzanie danych.</p>
+            <p><strong>Cel listy:</strong> ORG HUB działa w modelu SaaS. Dane aplikacji i dane klubowe są obsługiwane w środowisku Supabase. ORG HUB nie wykorzystuje już Google Apps Script ani Google Sheets jako bazy danych lub backendu aplikacji klubowej.</p>
             <p class="muted" style="margin:0;">Lista może być aktualizowana w przypadku zmiany architektury, dostawców lub zakresu usług. Istotne zmiany dotyczące danych klubowych mogą być komunikowane przez aktualizację tej strony, wiadomość e-mail, komunikat w aplikacji albo inną formę elektroniczną.</p>
           </div>
 
@@ -47,9 +47,9 @@
             </thead>
             <tbody>
               <tr>
-                <td>Google / Google Workspace / Google Cloud / Google Apps Script</td>
-                <td>Infrastruktura aplikacyjna, arkusze, automatyzacja, poczta lub narzędzia administracyjne wykorzystywane do obsługi ORG HUB.</td>
-                <td>Dane klubowe, dane konfiguracji, dane użytkowników, dane techniczne i operacyjne — w zakresie zależnym od funkcji używanej przez Klub.</td>
+                <td>Supabase</td>
+                <td>Baza danych, uwierzytelnianie, infrastruktura backendowa, API i usługi techniczne wykorzystywane do działania aplikacji ORG HUB.</td>
+                <td>Dane klubowe, dane konfiguracji klubów, dane użytkowników, role i uprawnienia, dane wydarzeń, płatności, raportów, statystyk, logi techniczne i dane operacyjne — w zakresie zależnym od funkcji używanej przez Klub.</td>
                 <td>Możliwy transfer poza EOG zgodnie z mechanizmami prawnymi stosowanymi przez dostawcę.</td>
               </tr>
               <tr>
@@ -85,27 +85,33 @@
             </tbody>
           </table>
 
-          <h2>2. Operatorzy płatności</h2>
+          <h2>2. Google Apps Script i Google Sheets</h2>
+          <ol>
+            <li>Google Apps Script i Google Sheets nie są już wykorzystywane jako baza danych ani backend aplikacji klubowej ORG HUB.</li>
+            <li>Historyczne wzmianki o arkuszach lub Apps Script należy traktować jako nieaktualne w odniesieniu do aktualnej architektury aplikacji klubowej.</li>
+          </ol>
+
+          <h2>3. Operatorzy płatności</h2>
           <ol>
             <li>Na dzień publikacji tej listy ORG HUB może obsługiwać informacje o płatnościach klubowych w modelu ewidencyjnym lub przez import danych udostępnionych przez Klub.</li>
             <li>Jeżeli zostanie uruchomiona produkcyjna integracja z operatorem płatności online, lista zostanie uzupełniona o właściwego operatora, zakres danych i zasady przekazywania informacji.</li>
           </ol>
 
-          <h2>3. Zmiana podprocesorów</h2>
+          <h2>4. Zmiana podprocesorów</h2>
           <ol>
             <li>Intevero może korzystać z nowych lub innych podprocesorów, jeżeli jest to potrzebne do utrzymania, rozwoju, bezpieczeństwa albo prawidłowego świadczenia ORG HUB.</li>
             <li>W przypadku istotnej zmiany dotyczącej danych klubowych Intevero może poinformować Kluby przez aktualizację niniejszej listy, wiadomość e-mail, komunikat w aplikacji albo inną formę elektroniczną.</li>
             <li>Klub może zgłosić uzasadniony sprzeciw wobec nowego podprocesora, jeżeli wykaże, że korzystanie z niego istotnie narusza wymagania ochrony danych osobowych.</li>
           </ol>
 
-          <h2>4. Dane testowe i demo</h2>
+          <h2>5. Dane testowe i demo</h2>
           <ol>
             <li>Środowiska demonstracyjne ORG HUB powinny zawierać dane fikcyjne lub testowe.</li>
             <li>Nie należy wprowadzać do środowisk demo danych rzeczywistych zawodników, trenerów, opiekunów ani innych osób bez podstawy prawnej i uzgodnienia z Intevero.</li>
             <li>Dane demo mogą być okresowo resetowane, usuwane lub nadpisywane.</li>
           </ol>
 
-          <h2>5. Kontakt</h2>
+          <h2>6. Kontakt</h2>
           <p>W sprawach dotyczących podprocesorów i przetwarzania danych można kontaktować się pod adresem: <strong>kontakt@orghub.pl</strong>.</p>
         </div>
       </div>
