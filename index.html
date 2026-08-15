@@ -46,31 +46,25 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/common.css" />
 
   <style>
     :root{
       --bg:#f4f8fb;
-      --bg2:#eaf2f8;
       --panel:#ffffff;
-      --ink:#102033;
+      --panel2:#f8fbfe;
+      --ink:#122033;
       --ink2:#34475e;
-      --muted:#6b7b91;
-      --line:#dbe6ef;
-      --blue:#2166f3;
-      --blue2:#154bd7;
-      --cyan:#22b8cf;
+      --muted:#66778d;
+      --line:#d9e3ec;
+      --blue:#1f5eff;
+      --blue-dark:#1648c7;
+      --cyan:#34aadc;
       --green:#16a36b;
-      --lime:#c7f24f;
-      --orange:#ff8a3d;
-      --red:#d71920;
-      --shadow:0 24px 70px rgba(16,32,51,.13);
-      --soft-shadow:0 16px 44px rgba(16,32,51,.08);
+      --orange:#e87722;
+      --shadow:0 24px 70px rgba(18,32,51,.11);
+      --soft-shadow:0 14px 36px rgba(18,32,51,.07);
       --max:1160px;
-      --radius:28px;
     }
 
     *{box-sizing:border-box;}
@@ -78,188 +72,102 @@
     body{
       margin:0;
       min-height:100vh;
-      font-family:'Inter', Arial, Helvetica, sans-serif;
+      font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(circle at 10% 0%, rgba(34,184,207,.25), transparent 34%),
-        radial-gradient(circle at 92% 10%, rgba(199,242,79,.32), transparent 26%),
-        linear-gradient(180deg,#f7fbff 0%, var(--bg) 48%, #ffffff 100%);
+        radial-gradient(circle at 8% 0%, rgba(31,94,255,.10), transparent 30%),
+        radial-gradient(circle at 94% 4%, rgba(52,170,220,.13), transparent 28%),
+        linear-gradient(180deg,#f8fbff 0%, var(--bg) 50%, #fff 100%);
       line-height:1.55;
+      -webkit-font-smoothing:antialiased;
     }
+
     a{color:inherit;text-decoration:none;}
     .wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 22px;}
-    .display{font-family:'Space Grotesk','Inter',Arial,sans-serif;}
 
-    header.org-topbar{
-      position:sticky;
-      top:0;
-      z-index:20;
-      background:rgba(247,251,255,.82);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(219,230,239,.8);
-    }
-    .org-topbar-inner{
-      min-height:74px;
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 22px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:22px;
-    }
-    .org-brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:-.02em;}
-    .org-brand-mark{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--blue),var(--cyan));
-      box-shadow:0 12px 30px rgba(33,102,243,.28);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:#fff;
-      position:relative;
-      overflow:hidden;
-    }
-    .org-brand-mark::before{content:"";position:absolute;inset:auto -18px -18px auto;width:38px;height:38px;border-radius:50%;background:rgba(199,242,79,.78);}
-    .org-brand-mark::after{content:"OH";position:relative;font-size:13px;font-weight:900;}
-    .org-nav{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-    .org-nav a{font-size:14px;font-weight:800;color:var(--ink2);padding:10px 13px;border-radius:999px;transition:.18s ease;}
-    .org-nav a:hover{background:#fff;color:var(--blue);box-shadow:var(--soft-shadow);}
+    .hero{padding:78px 0 46px;}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:34px;align-items:center;}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:8px 12px;border-radius:999px;background:#e8f0ff;border:1px solid #c7d8ff;color:var(--blue-dark);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+    .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);}
+    h1{margin:0 0 22px;font-size:56px;line-height:1.03;letter-spacing:-.045em;font-weight:900;color:var(--ink);}
+    .lead{max-width:680px;margin:0 0 30px;color:var(--ink2);font-size:19px;}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:999px;font-weight:850;border:1px solid var(--line);background:#fff;transition:.18s ease;}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(18,32,51,.09);}
+    .btn-primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 14px 30px rgba(31,94,255,.18);}
+    .btn-primary:hover{background:var(--blue-dark);border-color:var(--blue-dark);}
+    .btn-secondary{background:#fff;color:var(--ink);}
+    .trust-row{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:14px;font-weight:650;}
+    .trust-row span{padding:8px 11px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.72);}
 
-    .hero{padding:74px 0 44px;position:relative;overflow:hidden;}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr);gap:52px;align-items:center;}
-    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 12px;border-radius:999px;background:#fff;border:1px solid var(--line);box-shadow:var(--soft-shadow);color:var(--blue2);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;}
-    .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(22,163,107,.12);}
-    h1{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:60px;line-height:1.02;margin:0 0 22px;letter-spacing:-.045em;max-width:720px;}
-    h1 span{color:var(--blue);}
-    .lead{font-size:20px;color:var(--ink2);margin:0 0 32px;max-width:620px;}
-    .cta-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;border-radius:999px;font-weight:900;border:1px solid transparent;transition:.18s ease;}
-    .btn:hover{transform:translateY(-2px);}
-    .btn-primary{background:var(--blue);color:#fff;box-shadow:0 18px 36px rgba(33,102,243,.25);}
-    .btn-primary:hover{background:var(--blue2);}
-    .btn-secondary{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--soft-shadow);}
-    .trust-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--muted);font-weight:700;font-size:14px;}
-    .trust-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:999px;padding:8px 12px;}
+    .product-visual{position:relative;min-height:500px;}
+    .visual-card{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);overflow:hidden;}
+    .phone-card{right:34px;top:0;width:310px;padding:16px;background:#122033;color:#fff;}
+    .phone-screen{border-radius:22px;background:#f3f7fb;color:var(--ink);padding:16px;min-height:430px;}
+    .phone-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;font-size:12px;font-weight:800;color:var(--muted);}
+    .app-title{font-size:18px;font-weight:900;line-height:1.15;margin-bottom:14px;color:var(--ink);}
+    .app-event{border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px;margin-bottom:12px;}
+    .app-event b{display:block;font-size:14px;margin-bottom:5px;}
+    .app-event span{display:block;color:var(--muted);font-size:13px;}
+    .app-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #e7eef5;font-size:13px;}
+    .app-row:last-child{border-bottom:0;}
+    .status{margin-left:auto;padding:4px 8px;border-radius:999px;background:#e8f7ef;color:var(--green);font-size:11px;font-weight:800;}
+    .floating{left:0;bottom:42px;width:270px;padding:20px;}
+    .floating h3{margin:0 0 8px;font-size:18px;}
+    .floating p{margin:0;color:var(--muted);font-size:14px;}
+    .metric{right:0;bottom:0;width:210px;padding:18px;}
+    .metric .n{font-size:34px;font-weight:900;color:var(--blue-dark);line-height:1;}
+    .metric .l{margin-top:8px;color:var(--muted);font-size:13px;font-weight:700;}
 
-    .app-visual{position:relative;min-height:536px;}
-    .bubble{position:absolute;border-radius:999px;filter:blur(.2px);}
-    .bubble.one{width:168px;height:168px;background:rgba(199,242,79,.58);right:12px;top:8px;}
-    .bubble.two{width:140px;height:140px;background:rgba(34,184,207,.28);left:8px;bottom:74px;}
-    .phone{
-      position:absolute;
-      right:72px;
-      top:18px;
-      width:278px;
-      min-height:510px;
-      border-radius:38px;
-      background:#0d1726;
-      padding:13px;
-      box-shadow:0 34px 80px rgba(16,32,51,.27);
-      border:1px solid rgba(255,255,255,.45);
-      transform:rotate(2deg);
-    }
-    .phone-screen{background:#f6f9fc;border-radius:29px;min-height:484px;overflow:hidden;padding:16px;color:var(--ink);}
-    .screen-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;}
-    .club-pill{background:#102033;color:#fff;border-radius:999px;padding:7px 10px;font-size:11px;font-weight:900;}
-    .screen-date{font-size:11px;font-weight:900;color:var(--muted);}
-    .event-card{background:#fff;border:1px solid var(--line);border-radius:23px;padding:16px;margin-bottom:12px;box-shadow:0 12px 28px rgba(16,32,51,.07);}
-    .event-type{font-size:11px;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
-    .event-title{font-weight:900;font-size:20px;line-height:1.1;margin-bottom:8px;}
-    .event-meta{display:flex;gap:7px;flex-wrap:wrap;color:var(--muted);font-size:12px;font-weight:800;}
-    .people{display:grid;gap:8px;margin-top:14px;}
-    .person{display:flex;align-items:center;gap:9px;background:#f4f8fb;border-radius:14px;padding:8px 9px;font-size:12px;font-weight:800;}
-    .avatar{width:24px;height:24px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;}
-    .state{margin-left:auto;border-radius:999px;padding:4px 7px;font-size:10px;font-weight:900;}
-    .state.ok{background:rgba(22,163,107,.13);color:var(--green);}
-    .state.wait{background:rgba(255,138,61,.14);color:var(--orange);}
-    .mini-chart{height:90px;background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid var(--line);border-radius:20px;padding:13px;margin-top:12px;display:flex;align-items:end;gap:8px;}
-    .bar{flex:1;border-radius:999px 999px 4px 4px;background:linear-gradient(180deg,var(--cyan),var(--blue));min-height:18px;}
-    .bar:nth-child(2){height:54px}.bar:nth-child(3){height:68px}.bar:nth-child(4){height:42px}.bar:nth-child(5){height:76px}.bar:nth-child(6){height:58px}
-    .float-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:22px;padding:15px 16px;box-shadow:var(--shadow);z-index:4;}
-    .float-card.pay{left:8px;top:82px;width:214px;}
-    .float-card.call{right:0;bottom:48px;width:226px;}
-    .float-label{font-size:11px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
-    .float-value{font-size:23px;font-weight:900;letter-spacing:-.03em;}
-    .float-sub{font-size:12px;color:var(--muted);font-weight:700;margin-top:3px;}
+    .clients{padding:16px 0 46px;}
+    .client-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+    .client-pill{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;text-align:center;font-weight:800;color:var(--muted);box-shadow:var(--soft-shadow);}
 
-    .logo-strip{padding:20px 0 8px;}
-    .strip-box{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:center;}
-    .fake-logo{min-width:138px;text-align:center;padding:12px 14px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 25px rgba(16,32,51,.05);color:var(--muted);font-weight:900;font-size:12px;letter-spacing:.04em;text-transform:uppercase;}
+    .section{padding:54px 0;}
+    .section-head{max-width:760px;margin-bottom:28px;}
+    .section-head.center{text-align:center;margin-left:auto;margin-right:auto;}
+    .section-head h2{margin:0 0 10px;font-size:38px;line-height:1.1;letter-spacing:-.035em;font-weight:900;}
+    .section-head p{margin:0;color:var(--muted);font-size:17px;}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+    .feature-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--soft-shadow);}
+    .feature-icon{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:#e8f0ff;color:var(--blue-dark);font-weight:900;margin-bottom:16px;}
+    .feature-card h3{margin:0 0 8px;font-size:20px;letter-spacing:-.01em;}
+    .feature-card p{margin:0;color:var(--muted);font-size:15px;}
 
-    .section{padding:74px 0;}
-    .section-head{max-width:740px;margin:0 auto 34px;text-align:center;}
-    .section-head h2{font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:42px;line-height:1.08;margin:0 0 12px;letter-spacing:-.035em;}
-    .section-head p{margin:0;color:var(--ink2);font-size:18px;}
+    .product-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch;}
+    .product-card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px;box-shadow:var(--shadow);display:flex;flex-direction:column;justify-content:space-between;gap:24px;}
+    .product-card.primary{background:linear-gradient(135deg,#fff,#eef5ff);}
+    .product-card h3{margin:0 0 10px;font-size:28px;letter-spacing:-.025em;line-height:1.1;}
+    .product-card p{margin:0;color:var(--muted);font-size:16px;}
+    .product-list{display:grid;gap:10px;margin-top:18px;}
+    .product-list div{padding:12px 13px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.72);font-weight:750;}
 
-    .function-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
-    .function-card{position:relative;overflow:hidden;min-height:228px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--soft-shadow);transition:.18s ease;}
-    .function-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);}
-    .function-card::after{content:"";position:absolute;right:-38px;bottom:-38px;width:130px;height:130px;border-radius:42px;background:rgba(33,102,243,.09);transform:rotate(18deg);}
-    .function-card.green::after{background:rgba(22,163,107,.12);}
-    .function-card.orange::after{background:rgba(255,138,61,.14);}
-    .icon{width:50px;height:50px;border-radius:18px;display:flex;align-items:center;justify-content:center;background:#eff5ff;color:var(--blue);font-size:23px;margin-bottom:18px;}
-    .function-card.green .icon{background:rgba(22,163,107,.12);color:var(--green);}
-    .function-card.orange .icon{background:rgba(255,138,61,.16);color:var(--orange);}
-    .function-card h3{font-size:21px;line-height:1.15;margin:0 0 10px;letter-spacing:-.02em;}
-    .function-card p{margin:0;color:var(--muted);font-weight:600;}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--soft-shadow);}
+    summary{font-weight:850;cursor:pointer;}
+    details p{margin:12px 0 0;color:var(--muted);}
 
-    .products-section{padding:74px 0 86px;background:#fff;}
-    .product-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:22px;align-items:stretch;}
-    .product-card{position:relative;overflow:hidden;border-radius:34px;padding:30px;border:1px solid var(--line);box-shadow:var(--soft-shadow);background:linear-gradient(135deg,#102033,#163a74);color:#fff;min-height:390px;display:flex;flex-direction:column;justify-content:space-between;}
-    .product-card::before{content:"";position:absolute;right:-80px;top:-80px;width:230px;height:230px;border-radius:50%;background:rgba(199,242,79,.25);}
-    .product-card.light{background:linear-gradient(135deg,#f7fbff,#eef7ff);color:var(--ink);}
-    .product-card.light::before{background:rgba(33,102,243,.11);}
-    .product-tag{position:relative;display:inline-flex;width:max-content;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.14);font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:18px;}
-    .product-card.light .product-tag{background:#fff;color:var(--blue);border:1px solid var(--line);}
-    .product-card h3{position:relative;font-family:'Space Grotesk','Inter',Arial,sans-serif;font-size:38px;line-height:1.02;margin:0 0 14px;letter-spacing:-.035em;max-width:560px;}
-    .product-card p{position:relative;margin:0;color:rgba(255,255,255,.76);font-size:17px;max-width:560px;}
-    .product-card.light p{color:var(--ink2);}
-    .product-visual{position:relative;margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:500px;}
-    .mini-tile{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:14px;font-weight:900;min-height:82px;}
-    .product-card.light .mini-tile{background:#fff;border-color:var(--line);box-shadow:0 10px 22px rgba(16,32,51,.05);}
-    .mini-tile small{display:block;color:rgba(255,255,255,.62);font-size:11px;margin-bottom:4px;}
-    .product-card.light .mini-tile small{color:var(--muted);}
-    .product-actions{position:relative;margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;}
-    .product-link{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:999px;padding:0 20px;background:#fff;color:var(--blue);font-weight:900;}
-    .product-card.light .product-link{background:var(--blue);color:#fff;}
-
-    .faq{padding:72px 0 88px;background:linear-gradient(180deg,#fff 0%,#f4f8fb 100%);}
-    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-    .faq-item{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 22px;box-shadow:0 10px 24px rgba(16,32,51,.05);}
-    .faq-item h3{font-size:18px;margin:0 0 8px;}
-    .faq-item p{margin:0;color:var(--muted);font-weight:600;}
-
-    footer{background:#0f1f33;color:#d7e1ee;padding:28px 0;}
-    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:700;}
+    footer{border-top:1px solid var(--line);background:#fff;margin-top:34px;}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:24px 0;color:var(--muted);font-size:14px;}
     .footer-links{display:flex;gap:14px;flex-wrap:wrap;}
-    .footer-links a{color:#d7e1ee;opacity:.82;}
 
     @media (max-width:980px){
-      .hero-grid,.product-grid{grid-template-columns:1fr;}
-      .app-visual{min-height:520px;}
-      .phone{left:50%;right:auto;transform:translateX(-50%) rotate(2deg);}
-      .float-card.pay{left:0;top:42px;}
-      .float-card.call{right:0;}
-      .function-grid{grid-template-columns:1fr 1fr;}
-      h1{font-size:48px;}
+      .hero-grid,.product-grid,.faq-grid{grid-template-columns:1fr;}
+      .product-visual{min-height:470px;}
+      .phone-card{right:0;}
+      .feature-grid,.client-strip{grid-template-columns:1fr 1fr;}
+      h1{font-size:44px;}
     }
-    @media (max-width:680px){
-      .org-nav{display:none;}
-      .hero{padding:48px 0 26px;}
-      h1{font-size:38px;}
+    @media (max-width:620px){
+      .hero{padding:46px 0 28px;}
+      h1{font-size:34px;}
       .lead{font-size:17px;}
-      .cta-row{flex-direction:column;align-items:stretch;}
-      .function-grid,.faq-grid{grid-template-columns:1fr;}
-      .app-visual{min-height:500px;overflow:hidden;}
-      .phone{width:250px;right:auto;}
-      .float-card{display:none;}
-      .product-card{padding:24px;border-radius:28px;}
-      .product-card h3{font-size:30px;}
-      .product-visual{grid-template-columns:1fr;}
-      .section-head h2{font-size:32px;}
+      .btn{width:100%;}
+      .feature-grid,.client-strip{grid-template-columns:1fr;}
+      .product-visual{min-height:auto;display:grid;gap:14px;}
+      .visual-card{position:static;width:100%;}
+      .phone-card{padding:12px;}
+      .phone-screen{min-height:auto;}
     }
   </style>
 </head>
@@ -276,7 +184,7 @@
         <a href="#funkcje">Funkcje</a>
         <a href="#produkty">Produkty</a>
         <a href="/kontakt.html">Kontakt</a>
-        <a href="/polityka-prywatnosci.html">Prywatność</a>
+        <a class="org-nav-cta" href="multiclub/">Aplikacja klubowa</a>
       </nav>
     </div>
   </header>
@@ -285,179 +193,111 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <div class="eyebrow"><span class="dot"></span> Aplikacje dla klubów i małych firm</div>
-          <h1>Porządek w klubie i firmie. <span>Jednym systemem.</span></h1>
-          <p class="lead">
-            ORG HUB porządkuje wydarzenia, płatności, dokumenty i codzienną komunikację — tak, żeby trener, zawodnik, administrator albo właściciel firmy widział dokładnie to, czego potrzebuje.
-          </p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="multiclub/">Zobacz aplikację klubową →</a>
-            <a class="btn btn-secondary" href="fakturyapp/">Program do faktur</a>
+          <div class="eyebrow">Systemy organizacyjne dla klubów i małych firm</div>
+          <h1>Porządek w wydarzeniach, płatnościach i codziennej pracy.</h1>
+          <p class="lead">ORG HUB tworzy praktyczne aplikacje, które zastępują arkusze, chaotyczne wiadomości i ręczne kontrolowanie terminów. Wszystko jest w jednym miejscu, z jasnymi rolami i aktualnymi danymi.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="multiclub/">Zobacz aplikację dla klubów</a>
+            <a class="btn btn-secondary" href="fakturyapp/">Zobacz program do faktur</a>
           </div>
           <div class="trust-row">
-            <span class="trust-badge">✓ Panele ról</span>
-            <span class="trust-badge">✓ Supabase backend</span>
-            <span class="trust-badge">✓ PWA na telefon</span>
+            <span>Supabase jako baza danych</span>
+            <span>PWA na telefon</span>
+            <span>Panel zawodnika, trenera i admina</span>
           </div>
         </div>
 
-        <div class="app-visual" aria-label="Podgląd aplikacji ORG HUB">
-          <div class="bubble one"></div>
-          <div class="bubble two"></div>
-          <div class="float-card pay">
-            <div class="float-label">Płatności</div>
-            <div class="float-value">87%</div>
-            <div class="float-sub">składek opłaconych</div>
-          </div>
-          <div class="phone">
+        <div class="product-visual" aria-label="Podgląd aplikacji ORG HUB">
+          <div class="visual-card phone-card">
             <div class="phone-screen">
-              <div class="screen-head">
-                <div class="club-pill">WARRIORS</div>
-                <div class="screen-date">DZIŚ · 18:30</div>
-              </div>
-              <div class="event-card">
-                <div class="event-type">Powołanie</div>
-                <div class="event-title">Trening na lodzie</div>
-                <div class="event-meta"><span>📍 Sosnowiec</span><span>⏱ 90 min</span></div>
-                <div class="people">
-                  <div class="person"><span class="avatar">K</span>Kubek<span class="state ok">obecny</span></div>
-                  <div class="person"><span class="avatar">A</span>Artur<span class="state ok">obecny</span></div>
-                  <div class="person"><span class="avatar">M</span>Mariusz<span class="state wait">czeka</span></div>
-                </div>
-              </div>
-              <div class="event-card">
-                <div class="event-type">Statystyki miesiąca</div>
-                <div class="mini-chart"><div class="bar" style="height:38px"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div>
-              </div>
+              <div class="phone-top"><span>ORG HUB</span><span>LIVE</span></div>
+              <div class="app-title">Najbliższe wydarzenie</div>
+              <div class="app-event"><b>Trening grupy senior</b><span>Dzisiaj · 20:30 · Lodowisko</span></div>
+              <div class="app-row"><strong>04</strong> Kowalski J. <span class="status">obecny</span></div>
+              <div class="app-row"><strong>07</strong> Nowak P. <span class="status">obecny</span></div>
+              <div class="app-row"><strong>09</strong> Zieliński M. <span class="status">czeka</span></div>
+              <div class="app-event"><b>Płatności</b><span>Składki i zajęcia dodatkowe pod kontrolą administratora.</span></div>
             </div>
           </div>
-          <div class="float-card call">
-            <div class="float-label">Najbliższe</div>
-            <div class="float-value">Mecz · sobota</div>
-            <div class="float-sub">lista obecności aktualizuje się na żywo</div>
+          <div class="visual-card floating">
+            <h3>Jedna aplikacja dla całego klubu</h3>
+            <p>Zawodnik widzi swoje sprawy, trener zarządza grupą, administrator ma pełny obraz.</p>
+          </div>
+          <div class="visual-card metric">
+            <div class="n">3</div>
+            <div class="l">panele użytkowników w jednym systemie</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="logo-strip" aria-label="Typy organizacji">
-      <div class="wrap strip-box">
-        <div class="fake-logo">Kluby sportowe</div>
-        <div class="fake-logo">Akademie</div>
-        <div class="fake-logo">Trenerzy</div>
-        <div class="fake-logo">Stowarzyszenia</div>
-        <div class="fake-logo">Mikrofirmy</div>
+    <section class="clients">
+      <div class="wrap client-strip">
+        <div class="client-pill">Kluby sportowe</div>
+        <div class="client-pill">Akademie</div>
+        <div class="client-pill">Trenerzy</div>
+        <div class="client-pill">Stowarzyszenia</div>
+        <div class="client-pill">Mikrofirmy</div>
       </div>
     </section>
 
     <section class="section" id="funkcje">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Najważniejsze sprawy zebrane w czytelne moduły.</h2>
-          <p>Nie robimy aplikacji „do wszystkiego”. ORG HUB ma uporządkować konkretne procesy: wydarzenia, ludzi, płatności, dokumenty i raporty.</p>
+        <div class="section-head center">
+          <h2>Najważniejsze obszary w jednym systemie</h2>
+          <p>ORG HUB nie próbuje być wszystkim naraz. Porządkuje te elementy, które w klubie albo małej firmie najczęściej uciekają spod kontroli.</p>
         </div>
-
-        <div class="function-grid">
-          <article class="function-card">
-            <div class="icon">📅</div>
-            <h3>Wydarzenia i powołania</h3>
-            <p>Treningi, mecze, wyjazdy i szybkie potwierdzenia obecności w telefonie.</p>
-          </article>
-          <article class="function-card green">
-            <div class="icon">👥</div>
-            <h3>Zawodnicy, trenerzy i grupy</h3>
-            <p>Osobne role i dostęp tylko do tych danych, które są potrzebne danej osobie.</p>
-          </article>
-          <article class="function-card orange">
-            <div class="icon">💳</div>
-            <h3>Płatności i raporty</h3>
-            <p>Status składek, zajęcia dodatkowe, raporty i dane finansowe klubu w jednym miejscu.</p>
-          </article>
-          <article class="function-card green">
-            <div class="icon">📲</div>
-            <h3>Aplikacja na pulpicie</h3>
-            <p>PWA działa z ikoną klubu na telefonie, bez szukania linku w wiadomościach.</p>
-          </article>
-          <article class="function-card">
-            <div class="icon">🔔</div>
-            <h3>Powiadomienia</h3>
-            <p>Komunikaty organizacyjne, powołania i przypomnienia trafiają tam, gdzie trzeba.</p>
-          </article>
-          <article class="function-card orange">
-            <div class="icon">📄</div>
-            <h3>Dokumenty i faktury</h3>
-            <p>Osobny produkt ORG HUB pomaga pilnować dokumentów, płatności i terminów w firmie.</p>
-          </article>
+        <div class="feature-grid">
+          <article class="feature-card"><div class="feature-icon">01</div><h3>Użytkownicy i role</h3><p>Oddzielne widoki dla zawodnika, trenera i administratora. Każdy widzi to, co jest dla niego potrzebne.</p></article>
+          <article class="feature-card"><div class="feature-icon">02</div><h3>Wydarzenia i obecności</h3><p>Terminy, powołania, potwierdzenia i obecności bez przekopywania wiadomości na czacie.</p></article>
+          <article class="feature-card"><div class="feature-icon">03</div><h3>Płatności</h3><p>Składki, zajęcia dodatkowe, statusy płatności i rozliczenia w panelu administratora.</p></article>
+          <article class="feature-card"><div class="feature-icon">04</div><h3>Raporty</h3><p>Zestawienia dla klubu, trenerów i administratora bez ręcznego liczenia w kilku plikach.</p></article>
+          <article class="feature-card"><div class="feature-icon">05</div><h3>Aplikacja na telefonie</h3><p>Klub może działać jako PWA z własną ikoną i szybkim dostępem z ekranu telefonu.</p></article>
+          <article class="feature-card"><div class="feature-icon">06</div><h3>Dane w Supabase</h3><p>Aktualna architektura opiera dane aplikacji i dane klubowe o Supabase.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="products-section" id="produkty">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Dwa produkty. Jeden kierunek: mniej chaosu.</h2>
-          <p>Wybierz część ORG HUB, która odpowiada Twojej organizacji.</p>
-        </div>
+    <section class="section" id="produkty">
+      <div class="wrap product-grid">
+        <article class="product-card primary">
+          <div>
+            <h3>Aplikacja do zarządzania klubem sportowym</h3>
+            <p>System dla klubów sportowych: zawodnicy, trenerzy, grupy, wydarzenia, obecności, płatności, powołania, raporty i statystyki.</p>
+            <div class="product-list">
+              <div>Panel zawodnika, trenera i administratora</div>
+              <div>Personalizacja pod klub i sezon</div>
+              <div>30 dni testu bez opłat</div>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="multiclub/">Przejdź do aplikacji klubowej</a>
+        </article>
 
-        <div class="product-grid">
-          <article class="product-card">
-            <div>
-              <div class="product-tag">Dla klubów sportowych</div>
-              <h3>Aplikacja do zarządzania klubem sportowym</h3>
-              <p>Panel administratora, trenera i zawodnika. Wydarzenia, obecności, płatności, powołania, statystyki i komunikacja w jednym środowisku.</p>
-              <div class="product-visual">
-                <div class="mini-tile"><small>Panel</small>Admin</div>
-                <div class="mini-tile"><small>Panel</small>Trener</div>
-                <div class="mini-tile"><small>Panel</small>Zawodnik</div>
-              </div>
+        <article class="product-card">
+          <div>
+            <h3>Program do kontroli faktur i płatności</h3>
+            <p>Lokalny program na Windows dla mikroprzedsiębiorców: faktury, terminy, raty, rozliczenia i import plików KSeF XML/ZIP.</p>
+            <div class="product-list">
+              <div>Kontrola terminów płatności</div>
+              <div>Import dokumentów KSeF</div>
+              <div>Porządek w codziennych rozliczeniach</div>
             </div>
-            <div class="product-actions">
-              <a class="product-link" href="multiclub/">Zobacz aplikację klubową →</a>
-            </div>
-          </article>
-
-          <article class="product-card light">
-            <div>
-              <div class="product-tag">Dla mikrofirm</div>
-              <h3>Program do kontroli faktur i płatności</h3>
-              <p>Lokalny program na Windows do porządkowania faktur, terminów płatności, rat, rozliczeń i plików KSeF.</p>
-              <div class="product-visual">
-                <div class="mini-tile"><small>Dokumenty</small>XML/ZIP</div>
-                <div class="mini-tile"><small>Terminy</small>Płatności</div>
-                <div class="mini-tile"><small>Widok</small>Do obsługi</div>
-              </div>
-            </div>
-            <div class="product-actions">
-              <a class="product-link" href="fakturyapp/">Zobacz program dla firm →</a>
-            </div>
-          </article>
-        </div>
+          </div>
+          <a class="btn btn-secondary" href="fakturyapp/">Zobacz program dla firm</a>
+        </article>
       </div>
     </section>
 
-    <section class="faq">
+    <section class="section">
       <div class="wrap">
-        <div class="section-head">
-          <h2>Najczęstsze pytania na start.</h2>
-          <p>Krótko, konkretnie i bez zasłaniania się technologią.</p>
+        <div class="section-head center">
+          <h2>Najczęstsze pytania</h2>
         </div>
         <div class="faq-grid">
-          <article class="faq-item">
-            <h3>Czy klub musi instalować zwykłą aplikację ze sklepu?</h3>
-            <p>Nie. ORG HUB działa jako aplikacja webowa PWA i może być dodana do ekranu telefonu jako ikona klubu.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Gdzie są dane aplikacji klubowej?</h3>
-            <p>Aktualna wersja ORG HUB korzysta z backendu i bazy danych Supabase.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Czy zawodnik i trener widzą to samo?</h3>
-            <p>Nie. System ma role i panele, więc każda osoba widzi zakres dopasowany do swojej funkcji.</p>
-          </article>
-          <article class="faq-item">
-            <h3>Czy ORG HUB jest tylko dla hokeja?</h3>
-            <p>Nie. System jest projektowany dla klubów sportowych, akademii, trenerów i organizacji, które pracują w grupach.</p>
-          </article>
+          <details><summary>Czy klub musi instalować program?</summary><p>Nie. Aplikacja klubowa działa w przeglądarce i może zostać dodana do ekranu telefonu jako PWA.</p></details>
+          <details><summary>Czy każdy klub ma własną przestrzeń?</summary><p>Tak. Klub otrzymuje własne środowisko, ustawienia sezonu, grupy i użytkowników.</p></details>
+          <details><summary>Gdzie są dane aplikacji?</summary><p>Dane aplikacji klubowej są obsługiwane w środowisku Supabase.</p></details>
+          <details><summary>Czy można zacząć od testu?</summary><p>Tak. Nowy klub może rozpocząć od 30 dni testu bez opłat.</p></details>
         </div>
       </div>
     </section>
