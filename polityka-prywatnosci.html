@@ -37,7 +37,7 @@
 
           <div class="box">
             <p><strong>Najważniejsza zasada:</strong> ORG HUB działa jako platforma SaaS dla klubów. Intevero jest administratorem danych w zakresie własnej strony, kontaktu, konfiguratora, kont demo, umów, rozliczeń i bezpieczeństwa. W przypadku danych zawodników, trenerów i innych osób wprowadzonych do środowiska klubu administratorem jest co do zasady właściwy klub, a Intevero działa jako podmiot przetwarzający dane w imieniu klubu.</p>
-            <p><strong>Aktualna architektura danych:</strong> dane aplikacji i dane klubowe są obsługiwane w środowisku Supabase. ORG HUB nie wykorzystuje już Google Apps Script ani Google Sheets jako bazy danych lub backendu aplikacji klubowej.</p>
+            <p><strong>Aktualna architektura danych:</strong> dane aplikacji i dane klubowe są obsługiwane w środowisku Supabase.</p>
             <p class="muted" style="margin:0;">Szczegółowe zasady przetwarzania danych klubowych opisuje także <a href="/multiclub/legal/powierzenie-danych.html"><strong>Umowa powierzenia przetwarzania danych osobowych</strong></a> oraz <a href="/multiclub/legal/podprocesorzy.html"><strong>Lista podprocesorów ORG HUB</strong></a>.</p>
           </div>
 
@@ -110,14 +110,13 @@
           <h2>8. Odbiorcy danych, dostawcy i podprocesorzy</h2>
           <p>Dane mogą być przekazywane podmiotom wspierającym działanie ORG HUB, wyłącznie w zakresie niezbędnym do świadczenia usługi, obsługi strony, rozliczeń, kontaktu, bezpieczeństwa albo obowiązków prawnych. Mogą to być w szczególności:</p>
           <ol>
-            <li>dostawcy infrastruktury, hostingu, chmury, baz danych, uwierzytelniania i środowisk backendowych, w tym Supabase wykorzystywany jako aktualna baza danych i zaplecze techniczne aplikacji ORG HUB,</li>
+            <li>dostawca bazy danych, uwierzytelniania i zaplecza aplikacyjnego, w tym Supabase,</li>
             <li>dostawcy usług sieciowych, zabezpieczeń, DNS, CDN i infrastruktury pośredniczącej, w tym Cloudflare,</li>
             <li>dostawcy usług poczty elektronicznej i wysyłki wiadomości, w tym usługi wykorzystywane do powiadomień i wiadomości transakcyjnych,</li>
             <li>dostawcy narzędzi do utrzymania kodu, strony internetowej, repozytoriów i wdrożeń,</li>
             <li>podmioty świadczące usługi księgowe, prawne, doradcze, administracyjne lub windykacyjne,</li>
             <li>organy publiczne lub inne podmioty, jeżeli obowiązek udostępnienia danych wynika z przepisów prawa.</li>
           </ol>
-          <p>Google Apps Script i Google Sheets nie są już wykorzystywane jako baza danych ani backend aplikacji klubowej ORG HUB.</p>
           <p>Aktualna informacja o głównych kategoriach podprocesorów znajduje się na stronie: <a href="/multiclub/legal/podprocesorzy.html"><strong>Lista podprocesorów ORG HUB</strong></a>.</p>
 
           <h2>9. Przekazywanie danych poza Europejski Obszar Gospodarczy</h2>
@@ -163,7 +162,6 @@
           <h2>13. Bezpieczeństwo danych</h2>
           <ol>
             <li>Intevero stosuje środki techniczne i organizacyjne służące ochronie danych, w szczególności kontrolę dostępu, rozdzielenie środowisk klubowych, ograniczenie dostępu administracyjnego, zabezpieczenia dostawców infrastruktury, szyfrowanie transmisji i działania diagnostyczne.</li>
-            <li>Aktualne dane aplikacji i dane klubowe są przechowywane i obsługiwane w środowisku Supabase, a komunikacja z aplikacją odbywa się przez zabezpieczone połączenia i warstwę infrastruktury pośredniczącej.</li>
             <li>Klub odpowiada za bezpieczeństwo po swojej stronie, w szczególności za prawidłowe nadawanie uprawnień, odbieranie dostępu osobom nieuprawnionym oraz ochronę danych logowania użytkowników.</li>
           </ol>
 
