@@ -1,21 +1,23 @@
 :root{
-  --org-bg:#0b0b0d;
-  --org-text:#ffffff;
-  --org-muted:#cfcfcf;
-  --org-line:#34343b;
-  --org-accent:#9f1010;
-  --org-accent-border:#ff2b2b;
-  --org-accent-dark:#760c0c;
-  --org-max:1100px;
+  --org-bg:#f4f8fb;
+  --org-panel:#ffffff;
+  --org-text:#122033;
+  --org-muted:#64748b;
+  --org-line:#d9e3ec;
+  --org-accent:#1f5eff;
+  --org-accent-dark:#1648c7;
+  --org-accent-soft:#e8f0ff;
+  --org-max:1160px;
 }
 
 .org-topbar{
   position:sticky;
   top:0;
   z-index:100;
-  background:rgba(10,10,12,.94);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid #202028;
+  background:rgba(255,255,255,.90);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--org-line);
+  box-shadow:0 10px 30px rgba(18,32,51,.04);
 }
 
 .org-topbar *{
@@ -31,7 +33,7 @@
   width:100%;
   max-width:var(--org-max);
   margin:0 auto;
-  padding:0 18px;
+  padding:0 22px;
   min-height:74px;
   display:flex;
   align-items:center;
@@ -43,9 +45,10 @@
   display:flex;
   align-items:center;
   gap:12px;
-  font-weight:900;
-  font-size:25px;
-  letter-spacing:1px;
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.02em;
   color:var(--org-text);
 }
 
@@ -53,9 +56,8 @@
   width:40px;
   height:40px;
   border-radius:12px;
-  background:linear-gradient(180deg,var(--org-accent),var(--org-accent-dark));
-  border:1px solid var(--org-accent-border);
-  box-shadow:0 6px 18px rgba(0,0,0,.25);
+  background:linear-gradient(135deg,var(--org-accent),#34aadc);
+  box-shadow:0 12px 26px rgba(31,94,255,.20);
   flex:0 0 40px;
 }
 
@@ -63,28 +65,35 @@
   display:flex;
   align-items:center;
   justify-content:flex-end;
-  gap:12px;
+  gap:18px;
   flex-wrap:wrap;
 }
 
 .org-nav a{
   font-size:14px;
-  color:#f3f3f3;
-  opacity:.92;
+  font-weight:650;
+  color:var(--org-muted);
+  opacity:1;
 }
 
 .org-nav a:hover{
-  opacity:1;
+  color:var(--org-text);
 }
 
 .org-nav-cta{
   display:inline-block;
-  padding:12px 18px;
-  border-radius:14px;
-  font-weight:900;
-  background:#17171c;
-  border:1px solid var(--org-line);
+  padding:11px 16px;
+  border-radius:999px;
+  font-weight:800;
+  background:var(--org-accent);
+  border:1px solid var(--org-accent);
   color:#fff !important;
+  box-shadow:0 12px 24px rgba(31,94,255,.18);
+}
+
+.org-nav-cta:hover{
+  background:var(--org-accent-dark);
+  border-color:var(--org-accent-dark);
 }
 
 @media (max-width:700px){
@@ -95,18 +104,19 @@
   }
 
   .org-brand{
-    font-size:23px;
+    font-size:19px;
   }
 
   .org-brand-mark{
-    width:35px;
-    height:35px;
-    border-radius:10px;
-    flex-basis:35px;
+    width:36px;
+    height:36px;
+    border-radius:11px;
+    flex-basis:36px;
   }
 
   .org-nav{
     width:100%;
     justify-content:flex-start;
+    gap:12px;
   }
 }
