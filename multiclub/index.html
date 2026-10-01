@@ -109,6 +109,35 @@
     .logout{margin-top:8px;background:#2a2a2a;border-radius:8px;padding:7px;text-align:center;font-size:8px;font-weight:800}
     @media(max-width:700px){.panel-preview{min-height:370px;gap:7px;padding:20px 10px 14px}.phone{min-width:0;width:31%;border-width:3px;border-radius:20px;padding:6px 5px 7px}.phone.admin{width:36%;transform:translateY(-18px)}.phone-screen,.phone.admin .phone-screen{min-height:300px;padding:8px}.phone-title{font-size:10px}.phone-sub,.event-kicker,.event-line,.mini-text,.logout{font-size:6px}.event-name{font-size:10px}.event-cta,.mini-title{font-size:7px}.mini-card{min-height:45px;padding:6px 4px}.bell{width:20px;height:20px;font-size:11px}.mini-icon{font-size:11px}}
 
+  
+    .app-preview{position:relative;display:grid;grid-template-columns:.92fr 1.08fr .92fr;align-items:end;gap:10px;width:94%;max-width:720px;padding:34px 16px 18px}
+    .app-phone{background:#0b0f13;border:7px solid #1d2733;border-radius:28px;padding:10px;box-shadow:0 22px 38px rgba(18,32,51,.22);overflow:hidden}
+    .app-phone.player{transform:rotate(4deg);margin-bottom:10px}
+    .app-phone.admin{transform:translateY(-20px)}
+    .app-phone.coach{transform:rotate(-4deg);margin-bottom:10px}
+    .app-head{display:flex;align-items:center;gap:8px;background:#087b1e;color:#fff;border-radius:10px;padding:9px 10px;font-weight:900;font-size:13px}
+    .app-logo{display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:#fff;color:#087b1e;font-size:15px}
+    .app-head small{display:block;font-size:9px;font-weight:650;opacity:.9}
+    .app-event{margin-top:9px;background:#111820;color:#fff;border-radius:10px;padding:11px}
+    .app-event small{display:block;color:#aeb9c5;font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+    .app-event strong{display:block;margin:4px 0 8px;font-size:13px}
+    .app-meta{font-size:9px;line-height:1.65;color:#e7edf3}
+    .app-action{margin-top:9px;border-radius:8px;padding:7px 8px;text-align:center;background:#ffd946;color:#111;font-size:9px;font-weight:900}
+    .app-tiles{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+    .app-tile{min-height:58px;background:#111820;border-radius:9px;padding:9px 8px;color:#fff}
+    .app-tile i{display:block;font-style:normal;font-size:15px;line-height:1}
+    .app-tile strong{display:block;margin-top:6px;font-size:9px;line-height:1.1}
+    .app-tile small{display:block;margin-top:3px;font-size:7px;color:#9fabb7}
+    .app-logout{margin-top:8px;background:#282d32;color:#fff;border-radius:7px;padding:7px;text-align:center;font-size:8px;font-weight:800}
+    @media(max-width:700px){
+      .app-preview{gap:5px;width:100%;padding:26px 4px 10px}
+      .app-phone{border-width:4px;border-radius:18px;padding:6px}
+      .app-head{padding:6px;font-size:9px}.app-head small{font-size:6px}.app-logo{width:20px;height:20px;font-size:11px}
+      .app-event{padding:7px}.app-event small{font-size:6px}.app-event strong{font-size:9px}.app-meta{font-size:6px}.app-action{font-size:6px;padding:5px}
+      .app-tiles{gap:4px}.app-tile{min-height:40px;padding:6px 5px}.app-tile i{font-size:11px}.app-tile strong{font-size:6px}.app-tile small{display:none}
+      .app-logout{font-size:6px;padding:5px}.app-phone.admin{transform:translateY(-10px)}
+    }
+
   </style>
 
 </head>
@@ -154,31 +183,49 @@
           </div>
         </div>
         <div class="sales-visual">
-<div class="panel-preview" aria-label="Podgląd paneli ORG HUB">
-  <div class="phone player">
-    <div class="phone-screen">
-      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel zawodnika</div></div><div class="bell">🔔</div></div>
-      <div class="event-box"><div class="event-kicker">Najbliższe wydarzenie</div><div class="event-name">Trening</div><div class="event-line">📅 Wtorek, 13 października</div><div class="event-line">🕒 17:30–19:00</div><div class="event-line">📍 Lodowisko główne</div><div class="event-cta">✓ Jesteś zapisany</div></div>
-      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">💳</div><div class="mini-title">Płatności</div><div class="mini-text">Do zapłaty</div></div><div class="mini-card"><div class="mini-icon">📅</div><div class="mini-title">Kalendarz</div></div><div class="mini-card"><div class="mini-icon">📊</div><div class="mini-title">Statystyki</div></div><div class="mini-card"><div class="mini-icon">🔔</div><div class="mini-title">Powiadomienia</div></div></div>
-      <div class="logout">Wyloguj</div>
+          
+<div class="app-preview" aria-label="Podgląd interfejsu ORG HUB MultiClub">
+  <div class="app-phone player">
+    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel zawodnika</small></span></div>
+    <div class="app-event"><small>Najbliższe wydarzenie</small><strong>Trening</strong><div class="app-meta">📅 Wtorek, 13 października<br>🕒 17:30–19:00<br>📍 Lodowisko główne</div><div class="app-action">✓ Jesteś zapisany</div></div>
+    <div class="app-tiles">
+      <div class="app-tile"><i>💳</i><strong>Płatności</strong><small>Do zapłaty</small></div>
+      <div class="app-tile"><i>📅</i><strong>Kalendarz</strong><small>Treningi i mecze</small></div>
+      <div class="app-tile"><i>📊</i><strong>Statystyki</strong><small>Obecności</small></div>
+      <div class="app-tile"><i>🔔</i><strong>Powiadomienia</strong><small>Komunikaty</small></div>
     </div>
+    <div class="app-logout">Wyloguj</div>
   </div>
-  <div class="phone admin">
-    <div class="phone-screen">
-      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel administratora</div></div><div class="bell">🔔</div></div>
-      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">👥</div><div class="mini-title">Zawodnicy</div><div class="mini-text">Kartoteka i dane</div></div><div class="mini-card"><div class="mini-icon">🧑‍🏫</div><div class="mini-title">Trenerzy</div><div class="mini-text">Konta i przypisania</div></div><div class="mini-card"><div class="mini-icon">🧩</div><div class="mini-title">Grupy</div></div><div class="mini-card"><div class="mini-icon">📅</div><div class="mini-title">Wydarzenia</div></div><div class="mini-card"><div class="mini-icon">📊</div><div class="mini-title">Raporty</div></div><div class="mini-card"><div class="mini-icon">💳</div><div class="mini-title">Płatności</div></div><div class="mini-card"><div class="mini-icon">⚙️</div><div class="mini-title">Ustawienia</div></div><div class="mini-card"><div class="mini-icon">•••</div><div class="mini-title">Funkcje dodatkowe</div></div></div>
-      <div class="logout">Wyloguj</div>
+
+  <div class="app-phone admin">
+    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel administratora</small></span></div>
+    <div class="app-tiles">
+      <div class="app-tile"><i>👥</i><strong>Zawodnicy</strong><small>Kartoteka i dane</small></div>
+      <div class="app-tile"><i>🧑‍🏫</i><strong>Trenerzy</strong><small>Konta i przypisania</small></div>
+      <div class="app-tile"><i>🧩</i><strong>Grupy</strong><small>Struktura klubu</small></div>
+      <div class="app-tile"><i>📅</i><strong>Wydarzenia</strong><small>Sezony i kalendarz</small></div>
+      <div class="app-tile"><i>📊</i><strong>Raporty</strong><small>Obecności</small></div>
+      <div class="app-tile"><i>💳</i><strong>Płatności</strong><small>Rozliczenia</small></div>
+      <div class="app-tile"><i>⚙️</i><strong>Ustawienia</strong><small>Klub i sezon</small></div>
+      <div class="app-tile"><i>•••</i><strong>Funkcje dodatkowe</strong><small>Narzędzia</small></div>
     </div>
+    <div class="app-logout">Wyloguj</div>
   </div>
-  <div class="phone coach">
-    <div class="phone-screen">
-      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel trenera</div></div><div class="bell">🔔</div></div>
-      <div class="event-box"><div class="event-kicker">Najbliższe wydarzenie</div><div class="event-name">Trening</div><div class="event-line">📅 Wtorek, 13 października</div><div class="event-line">🕒 17:30–19:00</div><div class="event-cta">Otwórz wydarzenia</div></div>
-      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">👥</div><div class="mini-title">Zawodnicy</div></div><div class="mini-card"><div class="mini-icon">🏒</div><div class="mini-title">Wydarzenia</div></div><div class="mini-card"><div class="mini-icon">🔔</div><div class="mini-title">Powiadomienia</div></div><div class="mini-card"><div class="mini-icon">📋</div><div class="mini-title">Raport obecności</div></div></div>
-      <div class="logout">Wyloguj</div>
+
+  <div class="app-phone coach">
+    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel trenera</small></span></div>
+    <div class="app-event"><small>Najbliższe wydarzenie</small><strong>Trening</strong><div class="app-meta">📅 Wtorek, 13 października<br>🕒 17:30–19:00<br>📍 Lodowisko główne</div><div class="app-action">Otwórz wydarzenia</div></div>
+    <div class="app-tiles">
+      <div class="app-tile"><i>👥</i><strong>Zawodnicy</strong><small>Lista zawodników</small></div>
+      <div class="app-tile"><i>🏒</i><strong>Wydarzenia</strong><small>Bieżące i archiwalne</small></div>
+      <div class="app-tile"><i>🔔</i><strong>Powiadomienia</strong><small>Wyślij wiadomość</small></div>
+      <div class="app-tile"><i>📋</i><strong>Raport obecności</strong><small>Treningi</small></div>
     </div>
+    <div class="app-logout">Wyloguj</div>
   </div>
-</div><div class="visual-caption">Podgląd paneli aplikacji</div></div>
+</div>
+          <div class="visual-caption">Podgląd interfejsu aplikacji</div>
+        </div>
       </div>
     </section>
 
