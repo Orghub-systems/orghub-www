@@ -100,6 +100,23 @@
     .footer-links{display:flex;gap:14px;flex-wrap:wrap}
     @media(max-width:960px){.hero-grid,.grid-3,.flow{grid-template-columns:1fr}.visual{min-height:430px}.strip-grid{grid-template-columns:1fr 1fr}.secondary-box{align-items:flex-start;flex-direction:column}}
     @media(max-width:620px){.hero{padding:38px 0 25px}h1{font-size:36px}.lead{font-size:17px}.hero-actions .btn,.cta .btn{width:100%}.visual{min-height:330px;border-radius:24px}.strip-grid{grid-template-columns:1fr}.section{padding:38px 0}.section-head h2,.cta h2{font-size:29px}}
+  
+    .panel-preview{position:relative;width:100%;min-height:470px;display:flex;align-items:flex-end;justify-content:center;gap:12px;padding:28px 22px 18px}
+    .phone{position:relative;width:30%;max-width:210px;min-width:150px;border-radius:28px;background:#111;border:5px solid #1f2937;box-shadow:0 18px 38px rgba(18,32,51,.22);padding:10px 8px 12px;overflow:hidden}
+    .phone.admin{width:34%;max-width:235px;transform:translateY(-28px);z-index:2}
+    .phone.player{transform:rotate(-4deg)}
+    .phone.coach{transform:rotate(4deg)}
+    .phone-screen{background:#087b16;border-radius:19px;min-height:390px;padding:12px;color:#fff}
+    .phone.admin .phone-screen{min-height:430px}
+    .phone-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+    .phone-title{font-weight:900;font-size:15px;line-height:1.1}.phone-sub{font-size:9px;opacity:.86;margin-top:2px}
+    .bell{width:26px;height:26px;border-radius:8px;background:#1b1b1b;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .event-box{background:#171717;border-radius:11px;padding:11px;margin-bottom:10px}.event-kicker{font-size:8px;opacity:.75;font-weight:800;text-transform:uppercase}.event-name{font-size:15px;font-weight:900;margin:2px 0 5px}.event-line{font-size:9px;opacity:.9;margin:2px 0}
+    .event-cta{margin-top:9px;background:#f6d64a;color:#171717;border-radius:9px;padding:7px;text-align:center;font-size:9px;font-weight:900}
+    .mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.mini-card{background:#171717;border-radius:9px;padding:9px 7px;min-height:62px}.mini-icon{font-size:15px}.mini-title{font-size:10px;font-weight:900;margin-top:3px}.mini-text{font-size:7px;opacity:.72}
+    .logout{margin-top:8px;background:#2a2a2a;border-radius:8px;padding:7px;text-align:center;font-size:8px;font-weight:800}
+    @media(max-width:700px){.panel-preview{min-height:370px;gap:7px;padding:20px 10px 14px}.phone{min-width:0;width:31%;border-width:3px;border-radius:20px;padding:6px 5px 7px}.phone.admin{width:36%;transform:translateY(-18px)}.phone-screen,.phone.admin .phone-screen{min-height:300px;padding:8px}.phone-title{font-size:10px}.phone-sub,.event-kicker,.event-line,.mini-text,.logout{font-size:6px}.event-name{font-size:10px}.event-cta,.mini-title{font-size:7px}.mini-card{min-height:45px;padding:6px 4px}.bell{width:20px;height:20px;font-size:11px}.mini-icon{font-size:11px}}
+
   </style>
 </head>
 <body>
@@ -134,9 +151,31 @@
           </div>
         </div>
         <div class="visual">
-          <img src="assets/img/multiclub-hero.webp" width="760" height="567" alt="ORG HUB MultiClub — panel zawodnika, administratora i trenera" loading="eager" decoding="async">
-          <div class="visual-tag">Prawdziwe ekrany aplikacji</div>
-        </div>
+<div class="panel-preview" aria-label="Podgląd paneli ORG HUB">
+  <div class="phone player">
+    <div class="phone-screen">
+      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel zawodnika</div></div><div class="bell">🔔</div></div>
+      <div class="event-box"><div class="event-kicker">Najbliższe wydarzenie</div><div class="event-name">Trening</div><div class="event-line">📅 Wtorek, 13 października</div><div class="event-line">🕒 17:30–19:00</div><div class="event-line">📍 Lodowisko główne</div><div class="event-cta">✓ Jesteś zapisany</div></div>
+      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">💳</div><div class="mini-title">Płatności</div><div class="mini-text">Do zapłaty</div></div><div class="mini-card"><div class="mini-icon">📅</div><div class="mini-title">Kalendarz</div></div><div class="mini-card"><div class="mini-icon">📊</div><div class="mini-title">Statystyki</div></div><div class="mini-card"><div class="mini-icon">🔔</div><div class="mini-title">Powiadomienia</div></div></div>
+      <div class="logout">Wyloguj</div>
+    </div>
+  </div>
+  <div class="phone admin">
+    <div class="phone-screen">
+      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel administratora</div></div><div class="bell">🔔</div></div>
+      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">👥</div><div class="mini-title">Zawodnicy</div><div class="mini-text">Kartoteka i dane</div></div><div class="mini-card"><div class="mini-icon">🧑‍🏫</div><div class="mini-title">Trenerzy</div><div class="mini-text">Konta i przypisania</div></div><div class="mini-card"><div class="mini-icon">🧩</div><div class="mini-title">Grupy</div></div><div class="mini-card"><div class="mini-icon">📅</div><div class="mini-title">Wydarzenia</div></div><div class="mini-card"><div class="mini-icon">📊</div><div class="mini-title">Raporty</div></div><div class="mini-card"><div class="mini-icon">💳</div><div class="mini-title">Płatności</div></div><div class="mini-card"><div class="mini-icon">⚙️</div><div class="mini-title">Ustawienia</div></div><div class="mini-card"><div class="mini-icon">•••</div><div class="mini-title">Funkcje dodatkowe</div></div></div>
+      <div class="logout">Wyloguj</div>
+    </div>
+  </div>
+  <div class="phone coach">
+    <div class="phone-screen">
+      <div class="phone-head"><div><div class="phone-title">DEMO</div><div class="phone-sub">Panel trenera</div></div><div class="bell">🔔</div></div>
+      <div class="event-box"><div class="event-kicker">Najbliższe wydarzenie</div><div class="event-name">Trening</div><div class="event-line">📅 Wtorek, 13 października</div><div class="event-line">🕒 17:30–19:00</div><div class="event-cta">Otwórz wydarzenia</div></div>
+      <div class="mini-grid"><div class="mini-card"><div class="mini-icon">👥</div><div class="mini-title">Zawodnicy</div></div><div class="mini-card"><div class="mini-icon">🏒</div><div class="mini-title">Wydarzenia</div></div><div class="mini-card"><div class="mini-icon">🔔</div><div class="mini-title">Powiadomienia</div></div><div class="mini-card"><div class="mini-icon">📋</div><div class="mini-title">Raport obecności</div></div></div>
+      <div class="logout">Wyloguj</div>
+    </div>
+  </div>
+</div><div class="visual-tag">Podgląd paneli aplikacji</div></div>
       </div>
     </section>
 
