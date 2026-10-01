@@ -146,6 +146,26 @@
       .app-logout{font-size:6px;padding:5px}.app-phone.admin{transform:translateY(-10px)}
     }
 
+  
+    .real-screens{position:relative;width:100%;min-height:500px;display:flex;align-items:flex-end;justify-content:center;padding:28px 18px 24px;isolation:isolate}
+    .real-screen{display:block;width:31%;max-width:205px;height:auto;border-radius:24px;box-shadow:0 24px 54px rgba(18,32,51,.24);border:1px solid rgba(18,32,51,.12);background:#087b16;transition:transform .2s ease}
+    .real-screen.player{transform:translateX(18px) rotate(-5deg);z-index:1}
+    .real-screen.admin{width:35%;max-width:238px;transform:translateY(-28px);z-index:3;box-shadow:0 30px 64px rgba(18,32,51,.30)}
+    .real-screen.coach{transform:translateX(-18px) rotate(5deg);z-index:2}
+    .real-screens:hover .real-screen.player{transform:translateX(10px) rotate(-3deg)}
+    .real-screens:hover .real-screen.admin{transform:translateY(-34px) scale(1.015)}
+    .real-screens:hover .real-screen.coach{transform:translateX(-10px) rotate(3deg)}
+    @media(max-width:700px){
+      .real-screens{min-height:355px;padding:18px 6px 18px}
+      .real-screen{width:31%;border-radius:16px;box-shadow:0 16px 30px rgba(18,32,51,.20)}
+      .real-screen.player{transform:translateX(8px) rotate(-3deg)}
+      .real-screen.admin{width:36%;transform:translateY(-16px)}
+      .real-screen.coach{transform:translateX(-8px) rotate(3deg)}
+      .real-screens:hover .real-screen.player{transform:translateX(8px) rotate(-3deg)}
+      .real-screens:hover .real-screen.admin{transform:translateY(-16px)}
+      .real-screens:hover .real-screen.coach{transform:translateX(-8px) rotate(3deg)}
+    }
+
   </style>
 </head>
 <body>
@@ -181,47 +201,12 @@
         </div>
         <div class="visual">
           
-<div class="app-preview" aria-label="Podgląd interfejsu ORG HUB MultiClub">
-  <div class="app-phone player">
-    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel zawodnika</small></span></div>
-    <div class="app-event"><small>Najbliższe wydarzenie</small><strong>Trening</strong><div class="app-meta">📅 Wtorek, 13 października<br>🕒 17:30–19:00<br>📍 Lodowisko główne</div><div class="app-action">✓ Jesteś zapisany</div></div>
-    <div class="app-tiles">
-      <div class="app-tile"><i>💳</i><strong>Płatności</strong><small>Do zapłaty</small></div>
-      <div class="app-tile"><i>📅</i><strong>Kalendarz</strong><small>Treningi i mecze</small></div>
-      <div class="app-tile"><i>📊</i><strong>Statystyki</strong><small>Obecności</small></div>
-      <div class="app-tile"><i>🔔</i><strong>Powiadomienia</strong><small>Komunikaty</small></div>
-    </div>
-    <div class="app-logout">Wyloguj</div>
-  </div>
-
-  <div class="app-phone admin">
-    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel administratora</small></span></div>
-    <div class="app-tiles">
-      <div class="app-tile"><i>👥</i><strong>Zawodnicy</strong><small>Kartoteka i dane</small></div>
-      <div class="app-tile"><i>🧑‍🏫</i><strong>Trenerzy</strong><small>Konta i przypisania</small></div>
-      <div class="app-tile"><i>🧩</i><strong>Grupy</strong><small>Struktura klubu</small></div>
-      <div class="app-tile"><i>📅</i><strong>Wydarzenia</strong><small>Sezony i kalendarz</small></div>
-      <div class="app-tile"><i>📊</i><strong>Raporty</strong><small>Obecności</small></div>
-      <div class="app-tile"><i>💳</i><strong>Płatności</strong><small>Rozliczenia</small></div>
-      <div class="app-tile"><i>⚙️</i><strong>Ustawienia</strong><small>Klub i sezon</small></div>
-      <div class="app-tile"><i>•••</i><strong>Funkcje dodatkowe</strong><small>Narzędzia</small></div>
-    </div>
-    <div class="app-logout">Wyloguj</div>
-  </div>
-
-  <div class="app-phone coach">
-    <div class="app-head"><span class="app-logo">◆</span><span>DEMO<small>Panel trenera</small></span></div>
-    <div class="app-event"><small>Najbliższe wydarzenie</small><strong>Trening</strong><div class="app-meta">📅 Wtorek, 13 października<br>🕒 17:30–19:00<br>📍 Lodowisko główne</div><div class="app-action">Otwórz wydarzenia</div></div>
-    <div class="app-tiles">
-      <div class="app-tile"><i>👥</i><strong>Zawodnicy</strong><small>Lista zawodników</small></div>
-      <div class="app-tile"><i>🏒</i><strong>Wydarzenia</strong><small>Bieżące i archiwalne</small></div>
-      <div class="app-tile"><i>🔔</i><strong>Powiadomienia</strong><small>Wyślij wiadomość</small></div>
-      <div class="app-tile"><i>📋</i><strong>Raport obecności</strong><small>Treningi</small></div>
-    </div>
-    <div class="app-logout">Wyloguj</div>
-  </div>
-</div>
-          <div class="visual-tag">Podgląd interfejsu aplikacji</div>
+<div class="real-screens" aria-label="Prawdziwe ekrany ORG HUB MultiClub">
+            <img class="real-screen player" src="assets/img/demo-player.webp" width="220" height="431" alt="ORG HUB MultiClub — panel zawodnika" loading="eager" decoding="async">
+            <img class="real-screen admin" src="assets/img/demo-admin.webp" width="220" height="431" alt="ORG HUB MultiClub — panel administratora" loading="eager" decoding="async">
+            <img class="real-screen coach" src="assets/img/demo-coach.webp" width="220" height="431" alt="ORG HUB MultiClub — panel trenera" loading="eager" decoding="async">
+          </div>
+          <div class="visual-tag">Prawdziwe ekrany aplikacji</div>
         </div>
       </div>
     </section>
