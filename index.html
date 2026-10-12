@@ -89,6 +89,16 @@
     .card h3{margin:0 0 8px;font-size:21px}.card p{margin:0;color:var(--muted)}
     .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.flow-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--soft-shadow)}
     .flow-card strong{display:block;font-size:22px;margin-bottom:8px}.flow-card p{margin:0;color:var(--muted)}
+    .start-guide{padding:32px;border:1px solid #cfdcf0;border-radius:30px;background:linear-gradient(135deg,#f8fbff 0%,#edf4ff 100%);box-shadow:var(--soft-shadow)}
+    .start-steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:26px}
+    .start-step{position:relative;padding:20px 18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 28px rgba(18,32,51,.06)}
+    .start-step .num{display:grid;place-items:center;width:36px;height:36px;margin-bottom:13px;border-radius:12px;background:var(--blue);color:#fff;font-size:14px;font-weight:900}
+    .start-step h3{margin:0 0 7px;font-size:18px;line-height:1.18}.start-step p{margin:0;color:var(--muted);font-size:14px}
+    .start-flow{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:24px;padding:18px;border-radius:18px;background:#122033;color:#fff}
+    .start-flow span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.10);font-size:12px;font-weight:850;letter-spacing:.01em}
+    .start-flow b{color:#8eb3ff;font-size:18px;line-height:1}
+    .start-note{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #cae7da;color:var(--ink2);font-size:14px}
+    .start-note strong{color:var(--green)}
     .quote{margin-top:22px;padding:24px;border-radius:24px;background:#122033;color:#fff;text-align:center;font-size:clamp(22px,3vw,34px);font-weight:850;letter-spacing:-.02em}
     .cta{padding:38px;border-radius:28px;background:linear-gradient(135deg,#122033,#173b72);color:#fff;text-align:center;box-shadow:var(--shadow)}
     .cta h2{margin:0 0 10px;font-size:36px}.cta p{margin:0 auto 22px;max-width:760px;color:#dce7f4;font-size:17px}
@@ -98,8 +108,8 @@
     .secondary-box h3{margin:0 0 6px;font-size:21px}.secondary-box p{margin:0;color:var(--muted);max-width:720px}
     footer{border-top:1px solid var(--line);background:#fff;margin-top:54px}.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;padding:24px 0;color:var(--muted);font-size:14px}
     .footer-links{display:flex;gap:14px;flex-wrap:wrap}
-    @media(max-width:960px){.hero-grid,.grid-3,.flow{grid-template-columns:1fr}.visual{min-height:430px}.strip-grid{grid-template-columns:1fr 1fr}.secondary-box{align-items:flex-start;flex-direction:column}}
-    @media(max-width:620px){.hero{padding:38px 0 25px}h1{font-size:36px}.lead{font-size:17px}.hero-actions .btn,.cta .btn{width:100%}.visual{min-height:330px;border-radius:24px}.strip-grid{grid-template-columns:1fr}.section{padding:38px 0}.section-head h2,.cta h2{font-size:29px}}
+    @media(max-width:960px){.hero-grid,.grid-3,.flow{grid-template-columns:1fr}.start-steps{grid-template-columns:1fr 1fr}.visual{min-height:430px}.strip-grid{grid-template-columns:1fr 1fr}.secondary-box{align-items:flex-start;flex-direction:column}}
+    @media(max-width:620px){.hero{padding:38px 0 25px}h1{font-size:36px}.lead{font-size:17px}.hero-actions .btn,.cta .btn{width:100%}.visual{min-height:330px;border-radius:24px}.strip-grid{grid-template-columns:1fr}.section{padding:38px 0}.section-head h2,.cta h2{font-size:29px}.start-guide{padding:22px 16px;border-radius:24px}.start-steps{grid-template-columns:1fr}.start-flow{justify-content:flex-start}.start-flow b{transform:rotate(90deg)}}
   
     .panel-preview{position:relative;width:100%;min-height:470px;display:flex;align-items:flex-end;justify-content:center;gap:12px;padding:28px 22px 18px}
     .phone{position:relative;width:30%;max-width:210px;min-width:150px;border-radius:28px;background:#111;border:5px solid #1f2937;box-shadow:0 18px 38px rgba(18,32,51,.22);padding:10px 8px 12px;overflow:hidden}
@@ -229,6 +239,31 @@
           <article class="flow-card"><strong>Zawodnik</strong><p>Na telefonie widzi to, co dotyczy jego: wydarzenia, zapisy, powołania, płatności i komunikaty.</p></article>
         </div>
         <div class="quote">Mniej pilnowania ludzi i arkuszy. Więcej czasu na klub.</div>
+      </div>
+    </section>
+
+    <section class="section" id="jak-zaczac">
+      <div class="wrap">
+        <div class="start-guide">
+          <div class="section-head">
+            <h2>Jak zacząć z ORG HUB?</h2>
+            <p>Administrator uruchamia klub, tworzy konta trenerów i zawodników oraz przypisuje ich do grup. Od tej chwili każdy loguje się na swoje konto i widzi panel dopasowany do swojej roli.</p>
+          </div>
+
+          <div class="start-steps">
+            <article class="start-step"><div class="num">01</div><h3>Załóż klub</h3><p>Administrator rejestruje klub i uzupełnia podstawową konfigurację.</p></article>
+            <article class="start-step"><div class="num">02</div><h3>Utwórz grupy</h3><p>Dodaj drużyny, roczniki, sekcje lub grupy treningowe działające w klubie.</p></article>
+            <article class="start-step"><div class="num">03</div><h3>Dodaj konta</h3><p>Utwórz konta trenerów i zawodników. Każdy otrzymuje własny dostęp do aplikacji.</p></article>
+            <article class="start-step"><div class="num">04</div><h3>Przypisz osoby</h3><p>Połącz zawodników i trenerów z właściwymi grupami, aby każdy widział odpowiednie dane.</p></article>
+            <article class="start-step"><div class="num">05</div><h3>Zacznij pracę</h3><p>Twórz treningi, mecze i powołania. Obecności, statystyki, płatności i komunikacja korzystają z tych samych danych.</p></article>
+          </div>
+
+          <div class="start-flow" aria-label="Schemat działania ORG HUB">
+            <span>KLUB</span><b>→</b><span>GRUPY</span><b>→</b><span>TRENERZY + ZAWODNICY</span><b>→</b><span>TRENINGI / MECZE</span><b>→</b><span>OBECNOŚCI · STATYSTYKI · PŁATNOŚCI · AI</span>
+          </div>
+
+          <div class="start-note"><strong>✓</strong><div><strong>Nie musisz konfigurować wszystkiego od razu.</strong> Na początek wystarczy klub, jedna grupa, trener i zawodnicy. Pierwszy trening możesz dodać od razu po ich przypisaniu.</div></div>
+        </div>
       </div>
     </section>
 
